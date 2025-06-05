@@ -1,7 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar } from "lucide-react";
 
 const Index = () => {
@@ -54,9 +54,19 @@ const Index = () => {
         <div className="relative container mx-auto px-6 py-24 lg:py-32">
           <div className="max-w-4xl mx-auto text-center">
             <div className="animate-fade-in">
-              <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Sammy Dabbas
-              </h1>
+              {/* Profile Picture and Name Section */}
+              <div className="flex flex-col items-center mb-6">
+                <div className="flex items-center gap-8 mb-4">
+                  <Avatar className="w-32 h-32 border-4 border-blue-500/30">
+                    <AvatarImage src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9" alt="Sammy Dabbas" />
+                    <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-blue-600 to-purple-600 text-white">SD</AvatarFallback>
+                  </Avatar>
+                  <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Sammy Dabbas
+                  </h1>
+                </div>
+              </div>
+              
               <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-slate-300">
                 Software Developer & Computer Science Student
               </h2>
@@ -265,11 +275,21 @@ const Index = () => {
                 <Mail className="w-5 h-5" />
                 dabbassammy@gmail.com
               </Button>
-              <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800 px-8 py-3 flex items-center gap-2 transition-all duration-300 hover:scale-105">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-slate-600 text-slate-300 hover:bg-slate-800 px-8 py-3 flex items-center gap-2 transition-all duration-300 hover:scale-105"
+                onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
+              >
                 <Github className="w-5 h-5" />
                 GitHub
               </Button>
-              <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800 px-8 py-3 flex items-center gap-2 transition-all duration-300 hover:scale-105">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-slate-600 text-slate-300 hover:bg-slate-800 px-8 py-3 flex items-center gap-2 transition-all duration-300 hover:scale-105"
+                onClick={() => window.open('https://www.linkedin.com/in/sammy-dabbas-61a559309/', '_blank')}
+              >
                 <Linkedin className="w-5 h-5" />
                 LinkedIn
               </Button>
