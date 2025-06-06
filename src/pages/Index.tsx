@@ -4,342 +4,328 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar } from "lucide-react";
+import { useState } from "react";
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState("about");
+
+  const renderAboutSection = () => (
+    <div className="flex-1 flex items-center justify-center">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        {/* Left Content */}
+        <div className="space-y-8">
+          <div className="space-y-6">
+            <h1 className="text-5xl lg:text-6xl font-bold text-slate-800">
+              Hey there, I'm Sammy 👋
+            </h1>
+            <h2 className="text-2xl lg:text-3xl font-semibold text-slate-600">
+              Software Developer & Computer Science Student
+            </h2>
+            <p className="text-lg text-slate-500 leading-relaxed max-w-2xl">
+              I'm a passionate Software Developer and Computer Science student at the University of Central Florida, 
+              maintaining a 3.9 GPA while gaining real-world experience through internships and projects. Currently working 
+              as a Software Developer Intern at FINDER Software Solutions, where I build high-performance data processing 
+              systems and optimize backend infrastructure.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <GraduationCap className="w-5 h-5 text-slate-600" />
+              <span className="text-slate-600">University of Central Florida - Computer Science (Expected Aug 2026)</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <MapPin className="w-5 h-5 text-slate-600" />
+              <span className="text-slate-600">Orlando, Florida</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Calendar className="w-5 h-5 text-slate-600" />
+              <span className="text-slate-600">Available for Full-Time Opportunities</span>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <Button className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-3">
+              <Mail className="w-5 h-5 mr-2" />
+              Get In Touch
+            </Button>
+            <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 px-6 py-3">
+              <ExternalLink className="w-5 h-5 mr-2" />
+              View Resume
+            </Button>
+          </div>
+        </div>
+
+        {/* Right Content - Profile Picture */}
+        <div className="flex justify-center lg:justify-end">
+          <div className="relative">
+            <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-slate-200 shadow-xl">
+              <Avatar className="w-full h-full">
+                <AvatarImage src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9" alt="Sammy Dabbas" className="object-cover" />
+                <AvatarFallback className="text-4xl font-bold bg-slate-100 text-slate-700">SD</AvatarFallback>
+              </Avatar>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderSkillsSection = () => (
+    <div className="flex-1 flex items-center justify-center">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold mb-12 text-center text-slate-800">
+          Technical Expertise
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Languages */}
+          <Card className="bg-white border-slate-200 hover:shadow-lg transition-all duration-300">
+            <CardContent className="p-6 text-center">
+              <Code2 className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-slate-700">Languages</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {["Python", "C#", "JavaScript", "SQL", "HTML", "CSS"].map((lang) => (
+                  <Badge key={lang} variant="secondary" className="bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    {lang}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Frameworks */}
+          <Card className="bg-white border-slate-200 hover:shadow-lg transition-all duration-300">
+            <CardContent className="p-6 text-center">
+              <Server className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-slate-700">Frameworks</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {[".NET Core", "FastAPI", "React.js", "Django", "Node.js"].map((framework) => (
+                  <Badge key={framework} variant="secondary" className="bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    {framework}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Databases */}
+          <Card className="bg-white border-slate-200 hover:shadow-lg transition-all duration-300">
+            <CardContent className="p-6 text-center">
+              <Database className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-slate-700">Databases</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {["MS SQL Server", "Firebase", "DynamoDB", "Firestore"].map((db) => (
+                  <Badge key={db} variant="secondary" className="bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    {db}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Cloud & Tools */}
+          <Card className="bg-white border-slate-200 hover:shadow-lg transition-all duration-300">
+            <CardContent className="p-6 text-center">
+              <Cloud className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-slate-700">Cloud & Tools</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {["AWS", "Docker", "Kubernetes", "Git", "GitHub"].map((tool) => (
+                  <Badge key={tool} variant="secondary" className="bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    {tool}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderProjectsSection = () => (
+    <div className="flex-1 flex items-center justify-center">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold mb-12 text-center text-slate-800">
+          Featured Projects
+        </h2>
+        <div className="grid gap-8">
+          {/* Project 1 */}
+          <Card className="bg-white border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-0">
+              <div className="relative bg-slate-50 flex items-center justify-center p-8">
+                <div className="relative w-full h-64 bg-slate-100 rounded-lg border-2 border-slate-200 flex items-center justify-center">
+                  <Play className="w-16 h-16 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors" />
+                </div>
+              </div>
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-3 text-slate-800">Real-Time Ad Event Processing System</h3>
+                <p className="text-slate-600 mb-4 leading-relaxed">
+                  Designed a scalable system capable of ingesting 1M+ ad events per second with sub-20ms latency. 
+                  Built with FastAPI and AWS Kinesis, featuring DynamoDB schemas optimized for microsecond read performance.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["Python", "FastAPI", "AWS Kinesis", "DynamoDB", "Docker", "EKS"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="border-slate-300 text-slate-600">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View Details
+                </Button>
+              </CardContent>
+            </div>
+          </Card>
+
+          {/* Project 2 */}
+          <Card className="bg-white border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-0">
+              <div className="relative bg-slate-50 flex items-center justify-center p-8">
+                <div className="relative w-full h-64 bg-slate-100 rounded-lg border-2 border-slate-200 flex items-center justify-center">
+                  <Play className="w-16 h-16 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors" />
+                </div>
+              </div>
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-3 text-slate-800">GPU Training Service Platform</h3>
+                <p className="text-slate-600 mb-4 leading-relaxed">
+                  Collaborated with a team of 3 to build a full-stack platform for dynamically deploying and managing ML workloads. 
+                  Reduced job setup time by 40% through automated GPU resource provisioning via Kubernetes controllers.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["Django", "React.js", "Docker", "Kubernetes", "GPU Management"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="border-slate-300 text-slate-600">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View Details
+                </Button>
+              </CardContent>
+            </div>
+          </Card>
+
+          {/* Project 3 */}
+          <Card className="bg-white border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-0">
+              <div className="relative bg-slate-50 flex items-center justify-center p-8">
+                <div className="relative w-full h-64 bg-slate-100 rounded-lg border-2 border-slate-200 flex items-center justify-center">
+                  <Play className="w-16 h-16 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors" />
+                </div>
+              </div>
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-3 text-slate-800">UCF Lab Inventory System</h3>
+                <p className="text-slate-600 mb-4 leading-relaxed">
+                  Created a React.js application for tracking 200+ lab items using QR codes, reducing check-in/out time by 10 seconds per transaction. 
+                  Integrated Firebase Auth and Firestore with role-based access control.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["React.js", "Firebase", "Firestore", "HTML5-QRCode", "Authentication"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="border-slate-300 text-slate-600">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View Details
+                </Button>
+              </CardContent>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderContactSection = () => (
+    <div className="flex-1 flex items-center justify-center">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-8 text-slate-800">
+          Let's Connect
+        </h2>
+        <p className="text-xl text-slate-600 mb-12">
+          I'm always interested in new opportunities and collaborations. Feel free to reach out!
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button className="bg-slate-700 hover:bg-slate-800 text-white px-8 py-3">
+            <Mail className="w-5 h-5 mr-2" />
+            dabbassammy@gmail.com
+          </Button>
+          <Button 
+            variant="outline" 
+            className="border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-3 flex items-center gap-2"
+            onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
+          >
+            <Github className="w-5 h-5" />
+            GitHub
+          </Button>
+          <Button 
+            variant="outline" 
+            className="border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-3 flex items-center gap-2"
+            onClick={() => window.open('https://www.linkedin.com/in/sammy-dabbas-61a559309/', '_blank')}
+          >
+            <Linkedin className="w-5 h-5" />
+            LinkedIn
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md z-50 border-b border-slate-700">
+      <nav className="bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              SD
+            <div className="text-xl font-bold text-slate-800">
+              Sammy Dabbas
             </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#about" className="hover:text-blue-400 transition-colors">About</a>
-              <a href="#skills" className="hover:text-blue-400 transition-colors">Skills</a>
-              <a href="#projects" className="hover:text-blue-400 transition-colors">Projects</a>
-              <a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a>
+            <div className="flex space-x-8">
+              <button 
+                onClick={() => setActiveSection("about")}
+                className={`hover:text-slate-600 transition-colors ${activeSection === "about" ? "text-slate-800 font-medium" : "text-slate-500"}`}
+              >
+                About
+              </button>
+              <button 
+                onClick={() => setActiveSection("skills")}
+                className={`hover:text-slate-600 transition-colors ${activeSection === "skills" ? "text-slate-800 font-medium" : "text-slate-500"}`}
+              >
+                Skills
+              </button>
+              <button 
+                onClick={() => setActiveSection("projects")}
+                className={`hover:text-slate-600 transition-colors ${activeSection === "projects" ? "text-slate-800 font-medium" : "text-slate-500"}`}
+              >
+                Projects
+              </button>
+              <button 
+                onClick={() => setActiveSection("contact")}
+                className={`hover:text-slate-600 transition-colors ${activeSection === "contact" ? "text-slate-800 font-medium" : "text-slate-500"}`}
+              >
+                Contact
+              </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-600/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-600/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-slate-600/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+      {/* Main Content */}
+      <div className="flex-1 overflow-hidden">
+        <div className="h-full p-6">
+          {activeSection === "about" && renderAboutSection()}
+          {activeSection === "skills" && renderSkillsSection()}
+          {activeSection === "projects" && renderProjectsSection()}
+          {activeSection === "contact" && renderContactSection()}
         </div>
-
-        <div className="relative container mx-auto px-6 py-24 lg:py-32">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="animate-fade-in">
-              {/* Profile Picture and Name Section */}
-              <div className="flex flex-col items-center mb-6">
-                <div className="flex items-center gap-8 mb-4">
-                  <Avatar className="w-32 h-32 border-4 border-blue-500/30">
-                    <AvatarImage src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9" alt="Sammy Dabbas" />
-                    <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-blue-600 to-indigo-600 text-white">SD</AvatarFallback>
-                  </Avatar>
-                  <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                    Sammy Dabbas
-                  </h1>
-                </div>
-              </div>
-              
-              <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-300">
-                Software Developer & Computer Science Student
-              </h2>
-              <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Building scalable backend systems and data pipelines. Currently pursuing Computer Science at UCF with expertise in Python, .NET Core, and cloud technologies.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 px-8 py-3 transition-all duration-300 hover:scale-105">
-                  <Mail className="w-5 h-5 mr-2" />
-                  Get In Touch
-                </Button>
-                <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 px-8 py-3 transition-all duration-300 hover:scale-105">
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  View Resume
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 bg-slate-800/50">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              About Me
-            </h2>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                  I'm a passionate Software Developer and Computer Science student at the University of Central Florida, 
-                  maintaining a 3.9 GPA while gaining real-world experience through internships and projects.
-                </p>
-                <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                  Currently working as a Software Developer Intern at FINDER Software Solutions, where I build high-performance 
-                  data processing systems and optimize backend infrastructure for traffic monitoring applications.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <GraduationCap className="w-5 h-5 text-blue-400" />
-                    <span className="text-gray-300">University of Central Florida - Computer Science (Expected Aug 2026)</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-blue-400" />
-                    <span className="text-gray-300">Orlando, Florida</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5 text-blue-400" />
-                    <span className="text-gray-300">Available for Full-Time Opportunities</span>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <Card className="bg-slate-800/80 border-slate-700">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-3 text-blue-400">Current Role</h3>
-                    <p className="text-gray-300 mb-2 font-medium">Software Developer Intern</p>
-                    <p className="text-gray-400">FINDER Software Solutions</p>
-                    <p className="text-gray-500 text-sm">Sep 2024 - Present</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-slate-800/80 border-slate-700">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-3 text-blue-400">Previous Experience</h3>
-                    <p className="text-gray-300 mb-2 font-medium">Statistical Analyst</p>
-                    <p className="text-gray-400">NASA Research Team</p>
-                    <p className="text-gray-500 text-sm">Nov 2023 - Feb 2024</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Expertise Section */}
-      <section id="skills" className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              Technical Expertise
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Languages */}
-              <Card className="bg-slate-800/80 border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6 text-center">
-                  <Code2 className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-3 text-blue-400">Languages</h3>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {["Python", "C#", "JavaScript", "SQL", "HTML", "CSS"].map((lang) => (
-                      <Badge key={lang} variant="secondary" className="bg-slate-700 text-gray-300 hover:bg-blue-900/30">
-                        {lang}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Frameworks */}
-              <Card className="bg-slate-800/80 border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6 text-center">
-                  <Server className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-3 text-blue-400">Frameworks</h3>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {[".NET Core", "FastAPI", "React.js", "Django", "Node.js"].map((framework) => (
-                      <Badge key={framework} variant="secondary" className="bg-slate-700 text-gray-300 hover:bg-blue-900/30">
-                        {framework}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Databases */}
-              <Card className="bg-slate-800/80 border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6 text-center">
-                  <Database className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-3 text-blue-400">Databases</h3>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {["MS SQL Server", "Firebase", "DynamoDB", "Firestore"].map((db) => (
-                      <Badge key={db} variant="secondary" className="bg-slate-700 text-gray-300 hover:bg-blue-900/30">
-                        {db}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Cloud & Tools */}
-              <Card className="bg-slate-800/80 border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6 text-center">
-                  <Cloud className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-3 text-blue-400">Cloud & Tools</h3>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {["AWS", "Docker", "Kubernetes", "Git", "GitHub"].map((tool) => (
-                      <Badge key={tool} variant="secondary" className="bg-slate-700 text-gray-300 hover:bg-blue-900/30">
-                        {tool}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects Section */}
-      <section id="projects" className="py-20 bg-slate-800/50">
-        <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              Featured Projects
-            </h2>
-            <div className="grid gap-12">
-              {/* Project 1 */}
-              <Card className="bg-slate-800/80 border-slate-700 hover:border-blue-500/50 transition-all duration-300 overflow-hidden">
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative bg-slate-900 flex items-center justify-center p-8">
-                    <div className="relative w-full h-64 bg-slate-800 rounded-lg border-2 border-slate-700 flex items-center justify-center">
-                      <Play className="w-16 h-16 text-blue-400 hover:text-blue-300 cursor-pointer transition-colors" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 rounded-lg"></div>
-                    </div>
-                  </div>
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold mb-3 text-blue-400">Real-Time Ad Event Processing System</h3>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      Designed a scalable system capable of ingesting 1M+ ad events per second with sub-20ms latency. 
-                      Built with FastAPI and AWS Kinesis, featuring DynamoDB schemas optimized for microsecond read performance.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {["Python", "FastAPI", "AWS Kinesis", "DynamoDB", "Docker", "EKS"].map((tech) => (
-                        <Badge key={tech} variant="outline" className="border-blue-500/50 text-blue-400">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Button variant="outline" className="border-blue-500/50 text-blue-400 hover:bg-blue-900/30">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Details
-                    </Button>
-                  </CardContent>
-                </div>
-              </Card>
-
-              {/* Project 2 */}
-              <Card className="bg-slate-800/80 border-slate-700 hover:border-blue-500/50 transition-all duration-300 overflow-hidden">
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative bg-slate-900 flex items-center justify-center p-8">
-                    <div className="relative w-full h-64 bg-slate-800 rounded-lg border-2 border-slate-700 flex items-center justify-center">
-                      <Play className="w-16 h-16 text-blue-400 hover:text-blue-300 cursor-pointer transition-colors" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 rounded-lg"></div>
-                    </div>
-                  </div>
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold mb-3 text-blue-400">GPU Training Service Platform</h3>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      Collaborated with a team of 3 to build a full-stack platform for dynamically deploying and managing ML workloads. 
-                      Reduced job setup time by 40% through automated GPU resource provisioning via Kubernetes controllers.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {["Django", "React.js", "Docker", "Kubernetes", "GPU Management"].map((tech) => (
-                        <Badge key={tech} variant="outline" className="border-blue-500/50 text-blue-400">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Button variant="outline" className="border-blue-500/50 text-blue-400 hover:bg-blue-900/30">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Details
-                    </Button>
-                  </CardContent>
-                </div>
-              </Card>
-
-              {/* Project 3 */}
-              <Card className="bg-slate-800/80 border-slate-700 hover:border-blue-500/50 transition-all duration-300 overflow-hidden">
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative bg-slate-900 flex items-center justify-center p-8">
-                    <div className="relative w-full h-64 bg-slate-800 rounded-lg border-2 border-slate-700 flex items-center justify-center">
-                      <Play className="w-16 h-16 text-blue-400 hover:text-blue-300 cursor-pointer transition-colors" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 rounded-lg"></div>
-                    </div>
-                  </div>
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold mb-3 text-blue-400">UCF Lab Inventory System</h3>
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      Created a React.js application for tracking 200+ lab items using QR codes, reducing check-in/out time by 10 seconds per transaction. 
-                      Integrated Firebase Auth and Firestore with role-based access control.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {["React.js", "Firebase", "Firestore", "HTML5-QRCode", "Authentication"].map((tech) => (
-                        <Badge key={tech} variant="outline" className="border-blue-500/50 text-blue-400">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Button variant="outline" className="border-blue-500/50 text-blue-400 hover:bg-blue-900/30">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Details
-                    </Button>
-                  </CardContent>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              Let's Connect
-            </h2>
-            <p className="text-xl text-gray-300 mb-12">
-              I'm always interested in new opportunities and collaborations. Feel free to reach out!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 px-8 py-3 transition-all duration-300 hover:scale-105">
-                <Mail className="w-5 h-5" />
-                dabbassammy@gmail.com
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-slate-600 text-gray-300 hover:bg-slate-800 px-8 py-3 flex items-center gap-2 transition-all duration-300 hover:scale-105"
-                onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
-              >
-                <Github className="w-5 h-5" />
-                GitHub
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-slate-600 text-gray-300 hover:bg-slate-800 px-8 py-3 flex items-center gap-2 transition-all duration-300 hover:scale-105"
-                onClick={() => window.open('https://www.linkedin.com/in/sammy-dabbas-61a559309/', '_blank')}
-              >
-                <Linkedin className="w-5 h-5" />
-                LinkedIn
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* Footer */}
-      <footer className="py-8 text-center text-gray-400 border-t border-slate-800">
+      <footer className="py-6 text-center text-slate-400 border-t border-slate-200 bg-white">
         <p>&copy; 2024 Sammy Dabbas. Built with React & Tailwind CSS.</p>
       </footer>
     </div>
