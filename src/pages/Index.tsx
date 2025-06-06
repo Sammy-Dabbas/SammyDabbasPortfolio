@@ -465,7 +465,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 border-t border-gray-100 bg-white">
-        <p className="font-medium">&copy; 2024 Sammy Dabbas. Crafted with React & Tailwind CSS.</p>
+        <p className="font-medium">&copy; 2024 Sammy Dabbas. Built with React & Tailwind CSS.</p>
       </footer>
     </div>
   );
