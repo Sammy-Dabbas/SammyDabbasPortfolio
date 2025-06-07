@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -101,7 +100,7 @@ const Index = () => {
                 <div className="relative w-80 h-80 lg:w-96 lg:h-96">
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
                     <Avatar className="w-full h-full">
-                      <AvatarImage src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9" alt="Sammy Dabbas" className="object-cover" />
+                      <AvatarImage src="/lovable-uploads/16c85f13-62c1-4a42-bd36-5a2b68e4547c.png" alt="Sammy Dabbas" className="object-cover" />
                       <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">SD</AvatarFallback>
                     </Avatar>
                   </div>
