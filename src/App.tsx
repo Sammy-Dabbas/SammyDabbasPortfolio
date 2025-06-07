@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,7 +9,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 // Get the base name for GitHub Pages
-const basename = import.meta.env.PROD ? '/your-repo-name' : '';
+const basename = import.meta.env.PROD ? '/SammyDabbasPortfolio' : '';
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
