@@ -1,73 +1,122 @@
-# Welcome to your Lovable project
 
-## Project info
+# Sammy Dabbas - Backend Engineer Portfolio
 
-**URL**: https://lovable.dev/projects/e78515bc-4e25-4cbb-a66d-f59e42b4011c
+A professional portfolio website showcasing backend engineering expertise, built with React, TypeScript, and Tailwind CSS.
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **Professional Design**: Clean, matte color scheme with modern UI/UX
+- **Responsive Layout**: Optimized for all device sizes
+- **Single Page Navigation**: Smooth transitions between sections
+- **Interactive Elements**: Hover effects and animations
+- **Fast Performance**: Built with Vite for optimal loading speeds
 
-**Use Lovable**
+## 🛠️ Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e78515bc-4e25-4cbb-a66d-f59e42b4011c) and start prompting.
+- **Frontend**: React 18, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui components
+- **Build Tool**: Vite
+- **State Management**: React Query
+- **Routing**: React Router DOM
+- **Icons**: Lucide React
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📦 Installation & Development
 
-**Use your preferred IDE**
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd <your-repo-name>
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-Follow these steps:
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🚀 Deployment
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### GitHub Pages Deployment
 
-# Step 3: Install the necessary dependencies.
-npm i
+This project is configured for automatic deployment to GitHub Pages:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. **Automatic Deployment** (Recommended):
+   - Push your code to the `main` branch
+   - GitHub Actions will automatically build and deploy to GitHub Pages
+   - Your site will be available at `https://yourusername.github.io/your-repo-name/`
+
+2. **Manual Deployment**:
+   ```bash
+   # Make the deploy script executable
+   chmod +x deploy.sh
+   
+   # Run the deployment script
+   ./deploy.sh
+   ```
+
+### Important Setup Steps:
+
+1. **Update Repository Name**: 
+   - Edit `vite.config.ts` and replace `/your-repo-name/` with your actual repository name
+   - Example: If your repo is `portfolio`, change it to `/portfolio/`
+
+2. **Enable GitHub Pages**:
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Set source to "GitHub Actions"
+
+3. **Configure Base Path**:
+   - The `vite.config.ts` is already configured for GitHub Pages
+   - Make sure to update the base path to match your repository name
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── index.css           # Global styles and design tokens
 ```
 
-**Edit a file directly in GitHub**
+## 🎨 Design System
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The project uses a professional color scheme with semantic tokens defined in `index.css`. All colors, spacing, and typography follow the design system for consistency and easy theming.
 
-**Use GitHub Codespaces**
+## 📱 Responsive Design
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Mobile First**: Optimized for mobile devices
+- **Tablet Support**: Enhanced layout for medium screens
+- **Desktop**: Full-featured experience for large screens
 
-## What technologies are used for this project?
+## 🔧 Configuration
 
-This project is built with:
+- **TypeScript**: Strict type checking enabled
+- **ESLint**: Code quality and consistency
+- **Tailwind CSS**: Utility-first styling
+- **Vite**: Fast build tool and development server
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📄 License
 
-## How can I deploy this project?
+This project is open source and available under the [MIT License](LICENSE).
 
-Simply open [Lovable](https://lovable.dev/projects/e78515bc-4e25-4cbb-a66d-f59e42b4011c) and click on Share -> Publish.
+## 📞 Contact
 
-## Can I connect a custom domain to my Lovable project?
+**Sammy Dabbas**
+- Email: [your-email@example.com]
+- LinkedIn: [your-linkedin-profile]
+- GitHub: [your-github-profile]
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Built with ❤️ using React, TypeScript, and Tailwind CSS
