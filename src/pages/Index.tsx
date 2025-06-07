@@ -100,7 +100,8 @@ const Index = () => {
                 <div className="relative w-80 h-80 lg:w-96 lg:h-96">
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
                     <Avatar className="w-full h-full">
-                    <AvatarImage src="/SammyDabbasPortfolio/images/profile.png" alt="Sammy Dabbas" className="object-cover" />                      <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">SD</AvatarFallback>
+                      <AvatarImage src="/images/profile.png" alt="Sammy Dabbas" className="object-cover" />
+                      <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">SD</AvatarFallback>
                     </Avatar>
                   </div>
                   {/* Profile picture */}
