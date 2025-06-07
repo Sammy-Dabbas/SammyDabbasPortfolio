@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar, ArrowRight, Sparkles, Link, Link } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useStat1e("about");
+  const [activeSection, setActiveSection] = useState("about");
 
   const renderAboutSection = () => (
     <div className="flex-1 flex items-center justify-center pt-8 pb-16">
@@ -86,13 +86,14 @@ const Index = () => {
                   </Button>
                 </a>
                 <a href="/SammyDabbasResume.pdf" target="_blank" rel="noopener noreferrer">
-               <Button
-                variant="outline"
-                 className="border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-6 text-base transition-all">
-                <ExternalLink className="w-5 h-5 mr-2" />
-                   View Resume
-               </Button>
-               </a>
+                  <Button
+                    variant="outline"
+                    className="border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-6 text-base transition-all">
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    View Resume
+                  </Button>
+                </a>
+              </div>
             </div>
 
             {/* Right Content - Profile Picture - 5 columns */}
@@ -105,10 +106,11 @@ const Index = () => {
                 <div className="relative w-80 h-80 lg:w-96 lg:h-96">
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
                     <Avatar className="w-full h-full">
-                    <AvatarImage src="/SammyDabbasPortfolio/images/profile.png" alt="Sammy Dabbas" className="object-cover" />                      <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">SD</AvatarFallback>
+                      <AvatarImage src="/SammyDabbasPortfolio/images/profile.png" alt="Sammy Dabbas" className="object-cover" />
+                      <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">SD</AvatarFallback>
                     </Avatar>
                   </div>
-                  {/* Profile picture */}
+                  
                   {/* Floating badges */}
                   <div className="absolute -top-4 -right-4 bg-white rounded-full p-3 shadow-lg border border-gray-100">
                     <Code2 className="w-6 h-6 text-blue-600" />
@@ -355,15 +357,17 @@ const Index = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <Card className="bg-white border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-            <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Mail className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Email Me</h3>
-              <p className="text-blue-600 font-medium">dabbassammy@gmail.com</p>
-            </CardContent>
-          </Card>
+          <a href="mailto:dabbassammy@gmail.com?subject=Hello%20from%20your%20portfolio&body=Hi%20Sammy,%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20connect.%0A%0A">
+            <Card className="bg-white border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Mail className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Email Me</h3>
+                <p className="text-blue-600 font-medium">dabbassammy@gmail.com</p>
+              </CardContent>
+            </Card>
+          </a>
           
           <Card 
             className="bg-white border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
@@ -392,11 +396,13 @@ const Index = () => {
           </Card>
         </div>
         
-        <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-12 py-6 text-lg shadow-xl hover:shadow-2xl transition-all">
-          <Mail className="w-6 h-6 mr-3" />
-          Start a Conversation
-          <ArrowRight className="w-5 h-5 ml-3" />
-        </Button>
+        <a href="mailto:dabbassammy@gmail.com?subject=Let's%20Start%20a%20Conversation&body=Hi%20Sammy,%0A%0AI%20would%20love%20to%20start%20a%20conversation%20about%20potential%20opportunities.%0A%0A">
+          <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-12 py-6 text-lg shadow-xl hover:shadow-2xl transition-all">
+            <Mail className="w-6 h-6 mr-3" />
+            Start a Conversation
+            <ArrowRight className="w-5 h-5 ml-3" />
+          </Button>
+        </a>
       </div>
     </div>
   );
