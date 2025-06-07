@@ -104,7 +104,7 @@ const Index = () => {
                       <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">SD</AvatarFallback>
                     </Avatar>
                   </div>
-                  
+                  {/* Profile picture */}
                   {/* Floating badges */}
                   <div className="absolute -top-4 -right-4 bg-white rounded-full p-3 shadow-lg border border-gray-100">
                     <Code2 className="w-6 h-6 text-blue-600" />
