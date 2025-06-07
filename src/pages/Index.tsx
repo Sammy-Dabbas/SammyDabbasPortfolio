@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar, ArrowRight, Sparkles, Link, Link } from "lucide-react";
 import { useState } from "react";
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useStat1e("about");
 
   const renderAboutSection = () => (
     <div className="flex-1 flex items-center justify-center pt-8 pb-16">
@@ -78,16 +78,21 @@ const Index = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all">
-                  <Mail className="w-5 h-5 mr-2" />
-                  Get In Touch
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-                <Button variant="outline" className="border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-6 text-base transition-all">
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  View Resume
-                </Button>
-              </div>
+                <a href="mailto:dabbassammy@gmail.com?subject=Hello%20Sammy&body=Hi%20Sammy,%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0A">
+                  <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all">
+                    <Mail className="w-5 h-5 mr-2" />
+                    Get In Touch
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </a>
+                <a href="/SammyDabbasResume.pdf" target="_blank" rel="noopener noreferrer">
+               <Button
+                variant="outline"
+                 className="border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-6 text-base transition-all">
+                <ExternalLink className="w-5 h-5 mr-2" />
+                   View Resume
+               </Button>
+               </a>
             </div>
 
             {/* Right Content - Profile Picture - 5 columns */}
