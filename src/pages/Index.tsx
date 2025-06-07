@@ -85,7 +85,7 @@ const Index = () => {
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </a>
-                <a href="/SammyDabbasResume.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="SammyDabbasPortfolio/sammydabbas_resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
                     className="border-2 border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 px-8 py-6 text-base transition-all">
