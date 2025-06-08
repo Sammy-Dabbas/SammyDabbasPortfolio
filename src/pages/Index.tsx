@@ -3,21 +3,32 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar, ArrowRight, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("about");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const section = urlParams.get('section');
+    if (section && ['about', 'skills', 'projects', 'contact'].includes(section)) {
+      setActiveSection(section);
+    }
+  }, [location]);
 
   const renderAboutSection = () => (
-    <div className="flex-1 flex items-center justify-center pt-8 pb-16">
-      <div className="max-w-7xl mx-auto">
+    <div className="flex-1 flex items-center justify-center pt-4 sm:pt-8 pb-8 sm:pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Hero Section with Floating Elements */}
         <div className="relative">
           {/* Floating decoration elements */}
-          <div className="absolute -top-8 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-100 to-indigo-50 rounded-full opacity-60 blur-xl"></div>
-          <div className="absolute top-16 right-1/3 w-24 h-24 bg-gradient-to-br from-slate-100 to-gray-50 rounded-full opacity-40 blur-lg"></div>
+          <div className="absolute -top-8 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-100 to-indigo-50 rounded-full opacity-60 blur-xl hidden sm:block"></div>
+          <div className="absolute top-16 right-1/3 w-24 h-24 bg-gradient-to-br from-slate-100 to-gray-50 rounded-full opacity-40 blur-lg hidden sm:block"></div>
           
-          <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+          <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-center relative z-10">
             {/* Left Content - 7 columns */}
             <div className="lg:col-span-7 space-y-8">
               <div className="space-y-6">
@@ -26,12 +37,12 @@ const Index = () => {
                   Available for opportunities
                 </div>
                 
-                <h1 className="text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
                   Hey, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Sammy</span>
                 </h1>
                 
                 <div className="space-y-3">
-                  <h2 className="text-2xl lg:text-3xl font-semibold text-gray-700">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-700">
                     Software Developer & CS Student
                   </h2>
                   <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
@@ -97,13 +108,13 @@ const Index = () => {
             </div>
 
             {/* Right Content - Profile Picture - 5 columns */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="lg:col-span-5 flex justify-center lg:justify-end order-first lg:order-last">
               <div className="relative">
                 {/* Gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-50 rounded-full blur-2xl opacity-60 scale-110"></div>
                 
                 {/* Profile container */}
-                <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
                     <Avatar className="w-full h-full">
                       <AvatarImage src="/SammyDabbasPortfolio/images/profile.png" alt="Sammy Dabbas" className="object-cover" />
@@ -128,18 +139,18 @@ const Index = () => {
   );
 
   const renderSkillsSection = () => (
-    <div className="flex-1 flex items-center justify-center pt-8 pb-16">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-6 text-gray-900">
+    <div className="flex-1 flex items-center justify-center pt-4 sm:pt-8 pb-8 sm:pb-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
             Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Arsenal</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
             A comprehensive toolkit for building modern, scalable applications
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
           {/* Languages */}
           <Card className="bg-white border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
             <CardContent className="p-8 text-center">
@@ -213,23 +224,23 @@ const Index = () => {
   );
 
   const renderProjectsSection = () => (
-    <div className="flex-1 flex items-center justify-center pt-8 pb-16">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-6 text-gray-900">
+    <div className="flex-1 flex items-center justify-center pt-4 sm:pt-8 pb-8 sm:pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Projects</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
             Real-world applications solving complex problems with elegant solutions
           </p>
         </div>
         
-        <div className="space-y-12">
+        <div className="space-y-6 sm:space-y-12">
           {/* Project 1 */}
           <Card className="bg-white border-gray-100 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
             <div className="grid lg:grid-cols-5 gap-0">
-              <div className="lg:col-span-2 relative bg-gradient-to-br from-blue-50 to-indigo-50 p-8 flex items-center justify-center">
-                <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+              <div className="lg:col-span-2 relative bg-gradient-to-br from-blue-50 to-indigo-50 p-4 sm:p-8 flex items-center justify-center">
+                <div className="relative w-full h-48 sm:h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                   <div className="text-center">
                     <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                       <Play className="w-10 h-10 text-white" />
@@ -238,13 +249,13 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              <CardContent className="lg:col-span-3 p-8 lg:p-12">
+              <CardContent className="lg:col-span-3 p-4 sm:p-8 lg:p-12">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                   <span className="text-sm font-medium text-green-600">Production Ready</span>
                 </div>
-                <h3 className="text-3xl font-bold mb-4 text-gray-900">Real-Time Ad Event Processing</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900">Real-Time Ad Event Processing</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed text-base sm:text-lg">
                   Engineered a high-performance system processing 1M+ events per second with sub-20ms latency. 
                   Built with FastAPI and AWS Kinesis for enterprise-scale data ingestion.
                 </p>
@@ -255,10 +266,24 @@ const Index = () => {
                     </Badge>
                   ))}
                 </div>
-                <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 group">
-                  <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
-                  Explore Project
-                </Button>
+                <div className="flex gap-3">
+                  <Button 
+                    variant="outline" 
+                    className="border-blue-200 text-blue-700 hover:bg-blue-50 group"
+                    onClick={() => navigate('/project/ad-event-processing')}
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
+                    View Details
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="icon"
+                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
+                    onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
+                  >
+                    <Github className="w-4 h-4" />
+                  </Button>
+                </div>
               </CardContent>
             </div>
           </Card>
@@ -283,10 +308,24 @@ const Index = () => {
                     </Badge>
                   ))}
                 </div>
-                <Button variant="outline" className="border-purple-200 text-purple-700 hover:bg-purple-50 group">
-                  <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
-                  View Details
-                </Button>
+                <div className="flex gap-3">
+                  <Button 
+                    variant="outline" 
+                    className="border-purple-200 text-purple-700 hover:bg-purple-50 group"
+                    onClick={() => navigate('/project/gpu-training-platform')}
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
+                    View Details
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="icon"
+                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
+                    onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
+                  >
+                    <Github className="w-4 h-4" />
+                  </Button>
+                </div>
               </CardContent>
               <div className="lg:col-span-2 relative bg-gradient-to-br from-purple-50 to-pink-50 p-8 flex items-center justify-center order-1 lg:order-2">
                 <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
@@ -331,10 +370,24 @@ const Index = () => {
                     </Badge>
                   ))}
                 </div>
-                <Button variant="outline" className="border-green-200 text-green-700 hover:bg-green-50 group">
-                  <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
-                  View Project
-                </Button>
+                <div className="flex gap-3">
+                  <Button 
+                    variant="outline" 
+                    className="border-green-200 text-green-700 hover:bg-green-50 group"
+                    onClick={() => navigate('/project/ucf-lab-inventory')}
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
+                    View Details
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="icon"
+                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
+                    onClick={() => window.open('https://github.com/Sammy-Dabbas/ucf-lab-inventory', '_blank')}
+                  >
+                    <Github className="w-4 h-4" />
+                  </Button>
+                </div>
               </CardContent>
             </div>
           </Card>
@@ -344,13 +397,13 @@ const Index = () => {
   );
 
   const renderContactSection = () => (
-    <div className="flex-1 flex items-center justify-center pt-8 pb-16">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-12">
-          <h2 className="text-5xl font-bold mb-6 text-gray-900">
+    <div className="flex-1 flex items-center justify-center pt-4 sm:pt-8 pb-8 sm:pb-16">
+      <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
             Let's Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Something Amazing</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Ready to collaborate on your next project or discuss exciting opportunities. 
             I'm always excited to connect with fellow developers and innovative teams.
           </p>
@@ -411,15 +464,15 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       {/* Navigation */}
       <nav className="bg-white/95 backdrop-blur-lg z-50 border-b border-gray-100 shadow-sm sticky top-0">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Sammy Dabbas
             </div>
-            <div className="flex space-x-8">
+            <div className="flex space-x-2 sm:space-x-8">
               <button 
                 onClick={() => setActiveSection("about")}
-                className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                className={`px-2 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm sm:text-base ${
                   activeSection === "about" 
                     ? "bg-blue-50 text-blue-700 font-semibold" 
                     : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
@@ -429,7 +482,7 @@ const Index = () => {
               </button>
               <button 
                 onClick={() => setActiveSection("skills")}
-                className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                className={`px-2 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm sm:text-base ${
                   activeSection === "skills" 
                     ? "bg-blue-50 text-blue-700 font-semibold" 
                     : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
@@ -439,7 +492,7 @@ const Index = () => {
               </button>
               <button 
                 onClick={() => setActiveSection("projects")}
-                className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                className={`px-2 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm sm:text-base ${
                   activeSection === "projects" 
                     ? "bg-blue-50 text-blue-700 font-semibold" 
                     : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
@@ -449,7 +502,7 @@ const Index = () => {
               </button>
               <button 
                 onClick={() => setActiveSection("contact")}
-                className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                className={`px-2 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm sm:text-base ${
                   activeSection === "contact" 
                     ? "bg-blue-50 text-blue-700 font-semibold" 
                     : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
