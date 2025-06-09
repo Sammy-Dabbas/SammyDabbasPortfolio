@@ -15,30 +15,48 @@ const ArchitectureDiagram = ({ svgString }: ArchitectureDiagramProps) => {
     if (!container.shadowRoot) {
       container.attachShadow({ mode: 'open' });
     }
+    
+    // Create a DOM parser to manipulate the SVG string
+    const parser = new DOMParser();
+    const svgDoc = parser.parseFromString(svgString, "image/svg+xml");
+    const svgElement = svgDoc.documentElement;
 
-    // This ensures we don't add duplicate content on re-renders
-    if (container.shadowRoot) {
-      const processedSvg = svgString
-        .replace(/width="1600"/g, 'width="100%"')
-        .replace(/height="800"/g, 'height="100%"');
+    if (svgElement) {
+      // Remove hardcoded width and height to allow CSS control
+      svgElement.removeAttribute('width');
+      svgElement.removeAttribute('height');
+
+      if (container.shadowRoot) {
+        // Clear previous content
+        container.shadowRoot.innerHTML = '';
         
-      container.shadowRoot.innerHTML = `
-        <style>
+        // Inject CSS for responsive scaling
+        const style = document.createElement('style');
+        style.textContent = `
           :host {
             display: block;
             width: 100%;
-            height: 100%;
-            overflow: auto; /* Add scrollbars if content overflows */
           }
-          svg {
-            display: block;
-            min-width: 800px; /* Minimum width to avoid cramping */
+          .responsive-svg {
             width: 100%;
             height: auto;
+            max-width: 1200px; /* Cap size on desktop */
+            margin: 0 auto;
+            display: block;
           }
-        </style>
-        ${processedSvg}
-      `;
+          @media (max-width: 768px) {
+            .responsive-svg {
+              max-width: 100%; /* Allow full width on smaller screens */
+            }
+          }
+        `;
+        
+        // Add a class to the SVG for styling
+        svgElement.classList.add('responsive-svg');
+        
+        container.shadowRoot.appendChild(style);
+        container.shadowRoot.appendChild(svgElement);
+      }
     }
   }, [svgString]);
 

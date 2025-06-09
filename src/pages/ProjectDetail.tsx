@@ -703,7 +703,7 @@ const projectsData: { [key: string]: ProjectData } = {
   <g transform="translate(1260, 190)" filter="url(#iconShadow)">
     <use href="#i-clients" width="60" height="60"/>
     <text class="label" x="30" y="80">Client Apps</text>
-    <text class="sublabel" x="30" y="92">Web & Mobile</text>
+    <text class="sublabel" x="30" y="92">Web &amp; Mobile</text>
   </g>
 
   <!-- Archive Components -->
@@ -730,7 +730,7 @@ const projectsData: { [key: string]: ProjectData } = {
   <g transform="translate(380, 540)" filter="url(#iconShadow)">
     <use href="#i-cloudwatch" width="60" height="60"/>
     <text class="label" x="30" y="80">CloudWatch</text>
-    <text class="sublabel" x="30" y="92">Monitoring & Logs</text>
+    <text class="sublabel" x="30" y="92">Monitoring &amp; Logs</text>
   </g>
 
   <g transform="translate(980, 540)" filter="url(#iconShadow)">
