@@ -466,9 +466,12 @@ const Index = () => {
       <nav className="bg-white/95 backdrop-blur-lg z-50 border-b border-gray-100 shadow-sm sticky top-0">
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <button
+              onClick={() => setActiveSection("about")}
+              className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent cursor-pointer"
+            >
               Sammy Dabbas
-            </div>
+            </button>
             <div className="flex space-x-2 sm:space-x-8">
               <button 
                 onClick={() => setActiveSection("about")}
