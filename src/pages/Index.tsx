@@ -88,14 +88,17 @@ const Index = () => {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="mailto:dabbassammy@gmail.com?subject=Hello%20Sammy&body=Hi%20Sammy,%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0A">
-                  <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all">
-                    <Mail className="w-5 h-5 mr-2" />
-                    Get In Touch
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </a>
+              <div className="flex flex-col sm:flex-row gap-4 items-start">
+                <div>
+                  <a href="mailto:dabbassammy@gmail.com?subject=Hello%20Sammy&body=Hi%20Sammy,%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0A">
+                    <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all">
+                      <Mail className="w-5 h-5 mr-2" />
+                      Get In Touch
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </a>
+                  <p className="text-xs text-gray-500 mt-2 text-center sm:text-left">Or email directly at <a href="mailto:dabbassammy@gmail.com" className="text-blue-600 hover:underline">dabbassammy@gmail.com</a></p>
+                </div>
                 <a href="/SammyDabbasPortfolio/sammydabbas_resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
