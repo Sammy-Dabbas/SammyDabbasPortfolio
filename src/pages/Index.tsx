@@ -5,6 +5,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar, ArrowRight, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { toast } from "sonner";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("about");
@@ -18,6 +19,11 @@ const Index = () => {
       setActiveSection(section);
     }
   }, [location]);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("dabbassammy@gmail.com");
+    toast.success("Email copied to clipboard!");
+  };
 
   const renderAboutSection = () => (
     <div className="flex-1 flex items-center justify-center pt-4 sm:pt-8 pb-8 sm:pb-16">
@@ -90,14 +96,14 @@ const Index = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 items-start">
                 <div>
-                  <a href="mailto:dabbassammy@gmail.com?subject=Hello%20Sammy&body=Hi%20Sammy,%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0A">
-                    <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all">
-                      <Mail className="w-5 h-5 mr-2" />
-                      Get In Touch
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </a>
-                  <p className="text-xs text-gray-500 mt-2 text-center sm:text-left">Or email directly at <a href="mailto:dabbassammy@gmail.com" className="text-blue-600 hover:underline">dabbassammy@gmail.com</a></p>
+                  <Button onClick={handleCopyEmail} className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all">
+                    <Mail className="w-5 h-5 mr-2" />
+                    Get In Touch
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                  <p className="text-xs text-gray-500 mt-2 text-center sm:text-left">
+                    Or email directly at <button onClick={handleCopyEmail} className="text-blue-600 hover:underline font-medium">dabbassammy@gmail.com</button>
+                  </p>
                 </div>
                 <a href="/SammyDabbasPortfolio/sammydabbas_resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Button
@@ -402,63 +408,53 @@ const Index = () => {
   const renderContactSection = () => (
     <div className="flex-1 flex items-center justify-center pt-4 sm:pt-8 pb-8 sm:pb-16">
       <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
-        <div className="mb-8 sm:mb-12">
+        <div className="text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
-            Let's Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Something Amazing</span>
+            Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Connect</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Ready to collaborate on your next project or discuss exciting opportunities. 
-            I'm always excited to connect with fellow developers and innovative teams.
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8 sm:mb-12">
+            Have a project in mind or just want to say hi? I'd love to hear from you.
           </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <a href="mailto:dabbassammy@gmail.com?subject=Hello%20from%20your%20portfolio&body=Hi%20Sammy,%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20connect.%0A%0A">
-            <Card className="bg-white border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Mail className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Email Me</h3>
-                <p className="text-blue-600 font-medium">dabbassammy@gmail.com</p>
-              </CardContent>
-            </Card>
-          </a>
           
-          <Card 
-            className="bg-white border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
-            onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
-          >
-            <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Github className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">GitHub</h3>
-              <p className="text-gray-600 font-medium">View my repositories</p>
-            </CardContent>
-          </Card>
-          
-          <Card 
-            className="bg-white border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
-            onClick={() => window.open('https://www.linkedin.com/in/sammy-dabbas-61a559309/', '_blank')}
-          >
-            <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Linkedin className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">LinkedIn</h3>
-              <p className="text-gray-600 font-medium">Professional network</p>
-            </CardContent>
-          </Card>
+          <div className="inline-flex flex-col items-center">
+            <Button onClick={handleCopyEmail} size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-12 py-8 text-xl shadow-lg hover:shadow-xl transition-all mb-4">
+              <Mail className="w-6 h-6 mr-3" />
+              dabbassammy@gmail.com
+            </Button>
+            <p className="text-sm text-gray-500">Click to copy email</p>
+          </div>
+
+          <div className="mt-12 sm:mt-16">
+            <p className="text-lg text-gray-600 mb-4">You can also find me on:</p>
+            <div className="flex justify-center space-x-6">
+              <Card 
+                className="bg-white border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+                onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
+              >
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Github className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">GitHub</h3>
+                  <p className="text-gray-600 font-medium">View my repositories</p>
+                </CardContent>
+              </Card>
+              
+              <Card 
+                className="bg-white border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+                onClick={() => window.open('https://www.linkedin.com/in/sammy-dabbas-61a559309/', '_blank')}
+              >
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Linkedin className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">LinkedIn</h3>
+                  <p className="text-gray-600 font-medium">Professional network</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
-        
-        <a href="mailto:dabbassammy@gmail.com?subject=Let's%20Start%20a%20Conversation&body=Hi%20Sammy,%0A%0AI%20would%20love%20to%20start%20a%20conversation%20about%20potential%20opportunities.%0A%0A">
-          <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-12 py-6 text-lg shadow-xl hover:shadow-2xl transition-all">
-            <Mail className="w-6 h-6 mr-3" />
-            Start a Conversation
-            <ArrowRight className="w-5 h-5 ml-3" />
-          </Button>
-        </a>
       </div>
     </div>
   );
