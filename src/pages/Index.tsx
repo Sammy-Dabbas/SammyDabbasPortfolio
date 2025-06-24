@@ -353,13 +353,13 @@ const Index = () => {
           <Card className="bg-white border-gray-100 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
             <div className="grid lg:grid-cols-5 gap-0">
               <div className="lg:col-span-2 relative bg-gradient-to-br from-green-50 to-teal-50 p-8 flex items-center justify-center">
-                <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                      <Database className="w-10 h-10 text-white" />
-                    </div>
-                    <p className="text-sm text-gray-600 font-medium">Inventory System</p>
-                  </div>
+                <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                  <img
+                    src="/images/ucf-lab-inventory.png"
+                    alt="UCF Lab Inventory System Screenshot"
+                    className="object-contain w-full h-full rounded-2xl"
+                    style={{ maxHeight: '15rem' }}
+                  />
                 </div>
               </div>
               <CardContent className="lg:col-span-3 p-8 lg:p-12">
