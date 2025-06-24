@@ -1288,13 +1288,25 @@ const ProjectDetail = () => {
                 <div className={`w-3 h-3 ${statusColors[project.statusColor as keyof typeof statusColors]} rounded-full`}></div>
                 <span className="text-sm font-medium text-gray-600">{project.status}</span>
               </div>
-                             <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900">{project.title}</h1>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900">{project.title}</h1>
             </div>
           </div>
           
           <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mb-8">
             {project.detailedDescription}
           </p>
+
+          {/* Show screenshot for UCF Lab Inventory System */}
+          {project.id === "ucf-lab-inventory" && (
+            <div className="flex justify-center mb-10">
+              <img 
+                src="/images/ucf-lab-inventory.png" 
+                alt="UCF Lab Inventory System Screenshot" 
+                className="rounded-2xl border border-gray-200 shadow-lg max-w-full h-auto object-contain"
+                style={{ maxHeight: 400 }}
+              />
+            </div>
+          )}
 
           {/* Project Meta */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
