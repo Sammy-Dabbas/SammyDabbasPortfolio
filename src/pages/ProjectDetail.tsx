@@ -846,7 +846,7 @@ const projectsData: { [key: string]: ProjectData } = {
     statusColor: "teal",
     technologies: ["React.js", "Tailwind CSS", "Netlify"],
     githubUrl: "https://github.com/Sammy-Dabbas/portfolio-website",
-    liveUrl: "https://sammy-dabbas.netlify.app",
+    // liveUrl: "https://sammy-dabbas.netlify.app",
     icon: ExternalLink,
     iconGradient: "from-teal-500 to-blue-500",
     timeline: "1 month",
@@ -1324,11 +1324,10 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Video/Demo Section */}
-        <div className="mb-8 sm:mb-12">
+        {/* Video/Demo Section - Disabled for now, uncomment when videos/demos are ready */}
+        {/* <div className="mb-8 sm:mb-12">
           <Card className="bg-white border-gray-100 overflow-hidden">
             <div className="grid lg:grid-cols-2 gap-0">
-              {/* Video/Demo Preview */}
               <div className={`relative bg-gradient-to-br ${project.iconGradient} p-4 sm:p-8 flex items-center justify-center`}>
                 <div className="relative w-full h-64 sm:h-80 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center hover:scale-105 transition-transform duration-300 cursor-pointer group">
                   <div className="text-center">
@@ -1341,7 +1340,6 @@ const ProjectDetail = () => {
                       <p className="text-sm text-gray-600">Video coming soon</p>
                     </div>
                   </div>
-                  {/* Play button overlay */}
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                     <div className="w-16 h-16 bg-white bg-opacity-0 group-hover:bg-opacity-20 rounded-full flex items-center justify-center transition-all duration-300">
                       <Play className="w-8 h-8 text-transparent group-hover:text-white transition-all duration-300" />
@@ -1349,18 +1347,17 @@ const ProjectDetail = () => {
                   </div>
                 </div>
               </div>
-              
-              {/* Demo Info */}
+
               <CardContent className="p-4 sm:p-8 lg:p-12 flex flex-col justify-center">
                 <div className="space-y-4 sm:space-y-6">
                   <div>
                     <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Live Demonstration</h3>
                     <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-4 sm:mb-6">
-                      Watch a comprehensive walkthrough of {project.title} showcasing its key features, 
+                      Watch a comprehensive walkthrough of {project.title} showcasing its key features,
                       user interface, and technical capabilities in action.
                     </p>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
@@ -1381,7 +1378,7 @@ const ProjectDetail = () => {
                       <span className="text-gray-700">Real-world usage scenarios</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex gap-3 pt-4">
                     {project.videoUrl && (
                       <Button
@@ -1417,7 +1414,7 @@ const ProjectDetail = () => {
               </CardContent>
             </div>
           </Card>
-        </div>
+        </div> */}
 
         {/* Architecture Diagram Section */}
         <div className="mb-8 sm:mb-12">
