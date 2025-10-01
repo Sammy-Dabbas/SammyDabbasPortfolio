@@ -113,9 +113,9 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Contact
 
 **Sammy Dabbas**
-- Email: [your-email@example.com]
-- LinkedIn: [your-linkedin-profile]
-- GitHub: [your-github-profile]
+- Email: dabbassammy@gmail.com
+- LinkedIn: https://www.linkedin.com/in/sammy-dabbas-61a559309/
+- GitHub: https://github.com/Sammy-Dabbas
 
 ---
 
