@@ -126,7 +126,7 @@ const Index = () => {
                 <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
                     <Avatar className="w-full h-full">
-                      <AvatarImage src="/SammyDabbasPortfolio/images/profile.png" alt="Sammy Dabbas" className="object-cover" />
+                      <AvatarImage src={`${import.meta.env.BASE_URL}images/profile.png`} alt="Sammy Dabbas" className="object-cover" />
                       <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">SD</AvatarFallback>
                     </Avatar>
                   </div>
@@ -265,11 +265,11 @@ const Index = () => {
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900">Real-Time Ad Event Processing</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed text-base sm:text-lg">
-                  Engineered a high-performance system processing 1M+ events per second with sub-20ms latency. 
-                  Built with FastAPI and AWS Kinesis for enterprise-scale data ingestion.
+                  Engineered enterprise-grade system achieving 375K-418K events/second with sub-2ms latency and 99.99% reliability.
+                  Built with AWS (Kinesis, DynamoDB, CloudWatch), Redis, FastAPI, and Docker for production-scale data ingestion.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-6">
-                  {["Python", "FastAPI", "AWS Kinesis", "DynamoDB", "Docker", "EKS"].map((tech) => (
+                  {["Python", "FastAPI", "AWS Kinesis", "DynamoDB", "CloudWatch", "Redis", "Docker"].map((tech) => (
                     <Badge key={tech} variant="outline" className="border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">
                       {tech}
                     </Badge>
@@ -302,32 +302,32 @@ const Index = () => {
             <div className="grid lg:grid-cols-5 gap-0">
               <CardContent className="lg:col-span-3 p-8 lg:p-12 order-2 lg:order-1">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-purple-600">Team Project</span>
+                  <div className="w-3 h-3 bg-indigo-400 rounded-full"></div>
+                  <span className="text-sm font-medium text-indigo-600">Team Project</span>
                 </div>
-                <h3 className="text-3xl font-bold mb-4 text-gray-900">GPU Training Platform</h3>
+                <h3 className="text-3xl font-bold mb-4 text-gray-900">SimpleTrain GPU Training Platform</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Collaborated with a 3-person team to build a full-stack ML workload management platform. 
-                  Reduced job setup time by 40% through automated Kubernetes-based GPU provisioning.
+                  Production-grade Kubernetes platform for GPU-accelerated ML training. Reduced engineer setup time by 75%
+                  through automated pod provisioning, real-time WebSocket log streaming, and multi-tenant JWT security.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-6">
-                  {["Django", "React.js", "Docker", "Kubernetes", "GPU Management"].map((tech) => (
-                    <Badge key={tech} variant="outline" className="border-purple-200 text-purple-700 bg-purple-50 hover:bg-purple-100 transition-colors">
+                  {["Kubernetes", "Node.js", "Django", "Docker", "WebSocket", "PostgreSQL"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-colors">
                       {tech}
                     </Badge>
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <Button 
-                    variant="outline" 
-                    className="border-purple-200 text-purple-700 hover:bg-purple-50 group"
+                  <Button
+                    variant="outline"
+                    className="border-indigo-200 text-indigo-700 hover:bg-indigo-50 group"
                     onClick={() => navigate('/project/gpu-training-platform')}
                   >
                     <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
                     View Details
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="icon"
                     className="border-gray-200 text-gray-700 hover:bg-gray-50"
                     onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
@@ -336,13 +336,13 @@ const Index = () => {
                   </Button>
                 </div>
               </CardContent>
-              <div className="lg:col-span-2 relative bg-gradient-to-br from-purple-50 to-pink-50 p-8 flex items-center justify-center order-1 lg:order-2">
+              <div className="lg:col-span-2 relative bg-gradient-to-br from-indigo-50 to-blue-50 p-8 flex items-center justify-center order-1 lg:order-2">
                 <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                   <div className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                       <Server className="w-10 h-10 text-white" />
                     </div>
-                    <p className="text-sm text-gray-600 font-medium">Platform Demo</p>
+                    <p className="text-sm text-gray-600 font-medium">Kubernetes ML Platform</p>
                   </div>
                 </div>
               </div>
@@ -355,7 +355,7 @@ const Index = () => {
               <div className="lg:col-span-2 relative bg-gradient-to-br from-green-50 to-teal-50 p-8 flex items-center justify-center">
                 <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
                   <img
-                    src="/images/ucf-lab-inventory.png"
+                    src={`${import.meta.env.BASE_URL}images/ucf-lab-inventory.png`}
                     alt="UCF Lab Inventory System Screenshot"
                     className="object-contain w-full h-full rounded-2xl"
                     style={{ maxHeight: '15rem' }}
@@ -369,27 +369,27 @@ const Index = () => {
                 </div>
                 <h3 className="text-3xl font-bold mb-4 text-gray-900">UCF Lab Inventory System</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Developed a React.js application for tracking 200+ lab items using QR codes. 
-                  Reduced check-in/out time by 10 seconds per transaction with Firebase integration.
+                  Production React SPA managing 200+ lab items with Microsoft OAuth (@ucf.edu), QR camera scanning,
+                  and Firebase BaaS. Reduced check-in/out by ~10 seconds through serverless architecture and real-time updates.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-6">
-                  {["React.js", "Firebase", "Firestore", "HTML5-QRCode", "Authentication"].map((tech) => (
+                  {["React.js", "Firebase", "Microsoft OAuth", "HTML5-QRCode", "Firestore", "Tailwind CSS"].map((tech) => (
                     <Badge key={tech} variant="outline" className="border-green-200 text-green-700 bg-green-50 hover:bg-green-100 transition-colors">
                       {tech}
                     </Badge>
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="border-green-200 text-green-700 hover:bg-green-50 group"
                     onClick={() => navigate('/project/ucf-lab-inventory')}
                   >
                     <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
                     View Details
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="icon"
                     className="border-gray-200 text-gray-700 hover:bg-gray-50"
                     onClick={() => window.open('https://github.com/Sammy-Dabbas/ucf-lab-inventory', '_blank')}
@@ -398,6 +398,58 @@ const Index = () => {
                   </Button>
                 </div>
               </CardContent>
+            </div>
+          </Card>
+
+          {/* Project 4 */}
+          <Card className="bg-white border-gray-100 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
+            <div className="grid lg:grid-cols-5 gap-0">
+              <CardContent className="lg:col-span-3 p-8 lg:p-12 order-2 lg:order-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                  <span className="text-sm font-medium text-emerald-600">Research Project</span>
+                </div>
+                <h3 className="text-3xl font-bold mb-4 text-gray-900">Facebook Farm Analytics Platform</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
+                  Built a production-grade social media analytics system with dual-pipeline architecture. Static scraper collected historical data from 168 farms,
+                  while dynamic scraper provides real-time 54-point lifecycle tracking for 32 active farms on Raspberry Pi 5.
+                </p>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {["Python", "Flask", "Facebook API", "ML Analytics", "Raspberry Pi", "systemd"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="border-emerald-200 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 transition-colors">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <Button
+                    variant="outline"
+                    className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 group"
+                    onClick={() => navigate('/project/facebook-farm-analytics')}
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
+                    View Details
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
+                    onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
+                  >
+                    <Github className="w-4 h-4" />
+                  </Button>
+                </div>
+              </CardContent>
+              <div className="lg:col-span-2 relative bg-gradient-to-br from-emerald-50 to-green-50 p-8 flex items-center justify-center order-1 lg:order-2">
+                <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <div className="text-center">
+                    <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                      <Database className="w-10 h-10 text-white" />
+                    </div>
+                    <p className="text-sm text-gray-600 font-medium">Analytics Dashboard</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </Card>
         </div>

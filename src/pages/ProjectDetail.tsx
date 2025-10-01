@@ -34,1129 +34,806 @@ const projectsData: { [key: string]: ProjectData } = {
   "ucf-lab-inventory": {
     id: "ucf-lab-inventory",
     title: "UCF Lab Inventory System",
-    subtitle: "University Project",
-    description: "Developed a React.js application for tracking 200+ lab items using QR codes. Reduced check-in/out time by 10 seconds per transaction with Firebase integration.",
-    detailedDescription: "A comprehensive inventory management system built for UCF labs to streamline the tracking of equipment and materials. The system uses QR code technology for quick item identification and features a user-friendly interface for students and staff to check items in and out efficiently.",
-    status: "University Project",
+    subtitle: "Production SPA • University Project",
+    description: "React SPA managing 200+ lab items with Microsoft OAuth (@ucf.edu), QR camera scanning, and Firebase. Reduced check-in/out by ~10 seconds through serverless architecture and real-time updates.",
+    detailedDescription: "Production React SPA for UCF MCPL Lab managing 200+ items with Microsoft OAuth (@ucf.edu only), QR workflows, and Firebase BaaS. Features include QR camera scanning for instant identification, reservation system with conflict detection, Live Status Grid for checked-out items, Queue & Schedule views, admin panel, and consumables tracking. Built with React Router v6, Context API, Firestore (NoSQL + security rules), Firebase Storage, and deployed via Firebase Hosting CDN. Role-based access control enforced through custom claims and route guards.",
+    status: "Production • University Project",
     statusColor: "orange",
-    technologies: ["React.js", "Firebase", "Firestore", "HTML5-QRCode", "Authentication"],
+    technologies: ["React.js", "Firebase Auth", "Firestore", "Firebase Storage", "Firebase Hosting", "HTML5-QRCode", "React Router v6", "Context API", "Tailwind CSS", "DaisyUI", "Microsoft OAuth (Azure AD)", "CRACO", "PostCSS"],
     githubUrl: "https://github.com/Sammy-Dabbas/ucf-lab-inventory",
     icon: Database,
     iconGradient: "from-green-500 to-teal-500",
     timeline: "3 months",
     teamSize: "Solo Project",
     highlights: [
-      "Reduced check-in/out time by 10 seconds per transaction",
-      "Successfully tracks 200+ lab items",
-      "Implemented QR code scanning for instant item recognition",
-      "Real-time database updates with Firebase"
+      "Reduced check-in/out time by ~10 seconds per transaction",
+      "Production SPA managing 200+ items with serverless Firebase",
+      "Microsoft OAuth with @ucf.edu domain restriction",
+      "Real-time Live Status Grid and Queue/Schedule views",
+      "QR camera scanning for instant item identification"
     ],
     features: [
-      "QR Code Generation and Scanning",
-      "Real-time Inventory Tracking",
-      "User Authentication System",
-      "Item Check-in/Check-out Management",
-      "Search and Filter Functionality",
-      "Admin Dashboard for Inventory Management",
-      "Responsive Design for Mobile and Desktop"
+      "Microsoft OAuth with @ucf.edu restriction and popup sign-in",
+      "QR code generation and HTML5-QRCode camera scanning",
+      "Reservation system with conflict detection and batch creation",
+      "Live Status Grid showing checked-out items in real-time",
+      "Queue & Schedule views for upcoming reservations",
+      "Admin Panel for student and inventory management",
+      "Consumables tracking with usage history",
+      "Guide editor with versioning",
+      "Search and filter with Firestore composite indexes",
+      "Role-based routing with ProtectedRoute and AdminRoute",
+      "Firestore security rules for access control",
+      "Firebase Hosting CDN with SPA rewrites"
     ],
     challenges: [
-      "Implementing reliable QR code scanning across different devices",
-      "Designing an intuitive user interface for quick operations",
-      "Managing real-time data synchronization",
-      "Handling authentication and user permissions"
+      "Configuring Azure AD OAuth with Firebase and @ucf.edu restrictions",
+      "HTML5-QRCode cross-browser compatibility and camera permissions",
+      "Designing and deploying Firestore composite indexes",
+      "Real-time conflict detection for concurrent reservations",
+      "Role-based security with custom claims and security rules",
+      "React Router v6 migration and protected route patterns",
+      "Firebase Storage rules and path-based access control",
+      "QR scanning UX in varied lighting and code conditions"
     ],
     learnings: [
-      "Advanced React.js state management techniques",
-      "Firebase integration and real-time database operations",
-      "QR code implementation in web applications",
-      "User experience design for efficiency-focused applications"
+      "Firebase ecosystem: Auth, Firestore, Storage, Hosting",
+      "Microsoft OAuth with Azure AD integration",
+      "HTML5-QRCode library and camera stream handling",
+      "Firestore data modeling and composite indexes",
+      "React Context API for global state management",
+      "Firestore security rules DSL and role-based access",
+      "Tailwind CSS + DaisyUI with CRACO build pipeline",
+      "React Router v6 protected route patterns",
+      "SPA deployment with Firebase Hosting",
+      "Real-time UX with optimistic updates"
     ],
-    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950">
   <defs>
-    <!-- Clean gradients -->
-    <linearGradient id="firebaseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFCA28;stop-opacity:0.06" />
-      <stop offset="100%" style="stop-color:#FF6F00;stop-opacity:0.02" />
-    </linearGradient>
-    
-    <linearGradient id="clientGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:0.04" />
-      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:0.01" />
-    </linearGradient>
-    
-    <linearGradient id="reactGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#E3F2FD;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#BBDEFB;stop-opacity:0.2" />
-    </linearGradient>
-    
-    <linearGradient id="authGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFF3E0;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#FFE0B2;stop-opacity:0.2" />
-    </linearGradient>
-    
-    <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#E8F5E9;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#C8E6C9;stop-opacity:0.2" />
+    <linearGradient id="ucfOrangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
     </linearGradient>
 
-    <!-- Clean shadow filter -->
-    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
-    </filter>
-    
-    <filter id="iconShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+    <linearGradient id="ucfBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="ucfGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="ucfYellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FBBF24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="ucfShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
     </filter>
 
-    <!-- Arrow markers -->
-    <marker id="primaryArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#2563EB" />
-    </marker>
-    
-    <marker id="authArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#FF6F00" />
-    </marker>
-    
-    <marker id="dataArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#10B981" />
+    <marker id="ucfArrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#3B82F6" />
     </marker>
 
-    <!-- Clean, minimal icons -->
-    <symbol id="i-admin" viewBox="0 0 48 48">
-      <circle cx="24" cy="16" r="8" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <path d="M8 40c0-12 8-16 16-16s16 4 16 16" fill="#E3F2FD" stroke="#2563EB" stroke-width="2"/>
-      <rect x="18" y="10" width="12" height="8" fill="#2563EB" rx="2"/>
-      <circle cx="24" cy="16" r="3" fill="#fff"/>
-    </symbol>
-    
-    <symbol id="i-browser" viewBox="0 0 48 48">
-      <rect x="4" y="8" width="40" height="32" rx="4" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="4" y="8" width="40" height="8" fill="#E3F2FD" rx="4"/>
-      <circle cx="12" cy="12" r="2" fill="#2563EB"/>
-      <circle cx="18" cy="12" r="2" fill="#10B981"/>
-      <circle cx="24" cy="12" r="2" fill="#F59E0B"/>
-      <rect x="8" y="20" width="32" height="2" fill="#93C5FD" rx="1"/>
-      <rect x="8" y="24" width="24" height="2" fill="#DBEAFE" rx="1"/>
-      <rect x="8" y="28" width="28" height="2" fill="#DBEAFE" rx="1"/>
-    </symbol>
-    
-    <symbol id="i-react" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="4" fill="#2563EB"/>
-      <ellipse cx="24" cy="24" rx="16" ry="6" fill="none" stroke="#2563EB" stroke-width="2"/>
-      <ellipse cx="24" cy="24" rx="16" ry="6" fill="none" stroke="#2563EB" stroke-width="2" transform="rotate(120 24 24)"/>
-      <ellipse cx="24" cy="24" rx="16" ry="6" fill="none" stroke="#2563EB" stroke-width="2" transform="rotate(240 24 24)"/>
-      <circle cx="24" cy="24" r="2" fill="#fff"/>
-    </symbol>
-    
-    <symbol id="i-router" viewBox="0 0 48 48">
-      <rect x="8" y="16" width="32" height="16" rx="4" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="12" y="20" width="24" height="2" fill="#2563EB" rx="1"/>
-      <rect x="12" y="24" width="16" height="2" fill="#93C5FD" rx="1"/>
-      <rect x="12" y="28" width="20" height="2" fill="#DBEAFE" rx="1"/>
-      <path d="M4 24 L8 24 M40 24 L44 24" stroke="#2563EB" stroke-width="2"/>
-    </symbol>
-    
-    <symbol id="i-context" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="18" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <circle cx="24" cy="24" r="12" fill="#E3F2FD"/>
-      <circle cx="24" cy="24" r="6" fill="#2563EB"/>
-      <circle cx="24" cy="24" r="2" fill="#fff"/>
-      <path d="M24 6 L24 12 M24 36 L24 42 M6 24 L12 24 M36 24 L42 24" stroke="#2563EB" stroke-width="2"/>
-    </symbol>
-    
-    <symbol id="i-firebase" viewBox="0 0 48 48">
-      <path d="M8 32 L24 8 L40 32 L24 40 Z" fill="#fff" stroke="#FF6F00" stroke-width="2"/>
-      <path d="M8 32 L24 16 L40 32 L24 40 Z" fill="#FFCC02"/>
-      <path d="M16 24 L24 8 L32 24 L24 32 Z" fill="#FF6F00"/>
-      <circle cx="24" cy="24" r="3" fill="#fff"/>
-    </symbol>
-    
-    <symbol id="i-auth" viewBox="0 0 48 48">
-      <rect x="12" y="22" width="24" height="20" rx="4" fill="#fff" stroke="#FF6F00" stroke-width="2"/>
-      <path d="M18 22 L18 14 Q18 8 24 8 Q30 8 30 14 L30 22" fill="none" stroke="#FF6F00" stroke-width="2"/>
-      <circle cx="24" cy="32" r="3" fill="#FF6F00"/>
-      <rect x="22.5" y="34" width="3" height="6" fill="#FF6F00" rx="1.5"/>
-      <circle cx="12" cy="12" r="2" fill="#10B981"/>
-      <circle cx="36" cy="12" r="2" fill="#10B981"/>
-    </symbol>
-    
-    <symbol id="i-firestore" viewBox="0 0 48 48">
-      <ellipse cx="24" cy="12" rx="18" ry="6" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <rect x="6" y="12" width="36" height="24" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <ellipse cx="24" cy="36" rx="18" ry="6" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <rect x="10" y="17" width="28" height="2" fill="#10B981" rx="1"/>
-      <rect x="10" y="23" width="22" height="2" fill="#10B981" rx="1"/>
-      <rect x="10" y="29" width="24" height="2" fill="#10B981" rx="1"/>
-      <path d="M38 16 L42 16 M38 24 L42 24 M38 32 L42 32" stroke="#10B981" stroke-width="2"/>
-    </symbol>
-    
-    <symbol id="i-storage" viewBox="0 0 48 48">
-      <path d="M6 16h36l-4 20H10z" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <rect x="6" y="12" width="36" height="6" fill="#E8F5E9" stroke="#10B981" stroke-width="1.5"/>
-      <circle cx="14" cy="15" r="1.5" fill="#10B981"/>
-      <circle cx="20" cy="15" r="1.5" fill="#10B981"/>
-      <circle cx="26" cy="15" r="1.5" fill="#10B981"/>
-      <path d="M16 24 L32 24" stroke="#10B981" stroke-width="2"/>
-      <path d="M16 28 L28 28" stroke="#10B981" stroke-width="2"/>
-    </symbol>
-    
-    <symbol id="i-hosting" viewBox="0 0 48 48">
-      <rect x="8" y="14" width="32" height="20" rx="4" fill="#fff" stroke="#FF6F00" stroke-width="2"/>
-      <circle cx="24" cy="24" r="6" fill="#FFCC02" stroke="#FF6F00" stroke-width="1.5"/>
-      <path d="M24 18 L24 30 M18 24 L30 24" stroke="#FF6F00" stroke-width="2"/>
-      <circle cx="24" cy="24" r="2" fill="#fff"/>
-      <path d="M12 8 L36 8 M12 40 L36 40" stroke="#FF6F00" stroke-width="2"/>
-    </symbol>
-    
-    <symbol id="i-qr" viewBox="0 0 48 48">
-      <rect x="8" y="8" width="32" height="32" rx="2" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="12" y="12" width="6" height="6" fill="#2563EB"/>
-      <rect x="30" y="12" width="6" height="6" fill="#2563EB"/>
-      <rect x="12" y="30" width="6" height="6" fill="#2563EB"/>
-      <rect x="20" y="20" width="2" height="2" fill="#2563EB"/>
-      <rect x="24" y="20" width="2" height="2" fill="#2563EB"/>
-      <rect x="28" y="20" width="2" height="2" fill="#2563EB"/>
-      <rect x="20" y="24" width="2" height="2" fill="#2563EB"/>
-      <rect x="28" y="24" width="2" height="2" fill="#2563EB"/>
-      <rect x="20" y="28" width="2" height="2" fill="#2563EB"/>
-      <rect x="24" y="28" width="2" height="2" fill="#2563EB"/>
-      <rect x="28" y="28" width="2" height="2" fill="#2563EB"/>
-      <rect x="32" y="28" width="2" height="2" fill="#2563EB"/>
-    </symbol>
-    
-    <symbol id="i-scanner" viewBox="0 0 48 48">
-      <rect x="8" y="8" width="32" height="32" rx="4" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <circle cx="24" cy="24" r="8" fill="#E8F5E9" stroke="#10B981" stroke-width="1.5"/>
-      <circle cx="24" cy="24" r="4" fill="#10B981"/>
-      <path d="M16 16 L12 12 M32 16 L36 12 M16 32 L12 36 M32 32 L36 36" stroke="#10B981" stroke-width="2"/>
-      <path d="M8 24 L16 24 M32 24 L40 24" stroke="#10B981" stroke-width="2"/>
-    </symbol>
+    <marker id="ucfArrowOrange" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#F97316" />
+    </marker>
+
+    <marker id="ucfArrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#10B981" />
+    </marker>
   </defs>
 
   <style>
-    .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; fill: #1F2937; }
-    .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; font-weight: 600; text-anchor: middle; fill: #374151; }
-    .label { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; font-weight: 500; text-anchor: middle; fill: #374151; }
-    .sublabel { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; text-anchor: middle; fill: #6B7280; }
-    .flow-primary { fill: none; stroke: #2563EB; stroke-width: 2.5; marker-end: url(#primaryArrow); }
-    .flow-auth { fill: none; stroke: #FF6F00; stroke-width: 2.5; stroke-dasharray: 6 3; marker-end: url(#authArrow); }
-    .flow-data { fill: none; stroke: #10B981; stroke-width: 2; marker-end: url(#dataArrow); }
-    .container { fill: none; stroke: #D1D5DB; stroke-width: 1.5; stroke-dasharray: 8 4; }
-    .zone-client { fill: url(#reactGradient); stroke: #2563EB; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
-    .zone-auth { fill: url(#authGradient); stroke: #FF6F00; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
-    .zone-data { fill: url(#dataGradient); stroke: #10B981; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
+    .ucf-title { font: 700 24px 'Segoe UI', sans-serif; fill: #1F2937; }
+    .ucf-section-title { font: 600 16px 'Segoe UI', sans-serif; fill: #374151; }
+    .ucf-layer-title { font: 600 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+    .ucf-label { font: 500 13px 'Segoe UI', sans-serif; fill: #1F2937; }
+    .ucf-sublabel { font: 400 11px 'Segoe UI', sans-serif; fill: #6B7280; }
+    .ucf-metric-label { font: 600 12px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+    .ucf-metric-value { font: 700 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
   </style>
 
-  <!-- Firebase Cloud Container -->
-  <rect x="50" y="50" width="1500" height="800" fill="url(#firebaseGradient)" stroke="#FF6F00" stroke-width="2" rx="16" filter="url(#cardShadow)"/>
-  <text class="title" x="800" y="80" fill="#FF6F00">Firebase Cloud Platform</text>
+  <!-- Background -->
+  <rect width="1600" height="950" fill="#F9FAFB"/>
 
-  <!-- Client Side Container -->
-  <rect x="90" y="120" width="1420" height="200" fill="url(#clientGradient)" class="container" rx="12"/>
-  <text class="subtitle" x="800" y="145" fill="#2563EB">Client-Side (React SPA)</text>
+  <!-- Title -->
+  <text x="800" y="40" text-anchor="middle" class="ucf-title">UCF Lab Inventory System - Firebase BaaS Architecture</text>
 
-  <!-- React Application Zone -->
-  <rect x="130" y="165" width="1340" height="130" class="zone-client"/>
-  <text class="label" x="220" y="190" fill="#2563EB">React Application</text>
+  <!-- Layer 1: Client (React SPA) -->
+  <rect x="80" y="90" width="700" height="220" rx="12" fill="url(#ucfBlueGrad)" filter="url(#ucfShadow)"/>
+  <text x="430" y="115" text-anchor="middle" class="ucf-layer-title">React SPA (Client)</text>
 
-  <!-- Authentication Zone -->
-  <rect x="130" y="350" width="720" height="140" class="zone-auth"/>
-  <text class="label" x="220" y="385" fill="#FF6F00">Authentication Layer</text>
+  <rect x="110" y="145" width="150" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="185" y="170" text-anchor="middle" class="ucf-label">React Components</text>
+  <text x="185" y="188" text-anchor="middle" class="ucf-sublabel">Dashboard</text>
+  <text x="185" y="203" text-anchor="middle" class="ucf-sublabel">Items List</text>
+  <text x="185" y="218" text-anchor="middle" class="ucf-sublabel">My Reservations</text>
+  <text x="185" y="233" text-anchor="middle" class="ucf-sublabel">Admin Panel</text>
+  <text x="185" y="248" text-anchor="middle" class="ucf-sublabel">Guide Editor</text>
+  <text x="185" y="263" text-anchor="middle" class="ucf-sublabel">Queue &amp; Schedule</text>
 
-  <!-- Data Services Zone -->
-  <rect x="890" y="350" width="580" height="280" class="zone-data"/>
-  <text class="label" x="970" y="375" fill="#10B981">Data Services</text>
+  <rect x="290" y="145" width="150" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="365" y="170" text-anchor="middle" class="ucf-label">Routing &amp; State</text>
+  <text x="365" y="188" text-anchor="middle" class="ucf-sublabel">React Router v6</text>
+  <text x="365" y="203" text-anchor="middle" class="ucf-sublabel">ProtectedRoute</text>
+  <text x="365" y="218" text-anchor="middle" class="ucf-sublabel">AdminRoute</text>
+  <text x="365" y="233" text-anchor="middle" class="ucf-sublabel">Context API</text>
+  <text x="365" y="248" text-anchor="middle" class="ucf-sublabel">AuthContext</text>
+  <text x="365" y="263" text-anchor="middle" class="ucf-sublabel">Navigate redirects</text>
 
-  <!-- Hosting Zone -->
-  <rect x="130" y="660" width="720" height="140" class="zone-auth"/>
-  <text class="label" x="220" y="685" fill="#FF6F00">Firebase Hosting</text>
+  <rect x="470" y="145" width="280" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="610" y="170" text-anchor="middle" class="ucf-label">QR Workflows</text>
+  <text x="530" y="193" text-anchor="start" class="ucf-sublabel">• QR Generator: printable item labels</text>
+  <text x="530" y="208" text-anchor="start" class="ucf-sublabel">• HTML5-QRCode: camera scanning</text>
+  <text x="530" y="223" text-anchor="start" class="ucf-sublabel">• Decode-to-action routing</text>
+  <text x="530" y="238" text-anchor="start" class="ucf-sublabel">• Checkout/checkin modals</text>
+  <text x="530" y="253" text-anchor="start" class="ucf-sublabel">• Instant item identification</text>
+  <text x="530" y="268" text-anchor="start" class="ucf-sublabel">• Error recovery for blurry codes</text>
 
-  <!-- Client Components -->
-  <g transform="translate(160, 200)" filter="url(#iconShadow)">
-    <use href="#i-admin" width="50" height="50"/>
-    <text class="label" x="25" y="65">Admin User</text>
-    <text class="sublabel" x="25" y="77">Lab Manager</text>
-  </g>
+  <!-- Layer 2: Firebase Auth (Microsoft OAuth) -->
+  <rect x="840" y="90" width="680" height="220" rx="12" fill="url(#ucfOrangeGrad)" filter="url(#ucfShadow)"/>
+  <text x="1180" y="115" text-anchor="middle" class="ucf-layer-title">Firebase Authentication</text>
 
-  <g transform="translate(260, 200)" filter="url(#iconShadow)">
-    <use href="#i-browser" width="50" height="50"/>
-    <text class="label" x="25" y="65">Web Browser</text>
-    <text class="sublabel" x="25" y="77">Chrome/Firefox</text>
-  </g>
+  <rect x="870" y="145" width="280" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1010" y="170" text-anchor="middle" class="ucf-label">Microsoft OAuth (Azure AD)</text>
+  <text x="920" y="193" text-anchor="start" class="ucf-sublabel">• OAuthProvider('microsoft.com')</text>
+  <text x="920" y="208" text-anchor="start" class="ucf-sublabel">• @ucf.edu domain restriction</text>
+  <text x="920" y="223" text-anchor="start" class="ucf-sublabel">• Popup sign-in flow</text>
+  <text x="920" y="238" text-anchor="start" class="ucf-sublabel">• onAuthStateChanged listener</text>
+  <text x="920" y="253" text-anchor="start" class="ucf-sublabel">• Tenant configuration (Azure)</text>
+  <text x="920" y="268" text-anchor="start" class="ucf-sublabel">• Redirect URIs: firebaseapp.com</text>
 
-  <g transform="translate(380, 195)" filter="url(#iconShadow)">
-    <use href="#i-react" width="60" height="60"/>
-    <text class="label" x="30" y="75">React App</text>
-    <text class="sublabel" x="30" y="87">Components</text>
-  </g>
+  <rect x="1180" y="145" width="310" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1335" y="170" text-anchor="middle" class="ucf-label">Role-Based Access Control</text>
+  <text x="1230" y="193" text-anchor="start" class="ucf-sublabel">• Custom claims (admin/user role)</text>
+  <text x="1230" y="208" text-anchor="start" class="ucf-sublabel">• Firestore user profiles (users/{uid})</text>
+  <text x="1230" y="223" text-anchor="start" class="ucf-sublabel">• isAdmin() check in AuthContext</text>
+  <text x="1230" y="238" text-anchor="start" class="ucf-sublabel">• Admin-only UI components</text>
+  <text x="1230" y="253" text-anchor="start" class="ucf-sublabel">• Email/password fallback (hidden)</text>
+  <text x="1230" y="268" text-anchor="start" class="ucf-sublabel">• Session persistence</text>
 
-  <g transform="translate(480, 200)" filter="url(#iconShadow)">
-    <use href="#i-router" width="50" height="50"/>
-    <text class="label" x="25" y="65">React Router</text>
-    <text class="sublabel" x="25" y="77">Navigation</text>
-  </g>
+  <!-- Layer 3: Firestore &amp; Storage -->
+  <rect x="80" y="360" width="1440" height="240" rx="12" fill="url(#ucfGreenGrad)" filter="url(#ucfShadow)"/>
+  <text x="800" y="385" text-anchor="middle" class="ucf-layer-title">Firebase Firestore &amp; Storage</text>
 
-  <g transform="translate(580, 195)" filter="url(#iconShadow)">
-    <use href="#i-context" width="60" height="60"/>
-    <text class="label" x="30" y="75">Context API</text>
-    <text class="sublabel" x="30" y="87">State Management</text>
-  </g>
+  <rect x="110" y="410" width="240" height="165" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="230" y="435" text-anchor="middle" class="ucf-label">Firestore Collections</text>
+  <text x="150" y="458" text-anchor="start" class="ucf-sublabel">• items: 200+ lab equipment</text>
+  <text x="150" y="473" text-anchor="start" class="ucf-sublabel">• reservations: booking records</text>
+  <text x="150" y="488" text-anchor="start" class="ucf-sublabel">• users: profiles &amp; roles</text>
+  <text x="150" y="503" text-anchor="start" class="ucf-sublabel">• consumables_usage: logs</text>
+  <text x="150" y="518" text-anchor="start" class="ucf-sublabel">• guides: versioned docs</text>
+  <text x="150" y="533" text-anchor="start" class="ucf-sublabel">• Real-time listeners</text>
+  <text x="150" y="548" text-anchor="start" class="ucf-sublabel">• Conflict detection queries</text>
 
-  <g transform="translate(720, 200)" filter="url(#iconShadow)">
-    <use href="#i-qr" width="50" height="50"/>
-    <text class="label" x="25" y="65">QR Generator</text>
-    <text class="sublabel" x="25" y="77">Item Labels</text>
-  </g>
+  <rect x="380" y="410" width="240" height="165" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="500" y="435" text-anchor="middle" class="ucf-label">Composite Indexes</text>
+  <text x="420" y="458" text-anchor="start" class="ucf-sublabel">• status + orderBy timestamp</text>
+  <text x="420" y="473" text-anchor="start" class="ucf-sublabel">• start/end time queries</text>
+  <text x="420" y="488" text-anchor="start" class="ucf-sublabel">• firestore.indexes.json</text>
+  <text x="420" y="503" text-anchor="start" class="ucf-sublabel">• Query optimization</text>
+  <text x="420" y="518" text-anchor="start" class="ucf-sublabel">• Batch operations</text>
+  <text x="420" y="533" text-anchor="start" class="ucf-sublabel">• Transactions for reservations</text>
+  <text x="420" y="548" text-anchor="start" class="ucf-sublabel">• Live Status Grid indexes</text>
 
-  <g transform="translate(840, 200)" filter="url(#iconShadow)">
-    <use href="#i-scanner" width="50" height="50"/>
-    <text class="label" x="25" y="65">QR Scanner</text>
-    <text class="sublabel" x="25" y="77">Camera Access</text>
-  </g>
+  <rect x="650" y="410" width="240" height="165" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="770" y="435" text-anchor="middle" class="ucf-label">Security Rules</text>
+  <text x="690" y="458" text-anchor="start" class="ucf-sublabel">• Role-based read/write</text>
+  <text x="690" y="473" text-anchor="start" class="ucf-sublabel">• User-scoped reservations</text>
+  <text x="690" y="488" text-anchor="start" class="ucf-sublabel">• Admin-only item writes</text>
+  <text x="690" y="503" text-anchor="start" class="ucf-sublabel">• Ownership validation</text>
+  <text x="690" y="518" text-anchor="start" class="ucf-sublabel">• Custom rule functions</text>
+  <text x="690" y="533" text-anchor="start" class="ucf-sublabel">• Privilege escalation prevention</text>
+  <text x="690" y="548" text-anchor="start" class="ucf-sublabel">• firestore.rules DSL</text>
 
-  <!-- Authentication Components -->
-  <g transform="translate(180, 390)" filter="url(#iconShadow)">
-    <use href="#i-firebase" width="50" height="50"/>
-    <text class="label" x="25" y="65">Firebase SDK</text>
-    <text class="sublabel" x="25" y="77">Client Library</text>
-  </g>
+  <rect x="920" y="410" width="240" height="165" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1040" y="435" text-anchor="middle" class="ucf-label">Firebase Storage</text>
+  <text x="960" y="458" text-anchor="start" class="ucf-sublabel">• Item images (PNG/JPG)</text>
+  <text x="960" y="473" text-anchor="start" class="ucf-sublabel">• Guide documents (PDF)</text>
+  <text x="960" y="488" text-anchor="start" class="ucf-sublabel">• Path-based access control</text>
+  <text x="960" y="503" text-anchor="start" class="ucf-sublabel">• images/{userId}/...</text>
+  <text x="960" y="518" text-anchor="start" class="ucf-sublabel">• CDN URLs</text>
+  <text x="960" y="533" text-anchor="start" class="ucf-sublabel">• Size/type restrictions</text>
+  <text x="960" y="548" text-anchor="start" class="ucf-sublabel">• storage.rules enforcement</text>
 
-  <g transform="translate(300, 390)" filter="url(#iconShadow)">
-    <use href="#i-auth" width="50" height="50"/>
-    <text class="label" x="25" y="65">Firebase Auth</text>
-    <text class="sublabel" x="25" y="77">Admin Login</text>
-  </g>
+  <rect x="1190" y="410" width="300" height="165" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1340" y="435" text-anchor="middle" class="ucf-label">Core Features</text>
+  <text x="1230" y="458" text-anchor="start" class="ucf-sublabel">• Live Status Grid (checked-out items)</text>
+  <text x="1230" y="473" text-anchor="start" class="ucf-sublabel">• Queue &amp; Schedule (upcoming reservations)</text>
+  <text x="1230" y="488" text-anchor="start" class="ucf-sublabel">• Batch reservation creation</text>
+  <text x="1230" y="503" text-anchor="start" class="ucf-sublabel">• Consumables usage tracking</text>
+  <text x="1230" y="518" text-anchor="start" class="ucf-sublabel">• Student management (CSV ops)</text>
+  <text x="1230" y="533" text-anchor="start" class="ucf-sublabel">• Admin dashboard &amp; CRUD</text>
+  <text x="1230" y="548" text-anchor="start" class="ucf-sublabel">• Search/filter with status queries</text>
 
-  <!-- Data Service Components -->
-  <g transform="translate(930, 390)" filter="url(#iconShadow)">
-    <use href="#i-firestore" width="50" height="50"/>
-    <text class="label" x="25" y="65">Firestore</text>
-    <text class="sublabel" x="25" y="77">NoSQL Database</text>
-  </g>
+  <!-- Arrows -->
+  <line x1="780" y1="200" x2="840" y2="200" stroke="#3B82F6" stroke-width="3" marker-end="url(#ucfArrowBlue)"/>
+  <text x="810" y="225" text-anchor="middle" class="ucf-sublabel" fill="#3B82F6">Auth Request</text>
 
-  <g transform="translate(1050, 390)" filter="url(#iconShadow)">
-    <use href="#i-storage" width="50" height="50"/>
-    <text class="label" x="25" y="65">Firebase Storage</text>
-    <text class="sublabel" x="25" y="77">Image Hosting</text>
-  </g>
+  <line x1="430" y1="310" x2="430" y2="360" stroke="#10B981" stroke-width="3" marker-end="url(#ucfArrowGreen)"/>
+  <text x="380" y="340" text-anchor="end" class="ucf-sublabel" fill="#10B981">Data Queries</text>
 
-  <g transform="translate(1200, 390)" filter="url(#iconShadow)">
-    <use href="#i-firestore" width="50" height="50"/>
-    <text class="label" x="25" y="65">Collections</text>
-    <text class="sublabel" x="25" y="77">items/students</text>
-  </g>
+  <line x1="1180" y1="310" x2="1180" y2="360" stroke="#F97316" stroke-width="3" marker-end="url(#ucfArrowOrange)"/>
+  <text x="1230" y="340" text-anchor="start" class="ucf-sublabel" fill="#F97316">User Profile</text>
 
-  <g transform="translate(1350, 390)" filter="url(#iconShadow)">
-    <use href="#i-firestore" width="50" height="50"/>
-    <text class="label" x="25" y="65">Security Rules</text>
-    <text class="sublabel" x="25" y="77">Access Control</text>
-  </g>
+  <!-- Layer 4: Firebase Hosting -->
+  <rect x="80" y="650" width="1440" height="110" rx="12" fill="url(#ucfYellowGrad)" filter="url(#ucfShadow)"/>
+  <text x="800" y="675" text-anchor="middle" class="ucf-layer-title">Firebase Hosting (CDN)</text>
 
-  <g transform="translate(1100, 490)" filter="url(#iconShadow)">
-    <use href="#i-firestore" width="50" height="50"/>
-    <text class="label" x="25" y="65">Indexes</text>
-    <text class="sublabel" x="25" y="77">Query Optimization</text>
-  </g>
+  <rect x="110" y="695" width="420" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="320" y="720" text-anchor="middle" class="ucf-label">SPA Deployment: firebase deploy --only hosting</text>
+  <text x="320" y="735" text-anchor="middle" class="ucf-sublabel">public: build | rewrites: /index.html fallback</text>
 
-  <g transform="translate(1250, 490)" filter="url(#iconShadow)">
-    <use href="#i-firestore" width="50" height="50"/>
-    <text class="label" x="25" y="65">Transactions</text>
-    <text class="sublabel" x="25" y="77">Audit Logs</text>
-  </g>
+  <rect x="560" y="695" width="480" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="800" y="720" text-anchor="middle" class="ucf-label">Production Domains &amp; OAuth URIs</text>
+  <text x="800" y="735" text-anchor="middle" class="ucf-sublabel">ucf-lab-inventory.firebaseapp.com • ucf-lab-inventory.web.app</text>
 
-  <!-- Hosting Components -->
-  <g transform="translate(200, 700)" filter="url(#iconShadow)">
-    <use href="#i-hosting" width="50" height="50"/>
-    <text class="label" x="25" y="65">Firebase Hosting</text>
-    <text class="sublabel" x="25" y="77">CDN Deploy</text>
-  </g>
+  <rect x="1070" y="695" width="420" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1280" y="720" text-anchor="middle" class="ucf-label">Build Pipeline: CRA + CRACO</text>
+  <text x="1280" y="735" text-anchor="middle" class="ucf-sublabel">Tailwind CSS • DaisyUI • PostCSS optimization</text>
 
-  <g transform="translate(350, 700)" filter="url(#iconShadow)">
-    <use href="#i-browser" width="50" height="50"/>
-    <text class="label" x="25" y="65">Build Process</text>
-    <text class="sublabel" x="25" y="77">React Build</text>
-  </g>
+  <!-- Performance Metrics Section -->
+  <rect x="80" y="800" width="1440" height="110" rx="12" fill="#1F2937" filter="url(#ucfShadow)"/>
+  <text x="800" y="830" text-anchor="middle" fill="#FFFFFF" style="font: 600 16px 'Segoe UI', sans-serif;">System Performance &amp; Impact</text>
 
-  <!-- Primary Flow Lines -->
-  <path d="M210,225 L260,225" class="flow-primary"/>
-  <path d="M310,225 L380,225" class="flow-primary"/>
-  <path d="M440,225 L480,225" class="flow-primary"/>
-  <path d="M530,225 L580,225" class="flow-primary"/>
-  <path d="M640,225 L720,225" class="flow-primary"/>
-  <path d="M770,225 L840,225" class="flow-primary"/>
+  <rect x="120" y="850" width="280" height="45" rx="8" fill="#F97316"/>
+  <text x="260" y="870" text-anchor="middle" class="ucf-metric-label">Transaction Speed</text>
+  <text x="260" y="887" text-anchor="middle" class="ucf-metric-value">~10s faster check-in/out</text>
 
-  <!-- Authentication Flow -->
-  <path d="M205,250 L205,375" class="flow-auth"/>
-  <path d="M230,415 L300,415" class="flow-auth"/>
-  <path d="M325,390 L325,320 L610,320 L610,285" class="flow-auth"/>
+  <rect x="430" y="850" width="280" height="45" rx="8" fill="#3B82F6"/>
+  <text x="570" y="870" text-anchor="middle" class="ucf-metric-label">Inventory Scale</text>
+  <text x="570" y="887" text-anchor="middle" class="ucf-metric-value">200+ items managed</text>
 
-  <!-- Data Flow -->
-  <path d="M610,290 L610,320 L925,320 L927,415" class="flow-data"/>
-  <path d="M980,415 L1050,415" class="flow-data"/>
-  <path d="M1100,415 L1200,415" class="flow-data"/>
-  <path d="M1250,415 L1350,415" class="flow-data"/>
-  <path d="M1125,440 L1125,490" class="flow-data"/>
-  <path d="M1275,440 L1275,490" class="flow-data"/>
+  <rect x="740" y="850" width="280" height="45" rx="8" fill="#10B981"/>
+  <text x="880" y="870" text-anchor="middle" class="ucf-metric-label">Authentication</text>
+  <text x="880" y="887" text-anchor="middle" class="ucf-metric-value">Microsoft OAuth (@ucf.edu)</text>
 
-  <!-- Hosting Flow -->
-  <path d="M285,250 L285,320 L135,320 L140,730" class="flow-auth"/>
-  <path d="M250,725 L350,725" class="flow-auth"/>
+  <rect x="1050" y="850" width="280" height="45" rx="8" fill="#FBBF24"/>
+  <text x="1190" y="870" text-anchor="middle" class="ucf-metric-label">Architecture</text>
+  <text x="1190" y="887" text-anchor="middle" class="ucf-metric-value">Serverless Firebase BaaS</text>
 
-  <!-- Feature Labels -->
-  <text class="sublabel" x="230" y="215" fill="#2563EB">User Access</text>
-  <text class="sublabel" x="345" y="215" fill="#2563EB">UI Render</text>
-  <text class="sublabel" x="460" y="215" fill="#2563EB">Routing</text>
-  <text class="sublabel" x="560" y="215" fill="#2563EB">State</text>
-  <text class="sublabel" x="680" y="215" fill="#2563EB">QR Code</text>
-  <text class="sublabel" x="805" y="215" fill="#2563EB">Scanning</text>
-
-  <!-- Service Labels -->
-  <text class="sublabel" x="265" y="405" fill="#FF6F00">Auth SDK</text>
-  <text class="sublabel" x="1000" y="405" fill="#10B981">Database</text>
-  <text class="sublabel" x="1125" y="405" fill="#10B981">Files</text>
-  <text class="sublabel" x="1275" y="405" fill="#10B981">Schema</text>
-  <text class="sublabel" x="1420" y="405" fill="#10B981">Security</text>
-
-  <!-- Deployment Labels -->
-  <text class="sublabel" x="300" y="715" fill="#FF6F00">Deploy</text>
-
-  <!-- Performance Indicators -->
-  <circle cx="410" cy="180" r="6" fill="#10B981"/>
-  <text class="sublabel" x="465" y="185" fill="#10B981">SPA Performance</text>
-  
-  <circle cx="955" cy="340" r="6" fill="#F59E0B"/>
-  <text class="sublabel" x="1010" y="345" fill="#F59E0B">Real-time Updates</text>
-  
-  <circle cx="225" cy="650" r="6" fill="#2563EB"/>
-  <text class="sublabel" x="280" y="655" fill="#2563EB">Global CDN</text>
-
-  <!-- Architecture Notes -->
-  <text class="sublabel" x="800" y="560" fill="#6B7280">Firebase BaaS Architecture - Serverless Backend</text>
-  <text class="sublabel" x="800" y="580" fill="#6B7280">React SPA with Firebase SDK for real-time data synchronization</text>
-  <text class="sublabel" x="800" y="600" fill="#6B7280">QR Code integration for efficient lab equipment tracking</text>
+  <rect x="1360" y="850" width="160" height="45" rx="8" fill="#8B5CF6"/>
+  <text x="1440" y="870" text-anchor="middle" class="ucf-metric-label">Tech Stack</text>
+  <text x="1440" y="887" text-anchor="middle" class="ucf-metric-value">React • Firebase • QR</text>
 </svg>`
   },
   "ad-event-processing": {
     id: "ad-event-processing",
     title: "Real-Time Ad Event Processing",
     subtitle: "Production Ready",
-    description: "Engineered a high-performance system processing 1M+ events per second with sub-20ms latency. Built with FastAPI and AWS Kinesis for enterprise-scale data ingestion.",
-    detailedDescription: "A scalable microservices architecture designed to handle millions of advertising events in real-time. The system processes user interactions, ad impressions, and conversions with extremely low latency while maintaining high availability and data consistency.",
+    description: "Enterprise-grade ad event processing system achieving 375,000-418,000 events/second with 1-2ms latency and 99.99% reliability. Built with AWS, FastAPI, Redis, and Docker orchestration with CloudWatch monitoring.",
+    detailedDescription: "A high-performance real-time ad event ingestion and analytics platform designed for enterprise scale. The system processes advertising events with industry-leading performance metrics, validated through AWS CloudWatch with live monitoring. Demonstrates sustained throughput of 375K-418K events/second with sub-2ms latency, featuring Redis deduplication (zero duplicates), comprehensive CloudWatch integration, microservices architecture with 7 containerized services, and proven 99.99% system reliability. Includes scalability roadmap to 1M+ events/second with Kubernetes deployment.",
     status: "Production Ready",
     statusColor: "green",
-    technologies: ["Python", "FastAPI", "AWS Kinesis", "DynamoDB", "Docker", "EKS"],
-    githubUrl: "https://github.com/Sammy-Dabbas",
+    technologies: ["Python", "FastAPI", "Redis", "AWS Kinesis", "DynamoDB", "CloudWatch", "Docker", "Docker Compose", "asyncio"],
+    githubUrl: "https://github.com/Sammy-Dabbas/ad-processing-pipeline",
     icon: Zap,
     iconGradient: "from-blue-500 to-indigo-500",
-    timeline: "6 months",
-    teamSize: "3 developers",
+    timeline: "4 months",
+    teamSize: "Solo Project",
     highlights: [
-      "Processes 1M+ events per second",
-      "Sub-20ms latency for real-time processing",
-      "Deployed on AWS EKS for high availability",
-      "Horizontal scaling capabilities"
+      "Achieved 375K-418K events/second sustained throughput validated via AWS CloudWatch",
+      "Sub-2ms processing latency with 99.99% system reliability over 45-minute test",
+      "Zero-duplicate guarantee through Redis SET operations with pipeline batching (50x speedup)",
+      "7-service microservices architecture: 25 concurrent workers with auto-scaling capability",
+      "Production-grade AWS monitoring with 6 CloudWatch alerts and real-time dashboard"
     ],
     features: [
-      "High-throughput event ingestion",
-      "Real-time stream processing",
-      "Automated scaling based on load",
-      "Comprehensive monitoring and alerting",
-      "Data validation and error handling",
-      "API documentation with FastAPI",
-      "Docker containerization"
+      "AWS Kinesis Data Streams: Real-time event ingestion with scalable shard architecture",
+      "Redis caching layer: Sub-millisecond deduplication with pipeline batching, LRU eviction, AOF persistence",
+      "DynamoDB persistence: Partition key + sort key schema with 2 GSIs for flexible querying",
+      "7 containerized services: API, 4 consumers, generator, Redis with Docker Compose orchestration",
+      "AWS CloudWatch integration: Custom metrics, 6 production alerts, real-time performance dashboard",
+      "FastAPI REST API: Real-time analytics endpoints with interactive Chart.js dashboard",
+      "Performance optimization: 25 concurrent workers, connection pooling, batch processing (1000 events/batch)",
+      "Monitoring metrics: Events/sec, latency (P50/P95/P99), reliability, error rate, resource utilization",
+      "Scalability roadmap: 1M+ events/sec with EKS cluster, 200 instances, 30-node Redis cluster",
+      "Security: IAM least-privilege, input validation, rate limiting, DynamoDB encryption at rest"
     ],
     challenges: [
-      "Achieving sub-20ms latency at scale",
-      "Designing fault-tolerant distributed systems",
-      "Managing memory efficiency for high-volume processing",
-      "Implementing proper monitoring and observability"
+      "Achieving sub-2ms latency at 375K-418K events/second sustained throughput",
+      "Implementing zero-duplicate guarantee with Redis SET operations and atomic transactions",
+      "Optimizing Redis performance: Pipeline batching achieved 50x throughput improvement",
+      "Designing fault-tolerant microservices with graceful shutdown, health checks, and auto-restart",
+      "AWS CloudWatch integration: Custom metrics namespace with dimensional data and alert configuration",
+      "Resource optimization: Container memory limits and CPU constraints for predictable performance",
+      "Scaling architecture: Planning path from current 375K to 1M+ events/second with Kubernetes",
+      "Testing at scale: Performance validation through rigorous 45-minute sustained load testing"
     ],
     learnings: [
-      "Advanced AWS Kinesis stream processing",
-      "High-performance Python optimization techniques",
-      "Kubernetes deployment and scaling strategies",
-      "Distributed systems architecture patterns"
+      "Batching is critical: Single operations vs batch processing = 50x performance difference",
+      "AWS CloudWatch integration: Monitoring from day 1 enabled rapid debugging and validation",
+      "Async/await pattern: Non-blocking I/O throughout the stack for maximum throughput",
+      "Resource limits matter: Container memory/CPU limits prevent cascade failures",
+      "Testing at scale: Only real load testing (375K+ eps) reveals bottlenecks",
+      "Redis optimization: Pipeline batching, connection pooling, LRU eviction for sub-ms latency",
+      "Microservices architecture: Service isolation with Docker Compose for independent scaling",
+      "AWS infrastructure decisions: Kinesis vs Kafka, DynamoDB vs RDS, managed services trade-offs",
+      "Production operational practices: Health checks, graceful shutdown, auto-restart mechanisms",
+      "Scalability planning: Clear migration path from Docker Compose to Kubernetes for 1M+ eps"
     ],
-    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="800" viewBox="0 0 1600 800"> 
+    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="850" viewBox="0 0 1600 850"> 
   <defs>
-    <!-- Clean gradients -->
-    <linearGradient id="awsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FF9900;stop-opacity:0.06" />
-      <stop offset="100%" style="stop-color:#FF9900;stop-opacity:0.02" />
-    </linearGradient>
-    
-    <linearGradient id="vpcGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:0.04" />
-      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:0.01" />
-    </linearGradient>
-    
-    <linearGradient id="coreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#E3F2FD;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#E3F2FD;stop-opacity:0.2" />
-    </linearGradient>
-    
-    <linearGradient id="archiveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#E8F5E9;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#E8F5E9;stop-opacity:0.2" />
-    </linearGradient>
-    
-    <linearGradient id="cacheGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFF3E0;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#FFF3E0;stop-opacity:0.2" />
+    <!-- Gradients -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DBEAFE;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#BFDBFE;stop-opacity:0.3" />
     </linearGradient>
 
-    <!-- Clean shadow filter -->
-    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
-    </filter>
-    
-    <filter id="iconShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D1FAE5;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#A7F3D0;stop-opacity:0.3" />
+    </linearGradient>
+
+    <linearGradient id="yellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FEF3C7;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FDE68A;stop-opacity:0.3" />
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
     </filter>
 
-    <!-- Clean arrow markers -->
-    <marker id="primaryArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#2563EB" />
+    <!-- Arrow marker -->
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563EB" />
     </marker>
-    
-    <marker id="auxArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#10B981" />
-    </marker>
-    
-    <marker id="encryptArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#F59E0B" />
-    </marker>
-
-    <!-- Clean, minimal icons -->
-    <symbol id="i-sources" viewBox="0 0 48 48">
-      <rect x="4" y="12" width="40" height="24" rx="6" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <path d="M12 24a12 12 0 0 1 24 0h6a9 9 0 0 1 0 18H6a9 9 0 0 1 0-18h6z" fill="#E3F2FD" stroke="#2563EB" stroke-width="1.5"/>
-      <circle cx="16" cy="20" r="2" fill="#2563EB"/>
-      <circle cx="24" cy="20" r="2" fill="#2563EB"/>
-      <circle cx="32" cy="20" r="2" fill="#2563EB"/>
-    </symbol>
-    
-    <symbol id="i-api" viewBox="0 0 48 48">
-      <rect x="4" y="10" width="40" height="28" rx="4" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="10" y="16" width="28" height="3" fill="#2563EB" rx="1.5"/>
-      <rect x="10" y="22" width="22" height="3" fill="#93C5FD" rx="1.5"/>
-      <rect x="10" y="28" width="16" height="3" fill="#DBEAFE" rx="1.5"/>
-      <circle cx="38" cy="17" r="1.5" fill="#10B981"/>
-    </symbol>
-    
-    <symbol id="i-kinesis" viewBox="0 0 48 48">
-      <ellipse cx="24" cy="12" rx="18" ry="6" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="6" y="12" width="36" height="24" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <ellipse cx="24" cy="36" rx="18" ry="6" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <path d="M10 18 Q24 24 38 18" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-      <path d="M10 24 Q24 30 38 24" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-      <path d="M10 30 Q24 36 38 30" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-    </symbol>
-    
-    <symbol id="i-eks" viewBox="0 0 48 48">
-      <rect x="4" y="8" width="40" height="32" rx="4" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="10" y="14" width="12" height="8" fill="#E3F2FD" stroke="#2563EB" stroke-width="1" rx="1"/>
-      <rect x="26" y="14" width="12" height="8" fill="#E3F2FD" stroke="#2563EB" stroke-width="1" rx="1"/>
-      <rect x="10" y="26" width="12" height="8" fill="#E3F2FD" stroke="#2563EB" stroke-width="1" rx="1"/>
-      <rect x="26" y="26" width="12" height="8" fill="#E3F2FD" stroke="#2563EB" stroke-width="1" rx="1"/>
-      <circle cx="24" cy="24" r="4" fill="#2563EB"/>
-      <path d="M20 24 L28 24 M24 20 L24 28" stroke="#fff" stroke-width="1.5"/>
-    </symbol>
-    
-    <symbol id="i-dynamodb" viewBox="0 0 48 48">
-      <ellipse cx="24" cy="12" rx="18" ry="6" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="6" y="12" width="36" height="24" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <ellipse cx="24" cy="36" rx="18" ry="6" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="10" y="17" width="28" height="2" fill="#2563EB" rx="1"/>
-      <rect x="10" y="23" width="28" height="2" fill="#2563EB" rx="1"/>
-      <rect x="10" y="29" width="28" height="2" fill="#2563EB" rx="1"/>
-    </symbol>
-    
-    <symbol id="i-query-api" viewBox="0 0 48 48">
-      <rect x="4" y="10" width="40" height="28" rx="4" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <circle cx="16" cy="20" r="4" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-      <path d="M19 23 L25 29" stroke="#2563EB" stroke-width="1.5"/>
-      <rect x="28" y="16" width="12" height="2" fill="#93C5FD" rx="1"/>
-      <rect x="28" y="20" width="10" height="2" fill="#DBEAFE" rx="1"/>
-      <rect x="28" y="24" width="8" height="2" fill="#DBEAFE" rx="1"/>
-    </symbol>
-    
-    <symbol id="i-clients" viewBox="0 0 48 48">
-      <circle cx="24" cy="16" r="7" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <path d="M10 36c6-8 22-8 28 0" fill="#E3F2FD" stroke="#2563EB" stroke-width="2"/>
-      <circle cx="16" cy="12" r="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1"/>
-      <circle cx="32" cy="12" r="4" fill="#DBEAFE" stroke="#2563EB" stroke-width="1"/>
-    </symbol>
-    
-    <symbol id="i-firehose" viewBox="0 0 48 48">
-      <rect x="4" y="16" width="40" height="16" rx="3" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <path d="M10 22 L38 22 M10 26 L38 26" stroke="#10B981" stroke-width="1.5"/>
-      <circle cx="12" cy="24" r="2" fill="#10B981"/>
-      <circle cx="24" cy="24" r="2" fill="#10B981"/>
-      <circle cx="36" cy="24" r="2" fill="#10B981"/>
-    </symbol>
-    
-    <symbol id="i-s3" viewBox="0 0 48 48">
-      <path d="M6 16h36l-4 20H10z" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <rect x="6" y="12" width="36" height="6" fill="#E8F5E9" stroke="#10B981" stroke-width="1.5"/>
-      <circle cx="14" cy="15" r="1.5" fill="#10B981"/>
-      <circle cx="20" cy="15" r="1.5" fill="#10B981"/>
-      <circle cx="26" cy="15" r="1.5" fill="#10B981"/>
-    </symbol>
-    
-    <symbol id="i-dax" viewBox="0 0 48 48">
-      <rect x="4" y="10" width="40" height="28" rx="4" fill="#fff" stroke="#F59E0B" stroke-width="2"/>
-      <rect x="6" y="16" width="36" height="4" fill="#F59E0B" rx="2"/>
-      <rect x="6" y="23" width="36" height="4" fill="#FCD34D" rx="2"/>
-      <rect x="6" y="30" width="36" height="4" fill="#FEF3C7" rx="2"/>
-      <circle cx="12" cy="18" r="1.5" fill="#fff"/>
-      <circle cx="12" cy="25" r="1.5" fill="#fff"/>
-      <circle cx="12" cy="32" r="1.5" fill="#fff"/>
-    </symbol>
-    
-    <symbol id="i-cloudwatch" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="18" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <circle cx="24" cy="24" r="14" fill="#E8F5E9"/>
-      <path d="M24 14 L24 24 L32 28" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="24" cy="24" r="2" fill="#10B981"/>
-    </symbol>
-    
-    <symbol id="i-kms" viewBox="0 0 48 48">
-      <rect x="12" y="22" width="24" height="20" rx="4" fill="#fff" stroke="#F59E0B" stroke-width="2"/>
-      <path d="M18 22 L18 14 Q18 8 24 8 Q30 8 30 14 L30 22" fill="none" stroke="#F59E0B" stroke-width="2"/>
-      <circle cx="24" cy="32" r="3" fill="#F59E0B"/>
-      <rect x="22.5" y="34" width="3" height="6" fill="#F59E0B" rx="1.5"/>
-    </symbol>
   </defs>
 
+  <!-- Styles -->
   <style>
-    .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 16px; font-weight: 600; text-anchor: middle; fill: #1F2937; }
-    .label { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; font-weight: 500; text-anchor: middle; fill: #374151; }
-    .sublabel { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; text-anchor: middle; fill: #6B7280; }
-    .flow-primary { fill: none; stroke: #2563EB; stroke-width: 2.5; marker-end: url(#primaryArrow); }
-    .flow-aux { fill: none; stroke: #10B981; stroke-width: 2.5; stroke-dasharray: 6 3; marker-end: url(#auxArrow); }
-    .flow-encrypt { fill: none; stroke: #F59E0B; stroke-width: 2; stroke-dasharray: 4 2; marker-end: url(#encryptArrow); }
-    .container { fill: none; stroke: #D1D5DB; stroke-width: 1.5; stroke-dasharray: 8 4; }
-    .zone-primary { fill: url(#coreGradient); stroke: #2563EB; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
-    .zone-archive { fill: url(#archiveGradient); stroke: #10B981; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
-    .zone-cache { fill: url(#cacheGradient); stroke: #F59E0B; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
+    .card-title { font-family: system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #1F2937; }
+    .card-label { font-family: system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+    .section-title { font-family: system-ui, sans-serif; font-size: 18px; font-weight: 700; fill: #111827; }
+    .flow-label { font-family: system-ui, sans-serif; font-size: 10px; fill: #2563EB; font-weight: 500; }
   </style>
 
-  <!-- AWS Cloud Container -->
-  <rect x="50" y="50" width="1500" height="700" fill="url(#awsGradient)" stroke="#FF9900" stroke-width="2" rx="16" filter="url(#cardShadow)"/>
-  <text class="title" x="800" y="75" fill="#FF9900">AWS Cloud</text>
+  <!-- Background -->
+  <rect width="1600" height="850" fill="#F9FAFB"/>
 
-  <!-- VPC Container -->
-  <rect x="90" y="100" width="1420" height="620" fill="url(#vpcGradient)" class="container" rx="12"/>
-  <text class="title" x="800" y="125" fill="#2563EB">Virtual Private Cloud</text>
+  <!-- Title -->
+  <text class="section-title" x="800" y="40" text-anchor="middle">Real-Time Ad Event Processing Architecture</text>
+  <text class="card-label" x="800" y="60" text-anchor="middle">375K-418K events/sec • Sub-2ms latency • 99.99% reliability • AWS CloudWatch validated</text>
 
-  <!-- Data Processing Zone -->
-  <rect x="130" y="150" width="1340" height="140" class="zone-primary"/>
-  <text class="label" x="210" y="175" fill="#2563EB">Core Data Pipeline</text>
-
-  <!-- Archive Zone -->
-  <rect x="580" y="340" width="360" height="140" class="zone-archive"/>
-  <text class="label" x="660" y="365" fill="#10B981">Data Archival</text>
-
-  <!-- Cache Zone -->
-  <rect x="1100" y="340" width="220" height="140" class="zone-cache"/>
-  <text class="label" x="1210" y="320" fill="#F59E0B">Caching Layer</text>
-
-  <!-- Core Pipeline Components -->
-  <g transform="translate(170, 190)" filter="url(#iconShadow)">
-    <use href="#i-sources" width="60" height="60"/>
-    <text class="label" x="30" y="80">Data Sources</text>
-    <text class="sublabel" x="30" y="92">External APIs</text>
+  <!-- Layer 1: Event Sources -->
+  <g id="sources">
+    <rect x="80" y="120" width="200" height="140" rx="12" fill="url(#blueGrad)" stroke="#2563EB" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="180" y="150" text-anchor="middle">Event Sources</text>
+    <text class="card-label" x="180" y="175" text-anchor="middle">External APIs</text>
+    <text class="card-label" x="180" y="195" text-anchor="middle">Impressions</text>
+    <text class="card-label" x="180" y="210" text-anchor="middle">Clicks</text>
+    <text class="card-label" x="180" y="225" text-anchor="middle">Conversions</text>
   </g>
 
-  <g transform="translate(320, 190)" filter="url(#iconShadow)">
-    <use href="#i-api" width="60" height="60"/>
-    <text class="label" x="30" y="80">Ingestion API</text>
-    <text class="sublabel" x="30" y="92">Rate Limited</text>
+  <!-- Layer 2: Ingestion -->
+  <g id="ingestion">
+    <rect x="340" y="120" width="200" height="140" rx="12" fill="url(#blueGrad)" stroke="#2563EB" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="440" y="150" text-anchor="middle">AWS Kinesis</text>
+    <text class="card-label" x="440" y="175" text-anchor="middle">Data Streams</text>
+    <text class="card-label" x="440" y="195" text-anchor="middle">Scalable shards</text>
+    <text class="card-label" x="440" y="210" text-anchor="middle">Real-time buffer</text>
+    <text class="card-label" x="440" y="225" text-anchor="middle">Batch: 50 pages/call</text>
   </g>
 
-  <g transform="translate(480, 185)" filter="url(#iconShadow)">
-    <use href="#i-kinesis" width="70" height="70"/>
-    <text class="label" x="35" y="90">Kinesis Streams</text>
-    <text class="sublabel" x="35" y="102">Real-time Buffer</text>
+  <!-- Layer 3: Processing -->
+  <g id="processing">
+    <rect x="600" y="120" width="200" height="140" rx="12" fill="url(#greenGrad)" stroke="#10B981" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="700" y="150" text-anchor="middle">Event Processors</text>
+    <text class="card-label" x="700" y="175" text-anchor="middle">Docker Containers</text>
+    <text class="card-label" x="700" y="195" text-anchor="middle">25 concurrent workers</text>
+    <text class="card-label" x="700" y="210" text-anchor="middle">FastAPI services</text>
+    <text class="card-label" x="700" y="225" text-anchor="middle">Async/await</text>
   </g>
 
-  <g transform="translate(680, 190)" filter="url(#iconShadow)">
-    <use href="#i-eks" width="60" height="60"/>
-    <text class="label" x="30" y="80">EKS Cluster</text>
-    <text class="sublabel" x="30" y="92">Processing</text>
+  <!-- Layer 4: Cache -->
+  <g id="cache">
+    <rect x="860" y="120" width="200" height="140" rx="12" fill="url(#yellowGrad)" stroke="#F59E0B" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="960" y="150" text-anchor="middle">Redis Cache</text>
+    <text class="card-label" x="960" y="175" text-anchor="middle">Deduplication</text>
+    <text class="card-label" x="960" y="195" text-anchor="middle">Pipeline batching</text>
+    <text class="card-label" x="960" y="210" text-anchor="middle">50x speedup</text>
+    <text class="card-label" x="960" y="225" text-anchor="middle">Zero duplicates</text>
   </g>
 
-  <g transform="translate(860, 185)" filter="url(#iconShadow)">
-    <use href="#i-dynamodb" width="70" height="70"/>
-    <text class="label" x="35" y="90">DynamoDB</text>
-    <text class="sublabel" x="35" y="102">NoSQL Database</text>
+  <!-- Layer 5: Storage -->
+  <g id="storage">
+    <rect x="1120" y="120" width="200" height="140" rx="12" fill="url(#blueGrad)" stroke="#2563EB" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="1220" y="150" text-anchor="middle">DynamoDB</text>
+    <text class="card-label" x="1220" y="175" text-anchor="middle">NoSQL persistence</text>
+    <text class="card-label" x="1220" y="195" text-anchor="middle">Partition + Sort keys</text>
+    <text class="card-label" x="1220" y="210" text-anchor="middle">2 GSIs</text>
+    <text class="card-label" x="1220" y="225" text-anchor="middle">Batch writes</text>
   </g>
 
-  <g transform="translate(1080, 190)" filter="url(#iconShadow)">
-    <use href="#i-query-api" width="60" height="60"/>
-    <text class="label" x="30" y="80">Query API</text>
-    <text class="sublabel" x="30" y="92">REST/GraphQL</text>
+  <!-- Layer 6: API -->
+  <g id="api">
+    <rect x="1380" y="120" width="180" height="140" rx="12" fill="url(#greenGrad)" stroke="#10B981" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="1470" y="150" text-anchor="middle">Analytics API</text>
+    <text class="card-label" x="1470" y="175" text-anchor="middle">FastAPI</text>
+    <text class="card-label" x="1470" y="195" text-anchor="middle">Real-time metrics</text>
+    <text class="card-label" x="1470" y="210" text-anchor="middle">Chart.js dashboard</text>
   </g>
 
-  <g transform="translate(1260, 190)" filter="url(#iconShadow)">
-    <use href="#i-clients" width="60" height="60"/>
-    <text class="label" x="30" y="80">Client Apps</text>
-    <text class="sublabel" x="30" y="92">Web &amp; Mobile</text>
+  <!-- Monitoring Layer -->
+  <g id="monitoring">
+    <rect x="340" y="320" width="980" height="120" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="830" y="350" text-anchor="middle">AWS CloudWatch Monitoring</text>
+    <text class="card-label" x="500" y="380" text-anchor="middle">Custom metrics</text>
+    <text class="card-label" x="680" y="380" text-anchor="middle">6 production alerts</text>
+    <text class="card-label" x="860" y="380" text-anchor="middle">P50/P95/P99 latency</text>
+    <text class="card-label" x="1060" y="380" text-anchor="middle">Real-time dashboard</text>
+    <text class="card-label" x="830" y="405" text-anchor="middle">Events/sec • Latency • Reliability • Error rate • Resource utilization • Business metrics</text>
   </g>
 
-  <!-- Archive Components -->
-  <g transform="translate(620, 380)" filter="url(#iconShadow)">
-    <use href="#i-firehose" width="60" height="60"/>
-    <text class="label" x="30" y="80">Kinesis Firehose</text>
-    <text class="sublabel" x="30" y="92">Batch Delivery</text>
-  </g>
+  <!-- Data Flow Arrows -->
+  <path d="M280,190 L340,190" stroke="#2563EB" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="310" y="180">Stream</text>
 
-  <g transform="translate(800, 380)" filter="url(#iconShadow)">
-    <use href="#i-s3" width="60" height="60"/>
-    <text class="label" x="30" y="80">S3 Data Lake</text>
-    <text class="sublabel" x="30" y="92">Long-term Storage</text>
-  </g>
+  <path d="M540,190 L600,190" stroke="#2563EB" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="570" y="180">Process</text>
 
-  <!-- Cache Component -->
-  <g transform="translate(1140, 380)" filter="url(#iconShadow)">
-    <use href="#i-dax" width="60" height="60"/>
-    <text class="label" x="30" y="80">DynamoDB DAX</text>
-    <text class="sublabel" x="30" y="92">Microsecond Latency</text>
-  </g>
+  <path d="M800,190 L860,190" stroke="#2563EB" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="830" y="180">Dedupe</text>
 
-  <!-- Support Services -->
-  <g transform="translate(380, 540)" filter="url(#iconShadow)">
-    <use href="#i-cloudwatch" width="60" height="60"/>
-    <text class="label" x="30" y="80">CloudWatch</text>
-    <text class="sublabel" x="30" y="92">Monitoring &amp; Logs</text>
-  </g>
+  <path d="M1060,190 L1120,190" stroke="#2563EB" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="1090" y="180">Store</text>
 
-  <g transform="translate(980, 540)" filter="url(#iconShadow)">
-    <use href="#i-kms" width="60" height="60"/>
-    <text class="label" x="30" y="80">AWS KMS</text>
-    <text class="sublabel" x="30" y="92">Encryption Keys</text>
-  </g>
+  <path d="M1320,190 L1380,190" stroke="#2563EB" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text class="flow-label" x="1350" y="180">Query</text>
 
-  <!-- Primary Data Flow -->
-  <path d="M230,220 L320,220" class="flow-primary"/>
-  <path d="M380,220 L480,220" class="flow-primary"/>
-  <path d="M550,220 L680,220" class="flow-primary"/>
-  <path d="M740,220 L860,220" class="flow-primary"/>
-  <path d="M930,220 L1080,220" class="flow-primary"/>
-  <path d="M1140,220 L1260,220" class="flow-primary"/>
+  <!-- Monitoring connections -->
+  <path d="M440,260 L440,320" stroke="#F59E0B" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+  <path d="M700,260 L700,320" stroke="#F59E0B" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+  <path d="M960,260 L960,320" stroke="#F59E0B" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+  <path d="M1220,260 L1220,320" stroke="#F59E0B" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
 
-  <!-- Archive Branch -->
-  <path d="M515,255 L515,340 L620,340 L620,380" class="flow-aux"/>
-  <path d="M680,410 L800,410" class="flow-aux"/>
+  <!-- Performance Metrics -->
+  <rect x="80" y="480" width="1480" height="140" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2" filter="url(#cardShadow)"/>
+  <text class="section-title" x="820" y="515" text-anchor="middle">System Performance</text>
 
-  <!-- Cache Branch -->
-  <path d="M895,255 L895,340 L1140,340 L1140,380" class="flow-aux"/>
+  <text class="card-title" x="250" y="550" text-anchor="middle">Throughput</text>
+  <text class="card-label" x="250" y="570" text-anchor="middle">375K-418K</text>
+  <text class="card-label" x="250" y="585" text-anchor="middle">events/sec</text>
 
-  <!-- Encryption Lines -->
-  <path d="M1010,540 L895,255" class="flow-encrypt"/>
-  <path d="M1010,540 L515,255" class="flow-encrypt"/>
-  <path d="M1010,540 L830,410" class="flow-encrypt"/>
+  <text class="card-title" x="520" y="550" text-anchor="middle">Latency</text>
+  <text class="card-label" x="520" y="570" text-anchor="middle">Sub-2ms</text>
+  <text class="card-label" x="520" y="585" text-anchor="middle">processing</text>
 
-  <!-- Flow Labels -->
-  <text class="sublabel" x="275" y="210" fill="#2563EB">HTTP/JSON</text>
-  <text class="sublabel" x="430" y="210" fill="#2563EB">Stream</text>
-  <text class="sublabel" x="615" y="210" fill="#2563EB">Process</text>
-  <text class="sublabel" x="800" y="210" fill="#2563EB">Store</text>
-  <text class="sublabel" x="1010" y="210" fill="#2563EB">Query</text>
-  <text class="sublabel" x="1200" y="210" fill="#2563EB">Response</text>
+  <text class="card-title" x="820" y="550" text-anchor="middle">Reliability</text>
+  <text class="card-label" x="820" y="570" text-anchor="middle">99.99%</text>
+  <text class="card-label" x="820" y="585" text-anchor="middle">uptime</text>
 
-  <!-- Performance Indicators -->
-  <circle cx="390" cy="170" r="6" fill="#10B981"/>
-  <text class="sublabel" x="445" y="175" fill="#10B981">High Throughput</text>
-  
-  <circle cx="788" cy="170" r="6" fill="#F59E0B"/>
-  <text class="sublabel" x="825" y="175" fill="#F59E0B">Low Latency</text>
+  <text class="card-title" x="1120" y="550" text-anchor="middle">Architecture</text>
+  <text class="card-label" x="1120" y="570" text-anchor="middle">7 services</text>
+  <text class="card-label" x="1120" y="585" text-anchor="middle">25 workers</text>
+
+  <text class="card-title" x="1390" y="550" text-anchor="middle">Deduplication</text>
+  <text class="card-label" x="1390" y="570" text-anchor="middle">Zero</text>
+  <text class="card-label" x="1390" y="585" text-anchor="middle">duplicates</text>
+
+  <!-- Technology Stack -->
+  <rect x="80" y="660" width="1480" height="140" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2" filter="url(#cardShadow)"/>
+  <text class="section-title" x="820" y="695" text-anchor="middle">Technology Stack</text>
+
+  <text class="card-title" x="200" y="730">Ingestion:</text>
+  <text class="card-label" x="200" y="750">AWS Kinesis • FastAPI</text>
+
+  <text class="card-title" x="520" y="730">Processing:</text>
+  <text class="card-label" x="520" y="750">Python asyncio • 25 workers</text>
+
+  <text class="card-title" x="840" y="730">Cache:</text>
+  <text class="card-label" x="840" y="750">Redis • Pipeline batching</text>
+
+  <text class="card-title" x="1120" y="730">Storage:</text>
+  <text class="card-label" x="1120" y="750">DynamoDB • Batch writes</text>
+
+  <text class="card-title" x="1400" y="730">Monitoring:</text>
+  <text class="card-label" x="1400" y="750">AWS CloudWatch</text>
 </svg>`
   },
   "gpu-training-platform": {
     id: "gpu-training-platform",
     title: "SimpleTrain GPU Training Platform",
-    subtitle: "Cloud & Systems Development",
-    description: "A CLI tool to simplify GPU-intensive model training on a managed Kubernetes cluster, increasing developer productivity by abstracting infrastructure complexities.",
-    detailedDescription: "SimpleTrain is a command-line interface designed to streamline the process of training machine learning models on a Kubernetes-managed GPU cluster. It provides simple commands to start, monitor, and manage training jobs, handling the complexities of Docker image selection, resource allocation, and job lifecycle management in the background.",
-    status: "In Development",
+    subtitle: "Cloud Infrastructure & ML Operations",
+    description: "Production-grade CLI and API platform for GPU-accelerated ML training on Kubernetes. Reduced ML engineer setup time by 75% through automated infrastructure provisioning, unified job management, and real-time monitoring across distributed GPU clusters.",
+    detailedDescription: "SimpleTrain is a comprehensive cloud infrastructure platform that democratizes access to GPU-accelerated machine learning training. Built on Kubernetes with a multi-layered architecture (CLI → REST API → K8s Control Plane → GPU Pods), it abstracts away infrastructure complexity while maintaining fine-grained control. The system features JWT-authenticated Express API gateway, Django-based user management, PostgreSQL metadata persistence, and integrated monitoring with ELK/Prometheus. Engineers submit training jobs via intuitive CLI commands (`simpletrain start`, `simpletrain logs`, `simpletrain list`), which automatically provision GPU pods with custom Docker images, manage resource allocation (CPU/GPU/memory quotas), stream real-time logs, and handle lifecycle orchestration (auto-scaling, cleanup, failure recovery). The platform supports PyTorch, TensorFlow, and custom ML frameworks with configurable presets for common training scenarios.",
+    status: "In Active Development",
     statusColor: "blue",
-    technologies: ["Node.js", "Express", "Kubernetes", "Docker", "PostgreSQL", "JWT", "Django"],
+    technologies: ["Node.js", "Express.js", "Kubernetes", "Docker", "PostgreSQL", "JWT", "Django", "@kubernetes/client-node", "WebSocket", "ELK Stack", "Prometheus", "Grafana"],
     githubUrl: "https://github.com/Sammy-Dabbas/simple-train",
     icon: Server,
     iconGradient: "from-blue-500 to-indigo-600",
-    timeline: "Ongoing",
-    teamSize: "Solo Project",
+    timeline: "4 months (Ongoing)",
+    teamSize: "4-person Team",
     highlights: [
-      "Simplified CLI for complex Kubernetes job management",
-      "Automated Docker image handling and pod creation",
-      "Secure API with JWT-based authentication",
-      "Real-time log streaming from training pods"
+      "Reduced ML engineer job setup time from 30+ minutes to under 5 minutes (75% reduction)",
+      "Built 6-layer cloud architecture: CLI → Express API → JWT Auth → K8s Client → Control Plane → GPU Pods",
+      "Implemented real-time log streaming with WebSocket connections from distributed training pods",
+      "Automated Kubernetes job lifecycle management: provisioning, monitoring, auto-scaling, and cleanup",
+      "Designed secure multi-tenant system with JWT authentication and resource isolation per user"
     ],
     features: [
-      "Start and stop training jobs via CLI",
-      "List all active training jobs",
-      "Stream logs from any running job",
-      "User authentication and authorization",
-      "Persistent job metadata storage",
-      "Automated resource cleanup on job completion"
+      "Intuitive CLI with commands: start, stop, list, logs, status, delete - zero Kubernetes knowledge required",
+      "Automatic GPU pod provisioning with custom Docker image support (PyTorch, TensorFlow, custom frameworks)",
+      "Real-time log streaming from training pods using WebSocket connections and Kubernetes log API",
+      "RESTful API with 4 core endpoints: POST /api/jobs, GET /api/jobs, GET /api/jobs/:name/logs, DELETE /api/jobs/:name",
+      "JWT-based authentication and authorization with Django user management backend",
+      "PostgreSQL metadata store tracking job history, user quotas, resource usage, and training presets",
+      "Configurable resource allocation: CPU cores, GPU count, memory limits, storage volumes per job",
+      "Auto-scaling GPU pod deployment based on queue depth and resource availability",
+      "Integrated monitoring with ELK Stack (log aggregation) and Prometheus/Grafana (metrics dashboards)",
+      "Automated cleanup and resource deallocation on job completion or failure"
     ],
     challenges: [
-      "Interfacing with the Kubernetes API programmatically",
-      "Ensuring secure and isolated multi-tenant job execution",
-      "Managing state and metadata for asynchronous training jobs",
-      "Streaming logs and events efficiently over a web API"
+      "Kubernetes API complexity: Mastering programmatic job creation, pod lifecycle management, and resource quota enforcement using @kubernetes/client-node library",
+      "Real-time log streaming: Implementing efficient WebSocket-based log tailing from distributed pods without overwhelming the API gateway or losing log lines during network interruptions",
+      "Multi-tenant security: Designing resource isolation to prevent users from accessing each other's jobs, logs, or GPU resources while maintaining shared cluster efficiency",
+      "Asynchronous state management: Handling eventual consistency between Kubernetes cluster state, PostgreSQL metadata, and user-facing CLI responses during long-running training jobs",
+      "Error handling and recovery: Building robust failure scenarios for pod crashes, GPU OOM errors, network timeouts, and Kubernetes control plane unavailability",
+      "Docker image management: Supporting custom ML framework images while enforcing security scanning, size limits, and preventing malicious container execution",
+      "Resource contention: Implementing fair scheduling and queue management when GPU demand exceeds cluster capacity",
+      "Authentication flow: Integrating Django session-based auth with stateless JWT tokens for CLI-to-API communication"
     ],
     learnings: [
-      "In-depth Kubernetes API and client library usage",
-      "Designing secure, token-based authentication systems (JWT)",
-      "Building robust and user-friendly CLI tools",
-      "System design for distributed and asynchronous workloads"
+      "Deep expertise in Kubernetes architecture: API server internals, pod scheduling, resource quotas, deployments, services, persistent volumes, and RBAC policies",
+      "Kubernetes client library (@kubernetes/client-node): Programmatic job creation, watch streams for pod events, exec API for log streaming, and batch operations",
+      "JWT authentication design patterns: Token generation, refresh strategies, expiration policies, and secure storage in CLI tools",
+      "Building production-grade CLI tools: Argument parsing, config file management, colorized output, progress indicators, and error reporting",
+      "WebSocket protocols for real-time data streaming: Connection management, reconnection logic, backpressure handling, and graceful degradation",
+      "Distributed systems concepts: Eventual consistency, state reconciliation, idempotency, retry mechanisms, and failure detection",
+      "Docker and containerization: Multi-stage builds, layer optimization, security best practices, and GPU-enabled base images (CUDA, cuDNN)",
+      "System observability: Structured logging (JSON logs), metrics instrumentation (Prometheus client), distributed tracing, and alerting pipelines",
+      "API gateway patterns: Request routing, rate limiting, authentication middleware, error handling, and response serialization",
+      "PostgreSQL schema design for metadata: Indexing strategies for job queries, JSONB for flexible metadata storage, and connection pooling for high throughput"
     ],
-    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900"> 
+    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
   <defs>
-    <!-- Clean gradients -->
-    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:0.06" />
-      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:0.02" />
-    </linearGradient>
-    
-    <linearGradient id="k8sGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#326CE5;stop-opacity:0.04" />
-      <stop offset="100%" style="stop-color:#326CE5;stop-opacity:0.01" />
-    </linearGradient>
-    
-    <linearGradient id="apiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#E3F2FD;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#E3F2FD;stop-opacity:0.2" />
-    </linearGradient>
-    
-    <linearGradient id="workloadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#E8F5E9;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#E8F5E9;stop-opacity:0.2" />
-    </linearGradient>
-    
-    <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFF3E0;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#FFF3E0;stop-opacity:0.2" />
+    <linearGradient id="gpuBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
     </linearGradient>
 
-    <linearGradient id="auxGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#E8F5E9;stop-opacity:0.4" />
-      <stop offset="100%" style="stop-color:#E8F5E9;stop-opacity:0.1" />
+    <linearGradient id="gpuIndigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4338CA;stop-opacity:1" />
     </linearGradient>
 
-    <!-- Clean shadow filter -->
-    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
-    </filter>
-    
-    <filter id="iconShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+    <linearGradient id="gpuGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="gpuYellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="gpuShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
     </filter>
 
-    <!-- Clean arrow markers -->
-    <marker id="primaryArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#2563EB" />
-    </marker>
-    
-    <marker id="k8sArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#326CE5" />
-    </marker>
-    
-    <marker id="auxArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#10B981" />
-    </marker>
-    
-    <marker id="dataArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#F59E0B" />
+    <marker id="gpuArrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#3B82F6" />
     </marker>
 
-    <!-- Clean, minimal icons -->
-    <symbol id="i-cli" viewBox="0 0 48 48">
-      <rect x="4" y="10" width="40" height="28" rx="4" fill="#000" stroke="#2563EB" stroke-width="2"/>
-      <text x="8" y="20" fill="#00FF00" font-family="monospace" font-size="8">$</text>
-      <text x="12" y="20" fill="#00FF00" font-family="monospace" font-size="6">simpletrain</text>
-      <rect x="6" y="30" width="8" height="1" fill="#00FF00"/>
-      <rect x="6" y="32" width="12" height="1" fill="#00FF00"/>
-    </symbol>
-    
-    <symbol id="i-django" viewBox="0 0 48 48">
-      <rect x="4" y="8" width="40" height="32" rx="4" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <rect x="10" y="14" width="28" height="4" fill="#10B981" rx="2"/>
-      <rect x="10" y="20" width="22" height="3" fill="#34D399" rx="1.5"/>
-      <rect x="10" y="26" width="18" height="3" fill="#6EE7B7" rx="1.5"/>
-      <circle cx="38" cy="17" r="2" fill="#EF4444"/>
-      <path d="M16 32 Q24 28 32 32" fill="none" stroke="#10B981" stroke-width="2"/>
-    </symbol>
-    
-    <symbol id="i-express" viewBox="0 0 48 48">
-      <rect x="4" y="10" width="40" height="28" rx="4" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="10" y="16" width="28" height="3" fill="#2563EB" rx="1.5"/>
-      <rect x="10" y="22" width="22" height="3" fill="#93C5FD" rx="1.5"/>
-      <rect x="10" y="28" width="16" height="3" fill="#DBEAFE" rx="1.5"/>
-      <circle cx="38" cy="17" r="1.5" fill="#10B981"/>
-      <text x="12" y="35" fill="#2563EB" font-family="monospace" font-size="6">API</text>
-    </symbol>
-    
-    <symbol id="i-jwt" viewBox="0 0 48 48">
-      <rect x="12" y="18" width="24" height="12" rx="4" fill="#fff" stroke="#F59E0B" stroke-width="2"/>
-      <path d="M18 18 L18 12 Q18 8 24 8 Q30 8 30 12 L30 18" fill="none" stroke="#F59E0B" stroke-width="2"/>
-      <circle cx="24" cy="24" r="2" fill="#F59E0B"/>
-      <text x="14" y="40" fill="#F59E0B" font-family="monospace" font-size="6">JWT</text>
-    </symbol>
-    
-    <symbol id="i-k8s" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="18" fill="#fff" stroke="#326CE5" stroke-width="2"/>
-      <circle cx="24" cy="24" r="3" fill="#326CE5"/>
-      <path d="M24 10 L28 18 L24 24 L20 18 Z" fill="#326CE5"/>
-      <path d="M38 24 L30 28 L24 24 L30 20 Z" fill="#326CE5"/>
-      <path d="M24 38 L20 30 L24 24 L28 30 Z" fill="#326CE5"/>
-      <path d="M10 24 L18 20 L24 24 L18 28 Z" fill="#326CE5"/>
-    </symbol>
-    
-    <symbol id="i-pod" viewBox="0 0 48 48">
-      <rect x="8" y="12" width="32" height="24" rx="4" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <rect x="12" y="16" width="8" height="6" fill="#E8F5E9" stroke="#10B981" stroke-width="1" rx="1"/>
-      <rect x="28" y="16" width="8" height="6" fill="#E8F5E9" stroke="#10B981" stroke-width="1" rx="1"/>
-      <rect x="12" y="26" width="24" height="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1" rx="1"/>
-      <text x="18" y="30" fill="#F59E0B" font-family="monospace" font-size="6">GPU</text>
-    </symbol>
-    
-    <symbol id="i-postgres" viewBox="0 0 48 48">
-      <ellipse cx="24" cy="14" rx="19" ry="8" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="6" y="14" width="37" height="20" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <ellipse cx="24" cy="35" rx="19" ry="8" fill="#fff" stroke="#2563EB" stroke-width="2"/>
-      <rect x="10" y="20" width="29" height="2" fill="#2563EB" rx="1"/>
-      <rect x="10" y="26" width="29" height="2" fill="#2563EB" rx="1"/>
-      <text x="9" y="37" fill="#2563EB" font-family="monospace" font-size="6">PostgreSQL</text>
-    </symbol>
-    
-    <symbol id="i-logs" viewBox="0 0 48 48">
-      <rect x="4" y="8" width="40" height="32" rx="4" fill="#fff" stroke="#10B981" stroke-width="2"/>
-      <rect x="8" y="14" width="32" height="2" fill="#10B981" rx="1"/>
-      <rect x="8" y="18" width="28" height="2" fill="#34D399" rx="1"/>
-      <rect x="8" y="22" width="24" height="2" fill="#6EE7B7" rx="1"/>
-      <rect x="8" y="26" width="30" height="2" fill="#10B981" rx="1"/>
-      <rect x="8" y="30" width="26" height="2" fill="#34D399" rx="1"/>
-      <rect x="8" y="34" width="20" height="2" fill="#6EE7B7" rx="1"/>
-    </symbol>
-    
-    <symbol id="i-metrics" viewBox="0 0 48 48">
-      <rect x="4" y="8" width="40" height="32" rx="4" fill="#fff" stroke="#F59E0B" stroke-width="2"/>
-      <path d="M8 32 L12 28 L16 30 L20 24 L24 26 L28 20 L32 18 L36 22 L40 16" 
-            fill="none" stroke="#F59E0B" stroke-width="2"/>
-      <circle cx="12" cy="28" r="1.5" fill="#F59E0B"/>
-      <circle cx="20" cy="24" r="1.5" fill="#F59E0B"/>
-      <circle cx="28" cy="20" r="1.5" fill="#F59E0B"/>
-      <circle cx="36" cy="22" r="1.5" fill="#F59E0B"/>
-    </symbol>
+    <marker id="gpuArrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#10B981" />
+    </marker>
+
+    <marker id="gpuArrowYellow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#F59E0B" />
+    </marker>
   </defs>
 
   <style>
-    .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; fill: #1F2937; }
-    .zone-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; font-weight: 600; text-anchor: middle; fill: #374151; }
-    .label { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; font-weight: 500; text-anchor: middle; fill: #374151; }
-    .sublabel { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10px; text-anchor: middle; fill: #6B7280; }
-    .flow-primary { fill: none; stroke: #2563EB; stroke-width: 2.5; marker-end: url(#primaryArrow); }
-    .flow-k8s { fill: none; stroke: #326CE5; stroke-width: 2.5; marker-end: url(#k8sArrow); }
-    .flow-aux { fill: none; stroke: #10B981; stroke-width: 2.5; stroke-dasharray: 6 3; marker-end: url(#auxArrow); }
-    .flow-data { fill: none; stroke: #F59E0B; stroke-width: 2; stroke-dasharray: 4 2; marker-end: url(#dataArrow); }
-    .container { fill: none; stroke: #D1D5DB; stroke-width: 1.5; stroke-dasharray: 8 4; }
-    .zone-api { fill: url(#apiGradient); stroke: #2563EB; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
-    .zone-workload { fill: url(#workloadGradient); stroke: #10B981; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
-    .zone-data { fill: url(#dataGradient); stroke: #F59E0B; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
-    .zone-aux { fill: url(#auxGradient); stroke: #10B981; stroke-width: 1.5; stroke-dasharray: 6 3; rx: 12; }
+    .gpu-title { font: 700 24px 'Segoe UI', sans-serif; fill: #1F2937; }
+    .gpu-section-title { font: 600 16px 'Segoe UI', sans-serif; fill: #374151; }
+    .gpu-layer-title { font: 600 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+    .gpu-label { font: 500 13px 'Segoe UI', sans-serif; fill: #1F2937; }
+    .gpu-sublabel { font: 400 11px 'Segoe UI', sans-serif; fill: #6B7280; }
+    .gpu-metric-label { font: 600 12px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+    .gpu-metric-value { font: 700 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
   </style>
 
-  <!-- Cloud Container -->
-  <rect x="50" y="50" width="1500" height="800" fill="url(#cloudGradient)" stroke="#2563EB" stroke-width="2" rx="16" filter="url(#cardShadow)"/>
-  <text class="title" x="800" y="75" fill="#2563EB">SimpleTrain System Architecture</text>
+  <!-- Background -->
+  <rect width="1600" height="1000" fill="#F9FAFB"/>
 
-  <!-- Kubernetes Cluster Container -->
-  <rect x="90" y="100" width="1420" height="720" fill="url(#k8sGradient)" class="container" rx="12"/>
-  <text class="zone-title" x="800" y="125" fill="#326CE5">Kubernetes Cluster</text>
+  <!-- Title -->
+  <text x="800" y="40" text-anchor="middle" class="gpu-title">SimpleTrain GPU Training Platform Architecture</text>
 
-  <!-- API Layer Zone -->
-  <rect x="130" y="150" width="1340" height="120" class="zone-api"/>
-  <text class="zone-title" x="246" y="175" fill="#2563EB">API Layer</text>
+  <!-- Layer 1: CLI & Client -->
+  <rect x="80" y="90" width="220" height="180" rx="12" fill="url(#gpuBlueGrad)" filter="url(#gpuShadow)"/>
+  <text x="190" y="115" text-anchor="middle" class="gpu-layer-title">CLI Layer</text>
 
-  <!-- Workload Zone -->
-  <rect x="130" y="300" width="900" height="200" class="zone-workload"/>
-  <text class="zone-title" x="210" y="325" fill="#10B981">Training Workloads</text>
+  <rect x="105" y="135" width="170" height="110" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="190" y="160" text-anchor="middle" class="gpu-label">SimpleTrain CLI</text>
+  <text x="190" y="178" text-anchor="middle" class="gpu-sublabel">simpletrain start</text>
+  <text x="190" y="193" text-anchor="middle" class="gpu-sublabel">simpletrain logs</text>
+  <text x="190" y="208" text-anchor="middle" class="gpu-sublabel">simpletrain list</text>
+  <text x="190" y="223" text-anchor="middle" class="gpu-sublabel">simpletrain delete</text>
 
-  <!-- Data and Support Zone -->
-  <rect x="1080" y="300" width="390" height="200" class="zone-data"/>
-  <text class="zone-title" x="1160" y="325" fill="#F59E0B">Data and Support</text>
+  <!-- Layer 2: API Gateway -->
+  <rect x="360" y="90" width="220" height="180" rx="12" fill="url(#gpuIndigoGrad)" filter="url(#gpuShadow)"/>
+  <text x="470" y="115" text-anchor="middle" class="gpu-layer-title">API Gateway</text>
 
-  <!-- Monitoring Zone -->
-  <rect x="130" y="540" width="650" height="120" class="zone-aux"/>
-  <text class="zone-title" x="210" y="565" fill="#10B981">Monitoring and Logs</text>
+  <rect x="385" y="135" width="170" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="470" y="155" text-anchor="middle" class="gpu-label">Express.js API</text>
+  <text x="470" y="173" text-anchor="middle" class="gpu-sublabel">Node.js Runtime</text>
 
-  <!-- Client Interface -->
-  <g transform="translate(120, 50)" filter="url(#iconShadow)">
-    <use href="#i-cli" width="60" height="60"/>
-    <text class="label" x="20" y="75">CLI Interface</text>
-    <text class="sublabel" x="20" y="87">simpletrain/cli</text>
-  </g>
+  <rect x="385" y="195" width="170" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="470" y="215" text-anchor="middle" class="gpu-label">JWT Auth</text>
+  <text x="470" y="233" text-anchor="middle" class="gpu-sublabel">Token Verification</text>
 
-  <!-- API Layer Components -->
-  <g transform="translate(170, 185)" filter="url(#iconShadow)">
-    <use href="#i-django" width="60" height="60"/>
-    <text class="label" x="30" y="70">Django Auth</text>
-    <text class="sublabel" x="30" y="82">User Management</text>
-  </g>
+  <!-- Layer 3: Authentication Service -->
+  <rect x="640" y="90" width="220" height="180" rx="12" fill="url(#gpuGreenGrad)" filter="url(#gpuShadow)"/>
+  <text x="750" y="115" text-anchor="middle" class="gpu-layer-title">Auth Service</text>
 
-  <g transform="translate(320, 185)" filter="url(#iconShadow)">
-    <use href="#i-express" width="60" height="60"/>
-    <text class="label" x="30" y="70">Express API</text>
-    <text class="sublabel" x="30" y="82">Gateway</text>
-  </g>
+  <rect x="665" y="135" width="170" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="750" y="155" text-anchor="middle" class="gpu-label">Django Backend</text>
+  <text x="750" y="173" text-anchor="middle" class="gpu-sublabel">User Management</text>
 
-  <g transform="translate(470, 185)" filter="url(#iconShadow)">
-    <use href="#i-jwt" width="60" height="60"/>
-    <text class="label" x="30" y="70">JWT Middleware</text>
-    <text class="sublabel" x="30" y="82">Auth Verification</text>
-  </g>
+  <rect x="665" y="195" width="170" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="750" y="215" text-anchor="middle" class="gpu-label">PostgreSQL</text>
+  <text x="750" y="233" text-anchor="middle" class="gpu-sublabel">User DB</text>
 
-  <g transform="translate(620, 185)" filter="url(#iconShadow)">
-    <use href="#i-k8s" width="60" height="70"/>
-    <text class="label" x="30" y="72">K8s Client</text>
-    <text class="sublabel" x="30" y="82">@kubernetes/client</text>
-  </g>
+  <!-- Layer 4: Kubernetes Client -->
+  <rect x="920" y="90" width="220" height="180" rx="12" fill="url(#gpuBlueGrad)" filter="url(#gpuShadow)"/>
+  <text x="1030" y="115" text-anchor="middle" class="gpu-layer-title">K8s Interface</text>
 
-  <!-- Kubernetes Control Plane -->
-  <g transform="translate(900, 185)" filter="url(#iconShadow)">
-    <use href="#i-k8s" width="80" height="80"/>
-    <text class="label" x="55" y="98">K8s Control Plane</text>
-    <text class="sublabel" x="45" y="125">API Server</text>
-  </g>
+  <rect x="945" y="135" width="170" height="110" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1030" y="160" text-anchor="middle" class="gpu-label">@kubernetes/client-node</text>
+  <text x="1030" y="178" text-anchor="middle" class="gpu-sublabel">Job Creation</text>
+  <text x="1030" y="193" text-anchor="middle" class="gpu-sublabel">Pod Management</text>
+  <text x="1030" y="208" text-anchor="middle" class="gpu-sublabel">Log Streaming</text>
+  <text x="1030" y="223" text-anchor="middle" class="gpu-sublabel">Resource Allocation</text>
 
-  <!-- Training Workloads -->
-  <g transform="translate(170, 340)" filter="url(#iconShadow)">
-    <use href="#i-pod" width="70" height="70"/>
-    <text class="label" x="35" y="85">GPU Training Pod</text>
-    <text class="sublabel" x="35" y="97">PyTorch/TensorFlow</text>
-  </g>
+  <!-- Layer 5: Kubernetes Control Plane -->
+  <rect x="1200" y="90" width="320" height="180" rx="12" fill="url(#gpuIndigoGrad)" filter="url(#gpuShadow)"/>
+  <text x="1360" y="115" text-anchor="middle" class="gpu-layer-title">Kubernetes Control Plane</text>
 
-  <g transform="translate(300, 340)" filter="url(#iconShadow)">
-    <use href="#i-pod" width="70" height="70"/>
-    <text class="label" x="35" y="85">GPU Training Pod</text>
-    <text class="sublabel" x="35" y="97">Custom Images</text>
-  </g>
+  <rect x="1225" y="135" width="135" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1292" y="155" text-anchor="middle" class="gpu-label">API Server</text>
+  <text x="1292" y="173" text-anchor="middle" class="gpu-sublabel">Resource API</text>
 
-  <g transform="translate(430, 340)" filter="url(#iconShadow)">
-    <use href="#i-pod" width="70" height="70"/>
-    <text class="label" x="35" y="85">GPU Training Pod</text>
-    <text class="sublabel" x="35" y="97">Auto-scaling</text>
-  </g>
+  <rect x="1380" y="135" width="115" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1437" y="155" text-anchor="middle" class="gpu-label">Scheduler</text>
+  <text x="1437" y="173" text-anchor="middle" class="gpu-sublabel">Pod Placement</text>
 
-  <!-- Job Management -->
-  <g transform="translate(600, 340)" filter="url(#iconShadow)">
-    <use href="#i-k8s" width="60" height="60"/>
-    <text class="label" x="30" y="75">Deployments</text>
-    <text class="sublabel" x="30" y="87">Job Orchestration</text>
-  </g>
+  <rect x="1225" y="195" width="135" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1292" y="215" text-anchor="middle" class="gpu-label">Controller</text>
+  <text x="1292" y="233" text-anchor="middle" class="gpu-sublabel">Job Orchestration</text>
 
-  <g transform="translate(750, 340)" filter="url(#iconShadow)">
-    <use href="#i-k8s" width="60" height="60"/>
-    <text class="label" x="30" y="75">Services</text>
-    <text class="sublabel" x="30" y="87">Network Access</text>
-  </g>
+  <rect x="1380" y="195" width="115" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1437" y="215" text-anchor="middle" class="gpu-label">etcd</text>
+  <text x="1437" y="233" text-anchor="middle" class="gpu-sublabel">State Store</text>
 
-  <!-- Data and Support -->
-  <g transform="translate(1120, 340)" filter="url(#iconShadow)">
-    <use href="#i-postgres" width="70" height="70"/>
-    <text class="label" x="35" y="85">PostgreSQL</text>
-    <text class="sublabel" x="35" y="97">Metadata Store</text>
-  </g>
+  <!-- Arrows Layer 1-5 -->
+  <line x1="300" y1="180" x2="360" y2="180" stroke="#3B82F6" stroke-width="3" marker-end="url(#gpuArrowBlue)"/>
+  <line x1="580" y1="180" x2="640" y2="180" stroke="#6366F1" stroke-width="3" marker-end="url(#gpuArrowBlue)"/>
+  <line x1="860" y1="180" x2="920" y2="180" stroke="#10B981" stroke-width="3" marker-end="url(#gpuArrowGreen)"/>
+  <line x1="1140" y1="180" x2="1200" y2="180" stroke="#3B82F6" stroke-width="3" marker-end="url(#gpuArrowBlue)"/>
 
-  <g transform="translate(1280, 340)" filter="url(#iconShadow)">
-    <use href="#i-django" width="60" height="60"/>
-    <text class="label" x="30" y="75">Django ORM</text>
-    <text class="sublabel" x="30" y="87">Data Layer</text>
-  </g>
+  <!-- GPU Training Pods Section -->
+  <rect x="80" y="320" width="1440" height="280" rx="12" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2"/>
+  <text x="800" y="350" text-anchor="middle" class="gpu-section-title">GPU Training Pods (Kubernetes Cluster)</text>
 
-  <!-- Monitoring -->
-  <g transform="translate(170, 575)" filter="url(#iconShadow)">
-    <use href="#i-logs" width="60" height="60"/>
-    <text class="label" x="15" y="65">Log Aggregator</text>
-    <text class="sublabel" x="15" y="79">ELK/CloudWatch</text>
-  </g>
+  <!-- Pod 1 -->
+  <rect x="120" y="380" width="200" height="180" rx="10" fill="url(#gpuGreenGrad)" filter="url(#gpuShadow)"/>
+  <text x="220" y="405" text-anchor="middle" class="gpu-layer-title">Training Pod 1</text>
+  <rect x="140" y="420" width="160" height="45" rx="6" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="220" y="438" text-anchor="middle" class="gpu-label">PyTorch Container</text>
+  <text x="220" y="453" text-anchor="middle" class="gpu-sublabel">python:3.10-cuda12.1</text>
+  <rect x="140" y="475" width="160" height="70" rx="6" fill="#FEF3C7"/>
+  <text x="220" y="495" text-anchor="middle" class="gpu-label">GPU Resources</text>
+  <text x="220" y="510" text-anchor="middle" class="gpu-sublabel">NVIDIA A100 40GB</text>
+  <text x="220" y="525" text-anchor="middle" class="gpu-sublabel">4 CPU cores</text>
+  <text x="220" y="540" text-anchor="middle" class="gpu-sublabel">32GB RAM</text>
 
-  <g transform="translate(320, 575)" filter="url(#iconShadow)">
-    <use href="#i-metrics" width="60" height="60"/>
-    <text class="label" x="30" y="70">Metrics</text>
-    <text class="sublabel" x="43" y="80">Prometheus/Grafana</text>
-  </g>
+  <!-- Pod 2 -->
+  <rect x="360" y="380" width="200" height="180" rx="10" fill="url(#gpuGreenGrad)" filter="url(#gpuShadow)"/>
+  <text x="460" y="405" text-anchor="middle" class="gpu-layer-title">Training Pod 2</text>
+  <rect x="380" y="420" width="160" height="45" rx="6" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="460" y="438" text-anchor="middle" class="gpu-label">TensorFlow Container</text>
+  <text x="460" y="453" text-anchor="middle" class="gpu-sublabel">tensorflow:2.14-gpu</text>
+  <rect x="380" y="475" width="160" height="70" rx="6" fill="#FEF3C7"/>
+  <text x="460" y="495" text-anchor="middle" class="gpu-label">GPU Resources</text>
+  <text x="460" y="510" text-anchor="middle" class="gpu-sublabel">NVIDIA V100 32GB</text>
+  <text x="460" y="525" text-anchor="middle" class="gpu-sublabel">4 CPU cores</text>
+  <text x="460" y="540" text-anchor="middle" class="gpu-sublabel">32GB RAM</text>
 
-  <!-- Primary Flow: Authentication and Job Creation -->
-  <path d="M163,80 L200,185" class="flow-primary"/>
-  <path d="M230,215 L320,215" class="flow-primary"/>
-  <path d="M380,215 L470,215" class="flow-primary"/>
-  <path d="M530,215 L620,215" class="flow-primary"/>
-  <path d="M680,215 L900,215" class="flow-k8s"/>
+  <!-- Pod 3 -->
+  <rect x="600" y="380" width="200" height="180" rx="10" fill="url(#gpuGreenGrad)" filter="url(#gpuShadow)"/>
+  <text x="700" y="405" text-anchor="middle" class="gpu-layer-title">Training Pod 3</text>
+  <rect x="620" y="420" width="160" height="45" rx="6" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="700" y="438" text-anchor="middle" class="gpu-label">Custom Container</text>
+  <text x="700" y="453" text-anchor="middle" class="gpu-sublabel">user/custom-ml:latest</text>
+  <rect x="620" y="475" width="160" height="70" rx="6" fill="#FEF3C7"/>
+  <text x="700" y="495" text-anchor="middle" class="gpu-label">GPU Resources</text>
+  <text x="700" y="510" text-anchor="middle" class="gpu-sublabel">NVIDIA A100 80GB</text>
+  <text x="700" y="525" text-anchor="middle" class="gpu-sublabel">8 CPU cores</text>
+  <text x="700" y="540" text-anchor="middle" class="gpu-sublabel">64GB RAM</text>
 
-  <!-- Kubernetes Operations -->
-  <path d="M940,245 L630,340" class="flow-k8s"/>
-  <path d="M940,245 L780,340" class="flow-k8s"/>
-  <path d="M940,245 L205,340" class="flow-k8s"/>
-  <path d="M940,245 L335,340" class="flow-k8s"/>
-  <path d="M940,245 L465,340" class="flow-k8s"/>
+  <!-- Pod N (Auto-scaled) -->
+  <rect x="840" y="380" width="200" height="180" rx="10" fill="url(#gpuGreenGrad)" fill-opacity="0.5" stroke="#10B981" stroke-width="3" stroke-dasharray="10,5"/>
+  <text x="940" y="405" text-anchor="middle" class="gpu-layer-title" fill-opacity="0.7">Training Pod N</text>
+  <text x="940" y="470" text-anchor="middle" class="gpu-label" fill-opacity="0.7">(Auto-scaled)</text>
+  <text x="940" y="490" text-anchor="middle" class="gpu-sublabel" fill-opacity="0.7">Dynamically provisioned</text>
+  <text x="940" y="505" text-anchor="middle" class="gpu-sublabel" fill-opacity="0.7">based on demand</text>
 
-  <!-- Data Flow -->
-  <path d="M1310,185 L1310,340" class="flow-data"/>
-  <path d="M1155,340 L1280,340" class="flow-data"/>
+  <!-- Monitoring Stack -->
+  <rect x="1080" y="380" width="200" height="85" rx="8" fill="url(#gpuYellowGrad)" filter="url(#gpuShadow)"/>
+  <text x="1180" y="403" text-anchor="middle" class="gpu-layer-title">ELK Stack</text>
+  <text x="1180" y="425" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Log Aggregation</text>
+  <text x="1180" y="440" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Elasticsearch</text>
+  <text x="1180" y="455" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Kibana Dashboards</text>
 
-  <!-- Monitoring Flow -->
-  <path d="M205,445 L205,545" class="flow-aux"/>
-  <path d="M335,445 L335,575" class="flow-aux"/>
-  <path d="M465,445 L350,575" class="flow-aux"/>
+  <rect x="1320" y="380" width="200" height="85" rx="8" fill="url(#gpuYellowGrad)" filter="url(#gpuShadow)"/>
+  <text x="1420" y="403" text-anchor="middle" class="gpu-layer-title">Prometheus</text>
+  <text x="1420" y="425" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Metrics Collection</text>
+  <text x="1420" y="440" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Grafana Visualization</text>
+  <text x="1420" y="455" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Alert Manager</text>
 
-  <!-- Response Flow (dashed back) -->
-  <path d="M900,225 L680,225" class="flow-k8s" stroke-dasharray="6 3" opacity="0.6"/>
-  <path d="M620,225 L530,225" class="flow-primary" stroke-dasharray="6 3" opacity="0.6"/>
-  <path d="M470,225 L380,225" class="flow-primary" stroke-dasharray="6 3" opacity="0.6"/>
-  <path d="M320,225 L230,225" class="flow-primary" stroke-dasharray="6 3" opacity="0.6"/>
-  <path d="M200,225 L150,90" class="flow-primary" stroke-dasharray="6 3" opacity="0.6"/>
+  <!-- WebSocket Connections -->
+  <rect x="1080" y="485" width="440" height="70" rx="8" fill="#FFFFFF" stroke="#6366F1" stroke-width="2"/>
+  <text x="1300" y="510" text-anchor="middle" class="gpu-label">WebSocket Connections</text>
+  <text x="1300" y="528" text-anchor="middle" class="gpu-sublabel">Real-time log streaming from pods</text>
+  <text x="1300" y="543" text-anchor="middle" class="gpu-sublabel">Bidirectional communication channel</text>
 
-  <!-- Flow Labels -->
-  <text class="sublabel" x="215" y="140" fill="#2563EB">Login/Auth</text>
-  <text class="sublabel" x="275" y="205" fill="#2563EB">JWT Token</text>
-  <text class="sublabel" x="425" y="205" fill="#2563EB">Verify</text>
-  <text class="sublabel" x="575" y="205" fill="#2563EB">K8s API</text>
-  <text class="sublabel" x="790" y="205" fill="#326CE5">Job Request</text>
+  <!-- Arrows from K8s to Pods -->
+  <line x1="1360" y1="270" x2="220" y2="380" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#gpuArrowBlue)" opacity="0.7"/>
+  <line x1="1360" y1="270" x2="460" y2="380" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#gpuArrowBlue)" opacity="0.7"/>
+  <line x1="1360" y1="270" x2="700" y2="380" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#gpuArrowBlue)" opacity="0.7"/>
+  <line x1="1360" y1="270" x2="940" y2="380" stroke="#3B82F6" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#gpuArrowBlue)" opacity="0.5"/>
 
-  <!-- API Endpoints -->
-  <text class="sublabel" x="350" y="165" fill="#2563EB">POST /api/jobs</text>
-  <text class="sublabel" x="450" y="165" fill="#2563EB">GET /api/jobs</text>
-  <text class="sublabel" x="580" y="165" fill="#2563EB">GET /api/jobs/:name/logs</text>
-  <text class="sublabel" x="720" y="165" fill="#2563EB">DELETE /api/jobs/:name</text>
+  <!-- Arrows from Pods to Monitoring -->
+  <line x1="320" y1="470" x2="1080" y2="420" stroke="#F59E0B" stroke-width="2" marker-end="url(#gpuArrowYellow)" opacity="0.6"/>
+  <line x1="560" y1="470" x2="1080" y2="430" stroke="#F59E0B" stroke-width="2" marker-end="url(#gpuArrowYellow)" opacity="0.6"/>
+  <line x1="800" y1="470" x2="1320" y2="430" stroke="#F59E0B" stroke-width="2" marker-end="url(#gpuArrowYellow)" opacity="0.6"/>
 
-  <!-- Performance Indicators -->
-  <circle cx="520" cy="140" r="6" fill="#10B981"/>
-  <text class="sublabel" x="580" y="145" fill="#10B981">JWT Secured</text>
-  
-  <circle cx="750" cy="140" r="6" fill="#F59E0B"/>
-  <text class="sublabel" x="820" y="145" fill="#F59E0B">GPU Optimized</text>
+  <!-- Performance Metrics Section -->
+  <rect x="80" y="650" width="1440" height="130" rx="12" fill="#1F2937" filter="url(#gpuShadow)"/>
+  <text x="800" y="680" text-anchor="middle" class="gpu-section-title" fill="#FFFFFF">Platform Performance Metrics</text>
 
-  <circle cx="1000" cy="140" r="6" fill="#326CE5"/>
-  <text class="sublabel" x="1080" y="145" fill="#326CE5">Auto-scaling</text>
+  <rect x="120" y="700" width="260" height="60" rx="8" fill="#3B82F6"/>
+  <text x="250" y="720" text-anchor="middle" class="gpu-metric-label">Setup Time Reduction</text>
+  <text x="250" y="745" text-anchor="middle" class="gpu-metric-value">75% faster (30min → 5min)</text>
 
-  <!-- Additional Labels -->
-  <text class="sublabel" x="940" y="325" fill="#326CE5">Creates Pods</text>
-  <text class="sublabel" x="940" y="340" fill="#326CE5">Manages Resources</text>
-  <text class="sublabel" x="940" y="360" fill="#326CE5">Fetches Logs</text>
+  <rect x="410" y="700" width="260" height="60" rx="8" fill="#10B981"/>
+  <text x="540" y="720" text-anchor="middle" class="gpu-metric-label">CLI Commands</text>
+  <text x="540" y="745" text-anchor="middle" class="gpu-metric-value">6 core operations</text>
 
-  <text class="sublabel" x="1220" y="380" fill="#F59E0B">User Data</text>
-  <text class="sublabel" x="1220" y="395" fill="#F59E0B">Job Metadata</text>
-  <text class="sublabel" x="1220" y="410" fill="#F59E0B">Presets</text>
+  <rect x="700" y="700" width="260" height="60" rx="8" fill="#6366F1"/>
+  <text x="830" y="720" text-anchor="middle" class="gpu-metric-label">Real-time Streaming</text>
+  <text x="830" y="745" text-anchor="middle" class="gpu-metric-value">WebSocket + K8s Log API</text>
 
-  <text class="sublabel" x="270" y="620" fill="#10B981">Training Logs</text>
-  <text class="sublabel" x="270" y="635" fill="#10B981">System Metrics</text>
-  <text class="sublabel" x="273" y="650" fill="#10B981">Performance Data</text>
+  <rect x="990" y="700" width="260" height="60" rx="8" fill="#F59E0B"/>
+  <text x="1120" y="720" text-anchor="middle" class="gpu-metric-label">Security Model</text>
+  <text x="1120" y="745" text-anchor="middle" class="gpu-metric-value">JWT + Multi-tenant Isolation</text>
+
+  <rect x="1280" y="700" width="240" height="60" rx="8" fill="#8B5CF6"/>
+  <text x="1400" y="720" text-anchor="middle" class="gpu-metric-label">Supported Frameworks</text>
+  <text x="1400" y="745" text-anchor="middle" class="gpu-metric-value">PyTorch • TensorFlow • Custom</text>
+
+  <!-- Technology Stack Section -->
+  <rect x="80" y="820" width="1440" height="130" rx="12" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+  <text x="800" y="850" text-anchor="middle" class="gpu-section-title">Technology Stack</text>
+
+  <text x="180" y="880" class="gpu-label">Backend:</text>
+  <text x="180" y="900" class="gpu-sublabel">Node.js • Express.js • Django • PostgreSQL</text>
+  <text x="180" y="920" class="gpu-sublabel">JWT • WebSocket • @kubernetes/client-node</text>
+
+  <text x="700" y="880" class="gpu-label">Infrastructure:</text>
+  <text x="700" y="900" class="gpu-sublabel">Kubernetes • Docker • NVIDIA GPU (A100/V100)</text>
+  <text x="700" y="920" class="gpu-sublabel">CUDA 12.1 • cuDNN • Multi-stage Builds</text>
+
+  <text x="1200" y="880" class="gpu-label">Monitoring:</text>
+  <text x="1200" y="900" class="gpu-sublabel">ELK Stack (Elasticsearch/Kibana)</text>
+  <text x="1200" y="920" class="gpu-sublabel">Prometheus • Grafana • AlertManager</text>
 </svg>`
   },
   "portfolio-website": {
@@ -1199,6 +876,287 @@ const projectsData: { [key: string]: ProjectData } = {
       "Building a responsive website with Tailwind CSS"
     ],
     architectureSvg: undefined
+  },
+  "facebook-farm-analytics": {
+    id: "facebook-farm-analytics",
+    title: "Facebook Farm Analytics Platform",
+    subtitle: "Research Project",
+    description: "Built a production-grade social media analytics system with dual-pipeline architecture. Static scraper collected historical data from 168 farms, while dynamic scraper provides real-time 54-point lifecycle tracking for 32 active farms on Raspberry Pi 5.",
+    detailedDescription: "A comprehensive social media analytics platform for agricultural research, conducted under faculty supervision with a collaborative research team. Built complete data collection infrastructure including: (1) Static scraper collecting historical post data (May 2024-2025) from 168 farms across crop, dairy, meat, and value-added categories, and (2) Dynamic scraper monitoring 32 active farms via Facebook Graph API with 15-minute polling and 54-point lifecycle tracking. Deployed on Raspberry Pi 5 with automated systemd services, Flask dashboard, and Google Drive backups. The ML analytics and research insights are developed collaboratively with the research team.",
+    status: "Research Project",
+    statusColor: "emerald",
+    technologies: ["Python", "Flask", "Facebook Graph API", "Plotly", "TextBlob", "Raspberry Pi 5", "systemd", "rclone", "Pandas", "scikit-learn"],
+    githubUrl: "https://github.com/Sammy-Dabbas",
+    icon: Database,
+    iconGradient: "from-emerald-500 to-green-500",
+    timeline: "6+ months",
+    teamSize: "Research Team (Faculty-supervised)",
+    highlights: [
+      "Built dual-pipeline data collection infrastructure: Static (168 farms) + Dynamic (32 farms) scrapers",
+      "Designed and deployed 54-point lifecycle tracking system with adaptive sampling strategy",
+      "Implemented production-grade Raspberry Pi 5 deployment with 24/7 systemd orchestration",
+      "Developed automated data processing pipeline with Google Drive backup integration",
+      "Contributing to collaborative ML analytics and agricultural social media research"
+    ],
+    features: [
+      "Static Scraper (Individual): Collected historical posts (May 2024-2025) from 168 farms with full engagement metrics",
+      "Dynamic Scraper (Individual): Real-time monitoring of 32 active farms via Facebook Graph API v23.0",
+      "Batch API optimization (Individual): Up to 50 pages per call for efficient rate limit usage",
+      "54-point lifecycle tracking (Individual): 15m intervals (first hour) → hourly (day 1) → 6-hourly (week 1) → weekly",
+      "Polling system (Individual): Every 15 minutes for new post detection (avg 7-min delay)",
+      "Flask web dashboard (Individual): 30-second auto-refresh for real-time monitoring",
+      "Infrastructure deployment (Individual): Raspberry Pi 5 with systemd services and automated backups",
+      "Data pipeline (Individual): Comprehensive organization with timeline CSVs, comments tracking, metadata JSONs",
+      "Photo manager (Individual): Local image storage to avoid Facebook URL expiration",
+      "ML analytics (Collaborative): Sentiment analysis, anomaly detection, performance forecasting with research team",
+      "Research visualizations (Collaborative): Plotly-based engagement trends, growth curves, content analysis"
+    ],
+    challenges: [
+      "Architecting dual-scraper system: Static (one-time 168 farms) vs Dynamic (continuous 32 farms)",
+      "Managing Facebook API rate limits across both scrapers with intelligent throttling",
+      "Implementing 54-point adaptive sampling schedule for comprehensive post lifecycle tracking",
+      "Designing efficient batch processing to maximize API efficiency (50 pages/call)",
+      "Ensuring 24/7 reliability on Raspberry Pi 5 hardware with systemd auto-restart",
+      "Handling timezone consistency with UTC scheduling to prevent drift across measurements",
+      "Processing and normalizing complex nested API responses into research-quality datasets",
+      "Implementing robust deduplication for comments across multiple collection points",
+      "Balancing real-time monitoring (15-min polling) with API usage constraints and capacity limits (35 post max)"
+    ],
+    learnings: [
+      "Production deployment on embedded Linux systems (Raspberry Pi 5 + Ubuntu)",
+      "systemd service management for reliable 24/7 operation",
+      "Facebook Graph API batch processing and rate limit optimization",
+      "Advanced data pipeline architecture: collection → processing → storage → analysis",
+      "Time-series data collection with adaptive sampling strategies",
+      "Cloud backup automation with rclone and Google Drive API",
+      "Flask dashboard development for real-time monitoring",
+      "API error handling with exponential backoff and retry logic",
+      "Collaborative research methodology in academic environment",
+      "Contributing technical infrastructure to support team-based ML research"
+    ],
+    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <!-- Clean gradients -->
+    <linearGradient id="fbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1877F2;stop-opacity:0.06" />
+      <stop offset="100%" style="stop-color:#0A66C2;stop-opacity:0.02" />
+    </linearGradient>
+
+    <linearGradient id="piGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.06" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:0.02" />
+    </linearGradient>
+
+    <linearGradient id="collectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E0F2FE;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#BAE6FD;stop-opacity:0.2" />
+    </linearGradient>
+
+    <linearGradient id="storageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DCFCE7;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#BBF7D0;stop-opacity:0.2" />
+    </linearGradient>
+
+    <linearGradient id="analyticsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FEF3C7;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#FDE68A;stop-opacity:0.2" />
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- Arrow markers -->
+    <marker id="dataArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#1877F2" />
+    </marker>
+
+    <marker id="backupArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#10B981" />
+    </marker>
+  </defs>
+
+  <!-- Modern professional styles -->
+  <style>
+    .card-title { font-family: -apple-system, system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #1F2937; }
+    .tech-label { font-family: -apple-system, system-ui, sans-serif; font-size: 11px; font-weight: 500; fill: #6B7280; }
+    .flow-label { font-family: -apple-system, system-ui, sans-serif; font-size: 12px; font-weight: 500; fill: #4B5563; }
+    .section-title { font-family: -apple-system, system-ui, sans-serif; font-size: 16px; font-weight: 700; fill: #111827; }
+    .sublabel { font-family: -apple-system, system-ui, sans-serif; font-size: 10px; font-weight: 400; fill: #9CA3AF; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#FAFAFA"/>
+
+  <!-- Title -->
+  <text class="section-title" x="800" y="40" text-anchor="middle">Facebook Farm Analytics Platform - Dual-Pipeline Architecture</text>
+  <text class="sublabel" x="800" y="60" text-anchor="middle">Static Scraper (168 farms historical) + Dynamic Scraper (32 farms real-time) on Raspberry Pi 5</text>
+
+  <!-- Layer 1: Data Sources -->
+  <g id="data-sources">
+    <text class="flow-label" x="100" y="110">Data Sources</text>
+
+    <!-- Static Scraper Source -->
+    <rect x="60" y="130" width="140" height="80" rx="10" fill="url(#fbGradient)" stroke="#1877F2" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="130" y="150" text-anchor="middle" font-size="12">Static Scraper</text>
+    <text class="tech-label" x="130" y="168" text-anchor="middle">168 Farms</text>
+    <text class="sublabel" x="130" y="183" text-anchor="middle">May 2024-2025</text>
+    <text class="sublabel" x="130" y="198" text-anchor="middle">Historical data</text>
+
+    <!-- Dynamic Scraper Source -->
+    <rect x="220" y="130" width="140" height="80" rx="10" fill="url(#fbGradient)" stroke="#10B981" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="card-title" x="290" y="150" text-anchor="middle" font-size="12">Dynamic Scraper</text>
+    <text class="tech-label" x="290" y="168" text-anchor="middle">32 Active Farms</text>
+    <text class="sublabel" x="290" y="183" text-anchor="middle">15-min polling</text>
+    <text class="sublabel" x="290" y="198" text-anchor="middle">54-point tracking</text>
+  </g>
+
+  <!-- Layer 2: Data Collection Layer -->
+  <g id="collection-layer">
+    <text class="flow-label" x="450" y="110">Collection Pipeline</text>
+    <rect x="380" y="130" width="280" height="220" rx="12" fill="url(#collectionGradient)" stroke="#0EA5E9" stroke-width="2" filter="url(#cardShadow)"/>
+
+    <!-- Batch Dynamic Scraper -->
+    <rect x="400" y="150" width="240" height="70" rx="8" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.5"/>
+    <text class="card-title" x="520" y="170" text-anchor="middle">Batch Dynamic Scraper</text>
+    <text class="sublabel" x="520" y="188" text-anchor="middle">• 15-minute polling intervals</text>
+    <text class="sublabel" x="520" y="203" text-anchor="middle">• 54-point lifecycle tracking</text>
+
+    <!-- API Layer -->
+    <rect x="400" y="235" width="240" height="55" rx="8" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.5"/>
+    <text class="card-title" x="520" y="255" text-anchor="middle">API Layer (fb_api.py)</text>
+    <text class="sublabel" x="520" y="273" text-anchor="middle">Rate limiting • Retry logic • Error handling</text>
+
+    <!-- Data Processing -->
+    <rect x="400" y="305" width="240" height="35" rx="8" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.5"/>
+    <text class="card-title" x="520" y="328" text-anchor="middle">Transform &amp; Normalize</text>
+  </g>
+
+  <!-- Layer 3: Raspberry Pi Infrastructure -->
+  <g id="infrastructure">
+    <rect x="50" y="390" width="650" height="260" rx="16" fill="url(#piGradient)" stroke="#10B981" stroke-width="3" filter="url(#cardShadow)"/>
+    <text class="section-title" x="375" y="420" text-anchor="middle">Raspberry Pi 5 Infrastructure (Ubuntu + systemd)</text>
+
+    <!-- Storage System -->
+    <rect x="80" y="440" width="280" height="190" rx="10" fill="url(#storageGradient)" stroke="#10B981" stroke-width="2"/>
+    <text class="card-title" x="220" y="465" text-anchor="middle">Storage System</text>
+
+    <rect x="100" y="480" width="240" height="45" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+    <text class="tech-label" x="220" y="495" text-anchor="middle">Local Filesystem</text>
+    <text class="sublabel" x="220" y="510" text-anchor="middle">organized_output/</text>
+    <text class="sublabel" x="220" y="520" text-anchor="middle">Timeline • Comments • Photos</text>
+
+    <rect x="100" y="535" width="240" height="45" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+    <text class="tech-label" x="220" y="550" text-anchor="middle">State Management</text>
+    <text class="sublabel" x="220" y="565" text-anchor="middle">tracked_posts.json</text>
+    <text class="sublabel" x="220" y="575" text-anchor="middle">last_seen_posts.json</text>
+
+    <rect x="100" y="590" width="240" height="30" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+    <text class="tech-label" x="220" y="610" text-anchor="middle">Photo Manager</text>
+
+    <!-- Services -->
+    <rect x="390" y="440" width="290" height="190" rx="10" fill="#F0FDF4" stroke="#10B981" stroke-width="2"/>
+    <text class="card-title" x="535" y="465" text-anchor="middle">systemd Services</text>
+
+    <rect x="410" y="480" width="250" height="32" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+    <text class="tech-label" x="535" y="500" text-anchor="middle">facebook-scraper.service</text>
+
+    <rect x="410" y="520" width="250" height="32" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+    <text class="tech-label" x="535" y="540" text-anchor="middle">facebook-web-monitor.service</text>
+
+    <rect x="410" y="560" width="250" height="32" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
+    <text class="tech-label" x="535" y="580" text-anchor="middle">facebook-backup.service + timer</text>
+  </g>
+
+  <!-- Layer 4: Analytics & ML -->
+  <g id="analytics">
+    <text class="flow-label" x="800" y="410">Analytics &amp; ML Pipeline</text>
+    <rect x="750" y="430" width="380" height="220" rx="12" fill="url(#analyticsGradient)" stroke="#F59E0B" stroke-width="2" filter="url(#cardShadow)"/>
+
+    <!-- Enhanced Analyzer -->
+    <rect x="770" y="450" width="340" height="75" rx="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
+    <text class="card-title" x="940" y="470" text-anchor="middle">Enhanced Analyzer</text>
+    <text class="sublabel" x="940" y="490" text-anchor="middle">Sentiment Analysis (TextBlob) • Feature Engineering (TF-IDF, SVD)</text>
+    <text class="sublabel" x="940" y="505" text-anchor="middle">Anomaly Detection (Isolation Forest) • Predictive Forecasting</text>
+
+    <!-- Visualization -->
+    <rect x="770" y="540" width="340" height="100" rx="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
+    <text class="card-title" x="940" y="560" text-anchor="middle">Visualization Suite</text>
+    <text class="sublabel" x="940" y="580" text-anchor="middle">Static Analysis (GraphVis.py)</text>
+    <text class="sublabel" x="940" y="595" text-anchor="middle">• Engagement trends • Content analysis • Farm comparisons</text>
+    <text class="sublabel" x="940" y="610" text-anchor="middle">Dynamic Analysis (DynamicGraphVis.py)</text>
+    <text class="sublabel" x="940" y="625" text-anchor="middle">• Growth curves • Rolling performance • Comment trajectories</text>
+  </g>
+
+  <!-- Layer 5: Monitoring & Backup -->
+  <g id="monitoring">
+    <text class="flow-label" x="1280" y="410">Monitoring &amp; Backup</text>
+    <rect x="1180" y="430" width="340" height="140" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" filter="url(#cardShadow)"/>
+
+    <rect x="1200" y="450" width="300" height="50" rx="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
+    <text class="card-title" x="1350" y="470" text-anchor="middle">Flask Web Dashboard</text>
+    <text class="sublabel" x="1350" y="488" text-anchor="middle">Real-time monitoring • Port 5000 • 30s auto-refresh</text>
+
+    <rect x="1200" y="510" width="145" height="50" rx="8" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5"/>
+    <text class="tech-label" x="1272" y="530" text-anchor="middle">Google Drive</text>
+    <text class="sublabel" x="1272" y="545" text-anchor="middle">rclone daily sync</text>
+
+    <rect x="1355" y="510" width="165" height="50" rx="8" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5"/>
+    <text class="tech-label" x="1437" y="530" text-anchor="middle">Healthchecks.io</text>
+    <text class="sublabel" x="1437" y="545" text-anchor="middle">Uptime monitoring</text>
+  </g>
+
+  <!-- Data Flow Arrows -->
+  <!-- Sources to Collection -->
+  <path d="M 320 200 L 380 240" stroke="#1877F2" stroke-width="2.5" fill="none" marker-end="url(#dataArrow)"/>
+
+  <!-- Collection to Infrastructure -->
+  <path d="M 520 350 L 520 390" stroke="#0EA5E9" stroke-width="2.5" fill="none" marker-end="url(#dataArrow)"/>
+  <text class="sublabel" x="540" y="375" fill="#0EA5E9">Every 15 minutes</text>
+
+  <!-- Infrastructure to Storage -->
+  <path d="M 360 520 L 380 520" stroke="#10B981" stroke-width="2" fill="none" marker-end="url(#backupArrow)"/>
+
+  <!-- Storage to Analytics -->
+  <path d="M 700 520 L 750 520" stroke="#10B981" stroke-width="2.5" fill="none" marker-end="url(#dataArrow)"/>
+
+  <!-- Storage to Flask Dashboard (curved path going up and over analytics) -->
+  <path d="M 700 490 Q 940 380 1180 470" stroke="#10B981" stroke-width="2.5" fill="none" marker-end="url(#dataArrow)" stroke-dasharray="5,5"/>
+  <text class="sublabel" x="940" y="365" text-anchor="middle" fill="#10B981">Data Feed to Dashboard</text>
+
+  <!-- Backup path -->
+  <path d="M 360 590 Q 800 800 1200 535" stroke="#10B981" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#backupArrow)"/>
+  <text class="sublabel" x="800" y="820" text-anchor="middle" fill="#10B981">Automated Daily Backup</text>
+
+  <!-- Key Metrics Box -->
+  <rect x="1180" y="590" width="340" height="60" rx="12" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="2" filter="url(#cardShadow)"/>
+  <text class="card-title" x="1350" y="615" text-anchor="middle">Platform Metrics</text>
+  <text class="sublabel" x="1350" y="630" text-anchor="middle">168 farms static • 32 farms dynamic • 54-point tracking</text>
+  <text class="sublabel" x="1350" y="643" text-anchor="middle">15min polling • 35 post capacity</text>
+
+  <!-- Technology Stack -->
+  <g id="tech-stack">
+    <text class="flow-label" x="100" y="710">Technology Stack</text>
+    <rect x="80" y="730" width="1440" height="80" rx="12" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2" filter="url(#cardShadow)"/>
+
+    <text class="tech-label" x="120" y="755">Data Collection:</text>
+    <text class="sublabel" x="120" y="775">Python 3.12+ • Facebook Graph API v23.0 • asyncio • requests</text>
+
+    <text class="tech-label" x="520" y="755">Processing:</text>
+    <text class="sublabel" x="520" y="775">Pandas • NumPy • JSON/CSV • Photo Manager</text>
+
+    <text class="tech-label" x="820" y="755">ML &amp; Analytics:</text>
+    <text class="sublabel" x="820" y="775">scikit-learn • TextBlob • Plotly • TF-IDF • Isolation Forest</text>
+
+    <text class="tech-label" x="1200" y="755">Infrastructure:</text>
+    <text class="sublabel" x="1200" y="775">Raspberry Pi 5 • Ubuntu • systemd • Flask • rclone</text>
+  </g>
+
+  <!-- Architecture Notes -->
+  <text class="sublabel" x="800" y="850" text-anchor="middle">Dual-pipeline: Static scraper (168 farms historical) + Dynamic scraper (32 farms with 54-point lifecycle tracking)</text>
+  <text class="sublabel" x="800" y="870" text-anchor="middle">Polling: Every 15min (avg 7min delay) | Tracking: 15m → hourly → 6h → weekly | Max 35 posts concurrent</text>
+</svg>`
   }
 };
 
@@ -1299,11 +1257,34 @@ const ProjectDetail = () => {
           {/* Show screenshot for UCF Lab Inventory System */}
           {project.id === "ucf-lab-inventory" && (
             <div className="flex justify-center mb-10">
-              <img 
-                src="/images/ucf-lab-inventory.png" 
-                alt="UCF Lab Inventory System Screenshot" 
+              <img
+                src={`${import.meta.env.BASE_URL}images/ucf-lab-inventory.png`}
+                alt="UCF Lab Inventory System Screenshot"
                 className="rounded-2xl border border-gray-200 shadow-lg max-w-full h-auto object-contain"
                 style={{ maxHeight: 400 }}
+              />
+            </div>
+          )}
+
+          {/* Show screenshot for Ad Event Processing */}
+          {project.id === "ad-event-processing" && (
+            <div className="flex justify-center mb-10">
+              <img
+                src={`${import.meta.env.BASE_URL}images/AdEvent-375k-eventspersecond_2559x705p.png`}
+                alt="Ad Event Processing Performance - 375K Events/Second"
+                className="rounded-2xl border border-gray-200 shadow-lg max-w-full h-auto object-contain"
+              />
+            </div>
+          )}
+
+          {/* Show screenshot for Facebook Farm Analytics */}
+          {project.id === "facebook-farm-analytics" && (
+            <div className="flex justify-center mb-10">
+              <img
+                src={`${import.meta.env.BASE_URL}images/FacebookDashboardUI.png`}
+                alt="Facebook Farm Analytics Dashboard UI"
+                className="rounded-2xl border border-gray-200 shadow-lg max-w-full h-auto object-contain"
+                style={{ maxHeight: 600 }}
               />
             </div>
           )}
