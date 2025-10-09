@@ -5,7 +5,7 @@
 
 A professional portfolio website showcasing backend engineering expertise, built with React, TypeScript, and Tailwind CSS.
 
-## 🚀 Features
+## Features
 
 - **Professional Design**: Clean, matte color scheme with modern UI/UX
 - **Responsive Layout**: Optimized for all device sizes
@@ -13,7 +13,7 @@ A professional portfolio website showcasing backend engineering expertise, built
 - **Interactive Elements**: Hover effects and animations
 - **Fast Performance**: Built with Vite for optimal loading speeds
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Frontend**: React 18, TypeScript
 - **Styling**: Tailwind CSS, shadcn/ui components
@@ -22,7 +22,7 @@ A professional portfolio website showcasing backend engineering expertise, built
 - **Routing**: React Router DOM
 - **Icons**: Lucide React
 
-## 📦 Installation & Development
+## Installation & Development
 
 1. **Clone the repository**
    ```bash
@@ -45,7 +45,7 @@ A professional portfolio website showcasing backend engineering expertise, built
    npm run build
    ```
 
-## 🚀 Deployment
+## Deployment
 
 ### GitHub Pages Deployment
 
@@ -80,7 +80,7 @@ This project is configured for automatic deployment to GitHub Pages:
    - The `vite.config.ts` is already configured for GitHub Pages
    - Make sure to update the base path to match your repository name
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -91,28 +91,28 @@ src/
 └── index.css           # Global styles and design tokens
 ```
 
-## 🎨 Design System
+## Design System
 
 The project uses a professional color scheme with semantic tokens defined in `index.css`. All colors, spacing, and typography follow the design system for consistency and easy theming.
 
-## 📱 Responsive Design
+## Responsive Design
 
 - **Mobile First**: Optimized for mobile devices
 - **Tablet Support**: Enhanced layout for medium screens
 - **Desktop**: Full-featured experience for large screens
 
-## 🔧 Configuration
+## Configuration
 
 - **TypeScript**: Strict type checking enabled
 - **ESLint**: Code quality and consistency
 - **Tailwind CSS**: Utility-first styling
 - **Vite**: Fast build tool and development server
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 📞 Contact
+## Contact
 
 **Sammy Dabbas**
 - Email: dabbassammy@gmail.com
@@ -121,4 +121,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-Built with ❤️ using React, TypeScript, and Tailwind CSS
+Built with React, TypeScript, and Tailwind CSS
