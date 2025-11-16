@@ -45,40 +45,6 @@ A professional portfolio website showcasing backend engineering expertise, built
    npm run build
    ```
 
-## Deployment
-
-### GitHub Pages Deployment
-
-This project is configured for automatic deployment to GitHub Pages:
-
-1. **Automatic Deployment** (Recommended):
-   - Push your code to the `main` branch
-   - GitHub Actions will automatically build and deploy to GitHub Pages
-   - Your site will be available at `https://yourusername.github.io/your-repo-name/`
-
-2. **Manual Deployment**:
-   ```bash
-   # Make the deploy script executable
-   chmod +x deploy.sh
-   
-   # Run the deployment script
-   ./deploy.sh
-   ```
-
-### Important Setup Steps:
-
-1. **Update Repository Name**: 
-   - Edit `vite.config.ts` and replace `/your-repo-name/` with your actual repository name
-   - Example: If your repo is `portfolio`, change it to `/portfolio/`
-
-2. **Enable GitHub Pages**:
-   - Go to your repository settings
-   - Navigate to "Pages" section
-   - Set source to "GitHub Actions"
-
-3. **Configure Base Path**:
-   - The `vite.config.ts` is already configured for GitHub Pages
-   - Make sure to update the base path to match your repository name
 
 ## Project Structure
 
@@ -101,16 +67,7 @@ The project uses a professional color scheme with semantic tokens defined in `in
 - **Tablet Support**: Enhanced layout for medium screens
 - **Desktop**: Full-featured experience for large screens
 
-## Configuration
 
-- **TypeScript**: Strict type checking enabled
-- **ESLint**: Code quality and consistency
-- **Tailwind CSS**: Utility-first styling
-- **Vite**: Fast build tool and development server
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
