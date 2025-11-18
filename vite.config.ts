@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
   base: mode === 'production' ? '/SammyDabbasPortfolio/' : '/',
   server: {
     host: "::",
-    port: 5173,
+    port: 5175,
   },
   plugins: [
     react(),

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, ArrowLeft, Calendar, Users, Zap, Play, Code2, Database, Server } from "lucide-react";
+import { Github, ExternalLink, ArrowLeft, Calendar, Users, Zap, Play, Code2, Database, Server, Sparkles } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ArchitectureDiagram from "@/components/ui/ArchitectureDiagram";
@@ -877,285 +877,291 @@ const projectsData: { [key: string]: ProjectData } = {
     ],
     architectureSvg: undefined
   },
-  "facebook-farm-analytics": {
-    id: "facebook-farm-analytics",
-    title: "Facebook Farm Analytics Platform",
-    subtitle: "Research Project",
-    description: "Built a production-grade social media analytics system with dual-pipeline architecture. Static scraper collected historical data from 168 farms, while dynamic scraper provides real-time 54-point lifecycle tracking for 32 active farms on Raspberry Pi 5.",
-    detailedDescription: "A comprehensive social media analytics platform for agricultural research, conducted under faculty supervision with a collaborative research team. Built complete data collection infrastructure including: (1) Static scraper collecting historical post data (May 2024-2025) from 168 farms across crop, dairy, meat, and value-added categories, and (2) Dynamic scraper monitoring 32 active farms via Facebook Graph API with 15-minute polling and 54-point lifecycle tracking. Deployed on Raspberry Pi 5 with automated systemd services, Flask dashboard, and Google Drive backups. The ML analytics and research insights are developed collaboratively with the research team.",
-    status: "Research Project",
-    statusColor: "emerald",
-    technologies: ["Python", "Flask", "Facebook Graph API", "Plotly", "TextBlob", "Raspberry Pi 5", "systemd", "rclone", "Pandas", "scikit-learn"],
-    githubUrl: "https://github.com/Sammy-Dabbas",
-    icon: Database,
-    iconGradient: "from-emerald-500 to-green-500",
-    timeline: "6+ months",
-    teamSize: "Research Team (Faculty-supervised)",
+
+  "exoplanet-detector": {
+    id: "exoplanet-detector",
+    title: "Exoplanet Detection System",
+    subtitle: "NASA Space Apps Challenge 2024 • Hackathon Project",
+    description: "AI/ML system achieving 89.6% accuracy (96.5% ROC AUC) detecting exoplanets from NASA mission data. Built with multiple ML models, real-time TESS integration, and interactive dashboard deployed on Google Cloud Run in 48 hours.",
+    detailedDescription: "Advanced AI/ML system for identifying exoplanets from NASA mission data (Kepler, K2, TESS) built for NASA Space Apps Challenge 2024. Implements multiple machine learning models (Random Forest, XGBoost, LightGBM, Neural Networks) achieving 89.6% accuracy with 96.5% ROC AUC on Kepler test set with 9,500+ confirmed and candidate exoplanets. Features real-time TESS Objects of Interest (TOI) integration via NASA APIs, interactive web dashboard for training/prediction/analysis, uncertainty quantification with confidence intervals, adversarial robustness testing, and habitability scoring. Production deployment on Google Cloud Run with Docker containerization completed within 48-hour hackathon timeframe.",
+    status: "Live • NASA Space Apps Challenge 2024",
+    statusColor: "blue",
+    technologies: ["Python", "Flask", "scikit-learn", "XGBoost", "LightGBM", "TensorFlow", "Plotly", "pandas", "numpy", "Docker", "Google Cloud Run", "NASA APIs"],
+    githubUrl: "https://github.com/Sammy-Dabbas/PlanetHunterBros",
+    liveUrl: "https://exoplanet-detector-430968814485.us-central1.run.app/",
+    icon: Sparkles,
+    iconGradient: "from-purple-500 to-indigo-500",
+    timeline: "48 hours",
+    teamSize: "2-person Team",
     highlights: [
-      "Built dual-pipeline data collection infrastructure: Static (168 farms) + Dynamic (32 farms) scrapers",
-      "Designed and deployed 54-point lifecycle tracking system with adaptive sampling strategy",
-      "Implemented production-grade Raspberry Pi 5 deployment with 24/7 systemd orchestration",
-      "Developed automated data processing pipeline with Google Drive backup integration",
-      "Contributing to collaborative ML analytics and agricultural social media research"
+      "89.6% accuracy with 96.5% ROC AUC on Kepler test set with 9,500+ exoplanet dataset",
+      "Real-time TESS mission data integration via NASA APIs",
+      "Multiple ML models: Random Forest, XGBoost, LightGBM, Neural Networks",
+      "Advanced features: uncertainty quantification, adversarial testing, habitability scoring",
+      "Production deployment on Google Cloud Run completed within 48-hour hackathon"
     ],
     features: [
-      "Static Scraper (Individual): Collected historical posts (May 2024-2025) from 168 farms with full engagement metrics",
-      "Dynamic Scraper (Individual): Real-time monitoring of 32 active farms via Facebook Graph API v23.0",
-      "Batch API optimization (Individual): Up to 50 pages per call for efficient rate limit usage",
-      "54-point lifecycle tracking (Individual): 15m intervals (first hour) → hourly (day 1) → 6-hourly (week 1) → weekly",
-      "Polling system (Individual): Every 15 minutes for new post detection (avg 7-min delay)",
-      "Flask web dashboard (Individual): 30-second auto-refresh for real-time monitoring",
-      "Infrastructure deployment (Individual): Raspberry Pi 5 with systemd services and automated backups",
-      "Data pipeline (Individual): Comprehensive organization with timeline CSVs, comments tracking, metadata JSONs",
-      "Photo manager (Individual): Local image storage to avoid Facebook URL expiration",
-      "ML analytics (Collaborative): Sentiment analysis, anomaly detection, performance forecasting with research team",
-      "Research visualizations (Collaborative): Plotly-based engagement trends, growth curves, content analysis"
+      "Interactive web dashboard for model training, prediction, and analysis",
+      "Real-time TESS Objects of Interest (TOI) fetching and prediction",
+      "Batch and manual prediction modes with CSV upload support",
+      "Model management: save, load, and compare trained models",
+      "Uncertainty quantification with confidence intervals and reliability metrics",
+      "Adversarial robustness testing against synthetic false positives",
+      "Habitability scoring system for detected exoplanets",
+      "Feature importance visualization for model interpretability",
+      "Performance metrics: confusion matrices, ROC curves, accuracy plots",
+      "Transit light curve and phase-folded light curve generation on-demand",
+      "Solar system comparison charts for planetary size/orbit visualization",
+      "SMOTE-based class balancing for imbalanced datasets"
     ],
     challenges: [
-      "Architecting dual-scraper system: Static (one-time 168 farms) vs Dynamic (continuous 32 farms)",
-      "Managing Facebook API rate limits across both scrapers with intelligent throttling",
-      "Implementing 54-point adaptive sampling schedule for comprehensive post lifecycle tracking",
-      "Designing efficient batch processing to maximize API efficiency (50 pages/call)",
-      "Ensuring 24/7 reliability on Raspberry Pi 5 hardware with systemd auto-restart",
-      "Handling timezone consistency with UTC scheduling to prevent drift across measurements",
-      "Processing and normalizing complex nested API responses into research-quality datasets",
-      "Implementing robust deduplication for comments across multiple collection points",
-      "Balancing real-time monitoring (15-min polling) with API usage constraints and capacity limits (35 post max)"
+      "Processing and normalizing 50+ orbital/stellar parameters from NASA datasets",
+      "Handling severe class imbalance (confirmed exoplanets vs false positives)",
+      "Real-time TESS API integration with rate limiting and error handling",
+      "Implementing multiple ML pipelines (Random Forest, XGBoost, LightGBM, Neural Networks) in unified framework",
+      "Building interactive scientific visualizations with Plotly under time pressure",
+      "Deploying ML models to Google Cloud Run with Docker containerization",
+      "Optimizing model training time for 48-hour hackathon constraints",
+      "Creating user-friendly web interface for both researchers and novices"
     ],
     learnings: [
-      "Production deployment on embedded Linux systems (Raspberry Pi 5 + Ubuntu)",
-      "systemd service management for reliable 24/7 operation",
-      "Facebook Graph API batch processing and rate limit optimization",
-      "Advanced data pipeline architecture: collection → processing → storage → analysis",
-      "Time-series data collection with adaptive sampling strategies",
-      "Cloud backup automation with rclone and Google Drive API",
-      "Flask dashboard development for real-time monitoring",
-      "API error handling with exponential backoff and retry logic",
-      "Collaborative research methodology in academic environment",
-      "Contributing technical infrastructure to support team-based ML research"
+      "Machine learning for astronomical data: Random Forest, XGBoost, LightGBM, TensorFlow",
+      "NASA Exoplanet Archive API integration and TESS mission data formats",
+      "SMOTE and class balancing techniques for imbalanced datasets",
+      "Flask web framework for production ML model deployment",
+      "Feature engineering for exoplanet detection (transit duration, orbital period, planetary radius)",
+      "Uncertainty quantification and prediction confidence intervals",
+      "Docker containerization for ML applications",
+      "Google Cloud Run serverless deployment",
+      "Scientific data visualization with Plotly, matplotlib, seaborn",
+      "Cross-mission validation (train on Kepler, predict on TESS)"
     ],
-    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
   <defs>
-    <!-- Clean gradients -->
-    <linearGradient id="fbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1877F2;stop-opacity:0.06" />
-      <stop offset="100%" style="stop-color:#0A66C2;stop-opacity:0.02" />
+    <!-- NASA Blue themed gradients -->
+    <linearGradient id="spaceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B3D91;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1E40AF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A8A;stop-opacity:1" />
     </linearGradient>
 
-    <linearGradient id="piGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.06" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:0.02" />
+    <linearGradient id="nasaBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:0.1" />
     </linearGradient>
 
-    <linearGradient id="collectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#E0F2FE;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#BAE6FD;stop-opacity:0.2" />
+    <linearGradient id="nasaRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FC3D21;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:0.1" />
     </linearGradient>
 
-    <linearGradient id="storageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#DCFCE7;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#BBF7D0;stop-opacity:0.2" />
-    </linearGradient>
-
-    <linearGradient id="analyticsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FEF3C7;stop-opacity:0.6" />
-      <stop offset="100%" style="stop-color:#FDE68A;stop-opacity:0.2" />
+    <linearGradient id="nasaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.1" />
     </linearGradient>
 
     <!-- Shadow filter -->
-    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    <filter id="spaceShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/>
     </filter>
 
     <!-- Arrow markers -->
-    <marker id="dataArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#1877F2" />
-    </marker>
-
-    <marker id="backupArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L8,3 z" fill="#10B981" />
+    <marker id="spaceArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3B82F6" />
     </marker>
   </defs>
 
-  <!-- Modern professional styles -->
+  <!-- Normal theme styles -->
   <style>
-    .card-title { font-family: -apple-system, system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #1F2937; }
-    .tech-label { font-family: -apple-system, system-ui, sans-serif; font-size: 11px; font-weight: 500; fill: #6B7280; }
-    .flow-label { font-family: -apple-system, system-ui, sans-serif; font-size: 12px; font-weight: 500; fill: #4B5563; }
-    .section-title { font-family: -apple-system, system-ui, sans-serif; font-size: 16px; font-weight: 700; fill: #111827; }
-    .sublabel { font-family: -apple-system, system-ui, sans-serif; font-size: 10px; font-weight: 400; fill: #9CA3AF; }
+    .space-title { font-family: -apple-system, system-ui, sans-serif; font-size: 18px; font-weight: 700; fill: #111827; }
+    .space-subtitle { font-family: -apple-system, system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #111827; }
+    .space-label { font-family: -apple-system, system-ui, sans-serif; font-size: 12px; font-weight: 500; fill: #1F2937; }
+    .space-sublabel { font-family: -apple-system, system-ui, sans-serif; font-size: 11px; font-weight: 500; fill: #374151; }
+    .layer-title { font-family: -apple-system, system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #111827; }
   </style>
 
   <!-- Background -->
-  <rect width="1600" height="900" fill="#FAFAFA"/>
+  <rect width="1600" height="1000" fill="#FAFAFA"/>
 
   <!-- Title -->
-  <text class="section-title" x="800" y="40" text-anchor="middle">Facebook Farm Analytics Platform - Dual-Pipeline Architecture</text>
-  <text class="sublabel" x="800" y="60" text-anchor="middle">Static Scraper (168 farms historical) + Dynamic Scraper (32 farms real-time) on Raspberry Pi 5</text>
+  <text class="space-title" x="800" y="40" text-anchor="middle">Exoplanet Detection System - NASA Space Apps Challenge 2024</text>
+  <text class="space-sublabel" x="800" y="60" text-anchor="middle">Multi-Model ML Architecture: 98%+ Accuracy on 9,500+ Exoplanet Dataset</text>
 
   <!-- Layer 1: Data Sources -->
   <g id="data-sources">
-    <text class="flow-label" x="100" y="110">Data Sources</text>
+    <text class="layer-title" x="150" y="110">NASA Data Sources</text>
 
-    <!-- Static Scraper Source -->
-    <rect x="60" y="130" width="140" height="80" rx="10" fill="url(#fbGradient)" stroke="#1877F2" stroke-width="2" filter="url(#cardShadow)"/>
-    <text class="card-title" x="130" y="150" text-anchor="middle" font-size="12">Static Scraper</text>
-    <text class="tech-label" x="130" y="168" text-anchor="middle">168 Farms</text>
-    <text class="sublabel" x="130" y="183" text-anchor="middle">May 2024-2025</text>
-    <text class="sublabel" x="130" y="198" text-anchor="middle">Historical data</text>
+    <rect x="50" y="130" width="300" height="120" rx="12" fill="url(#nasaBlue)" stroke="#93C5FD" stroke-width="2" filter="url(#spaceShadow)"/>
+    <text class="space-subtitle" x="200" y="155" text-anchor="middle">NASA Exoplanet Archive</text>
 
-    <!-- Dynamic Scraper Source -->
-    <rect x="220" y="130" width="140" height="80" rx="10" fill="url(#fbGradient)" stroke="#10B981" stroke-width="2" filter="url(#cardShadow)"/>
-    <text class="card-title" x="290" y="150" text-anchor="middle" font-size="12">Dynamic Scraper</text>
-    <text class="tech-label" x="290" y="168" text-anchor="middle">32 Active Farms</text>
-    <text class="sublabel" x="290" y="183" text-anchor="middle">15-min polling</text>
-    <text class="sublabel" x="290" y="198" text-anchor="middle">54-point tracking</text>
+    <rect x="70" y="170" width="250" height="70" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+    <text class="space-label" x="195" y="190" text-anchor="middle">Kepler Mission (2009-2018)</text>
+    <text class="space-sublabel" x="195" y="205" text-anchor="middle">K2 Extended Mission (2014-2018)</text>
+    <text class="space-sublabel" x="195" y="220" text-anchor="middle">TESS Mission (2018-present)</text>
+    <text class="space-sublabel" x="195" y="235" text-anchor="middle">Real-time TOI API Integration</text>
   </g>
 
-  <!-- Layer 2: Data Collection Layer -->
-  <g id="collection-layer">
-    <text class="flow-label" x="450" y="110">Collection Pipeline</text>
-    <rect x="380" y="130" width="280" height="220" rx="12" fill="url(#collectionGradient)" stroke="#0EA5E9" stroke-width="2" filter="url(#cardShadow)"/>
+  <!-- Layer 2: Data Processing -->
+  <g id="processing">
+    <text class="layer-title" x="150" y="300">Data Processing Pipeline</text>
 
-    <!-- Batch Dynamic Scraper -->
-    <rect x="400" y="150" width="240" height="70" rx="8" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.5"/>
-    <text class="card-title" x="520" y="170" text-anchor="middle">Batch Dynamic Scraper</text>
-    <text class="sublabel" x="520" y="188" text-anchor="middle">• 15-minute polling intervals</text>
-    <text class="sublabel" x="520" y="203" text-anchor="middle">• 54-point lifecycle tracking</text>
+    <rect x="50" y="320" width="300" height="160" rx="12" fill="url(#nasaRed)" stroke="#FCA5A5" stroke-width="2" filter="url(#spaceShadow)"/>
 
-    <!-- API Layer -->
-    <rect x="400" y="235" width="240" height="55" rx="8" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.5"/>
-    <text class="card-title" x="520" y="255" text-anchor="middle">API Layer (fb_api.py)</text>
-    <text class="sublabel" x="520" y="273" text-anchor="middle">Rate limiting • Retry logic • Error handling</text>
+    <rect x="70" y="340" width="260" height="50" rx="8" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+    <text class="space-label" x="200" y="360" text-anchor="middle">Feature Engineering</text>
+    <text class="space-sublabel" x="200" y="380" text-anchor="middle">50+ orbital &amp; stellar parameters</text>
 
-    <!-- Data Processing -->
-    <rect x="400" y="305" width="240" height="35" rx="8" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.5"/>
-    <text class="card-title" x="520" y="328" text-anchor="middle">Transform &amp; Normalize</text>
+    <rect x="70" y="400" width="260" height="35" rx="8" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+    <text class="space-label" x="200" y="422" text-anchor="middle">SMOTE Class Balancing</text>
+
+    <rect x="70" y="445" width="260" height="25" rx="8" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+    <text class="space-label" x="200" y="462" text-anchor="middle">Preprocessing &amp; Normalization</text>
   </g>
 
-  <!-- Layer 3: Raspberry Pi Infrastructure -->
-  <g id="infrastructure">
-    <rect x="50" y="390" width="650" height="260" rx="16" fill="url(#piGradient)" stroke="#10B981" stroke-width="3" filter="url(#cardShadow)"/>
-    <text class="section-title" x="375" y="420" text-anchor="middle">Raspberry Pi 5 Infrastructure (Ubuntu + systemd)</text>
+  <!-- Layer 3: ML Models -->
+  <g id="ml-models">
+    <text class="layer-title" x="550" y="110">ML Model Ensemble</text>
 
-    <!-- Storage System -->
-    <rect x="80" y="440" width="280" height="190" rx="10" fill="url(#storageGradient)" stroke="#10B981" stroke-width="2"/>
-    <text class="card-title" x="220" y="465" text-anchor="middle">Storage System</text>
+    <rect x="420" y="130" width="500" height="350" rx="12" fill="url(#nasaRed)" stroke="#FCA5A5" stroke-width="2" filter="url(#spaceShadow)"/>
 
-    <rect x="100" y="480" width="240" height="45" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
-    <text class="tech-label" x="220" y="495" text-anchor="middle">Local Filesystem</text>
-    <text class="sublabel" x="220" y="510" text-anchor="middle">organized_output/</text>
-    <text class="sublabel" x="220" y="520" text-anchor="middle">Timeline • Comments • Photos</text>
+    <!-- Random Forest -->
+    <rect x="440" y="150" width="220" height="70" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+    <text class="space-subtitle" x="550" y="175" text-anchor="middle">Random Forest</text>
+    <text class="space-sublabel" x="550" y="195" text-anchor="middle">Ensemble decision trees</text>
+    <text class="space-sublabel" x="550" y="210" text-anchor="middle">Feature importance extraction</text>
 
-    <rect x="100" y="535" width="240" height="45" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
-    <text class="tech-label" x="220" y="550" text-anchor="middle">State Management</text>
-    <text class="sublabel" x="220" y="565" text-anchor="middle">tracked_posts.json</text>
-    <text class="sublabel" x="220" y="575" text-anchor="middle">last_seen_posts.json</text>
+    <!-- XGBoost -->
+    <rect x="680" y="150" width="220" height="70" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+    <text class="space-subtitle" x="790" y="175" text-anchor="middle">XGBoost</text>
+    <text class="space-sublabel" x="790" y="195" text-anchor="middle">Gradient boosting (best accuracy)</text>
+    <text class="space-sublabel" x="790" y="210" text-anchor="middle">Hyperparameter optimization</text>
 
-    <rect x="100" y="590" width="240" height="30" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
-    <text class="tech-label" x="220" y="610" text-anchor="middle">Photo Manager</text>
+    <!-- LightGBM -->
+    <rect x="440" y="235" width="220" height="70" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+    <text class="space-subtitle" x="550" y="260" text-anchor="middle">LightGBM</text>
+    <text class="space-sublabel" x="550" y="280" text-anchor="middle">Fast training &amp; inference</text>
+    <text class="space-sublabel" x="550" y="295" text-anchor="middle">Histogram-based learning</text>
 
-    <!-- Services -->
-    <rect x="390" y="440" width="290" height="190" rx="10" fill="#F0FDF4" stroke="#10B981" stroke-width="2"/>
-    <text class="card-title" x="535" y="465" text-anchor="middle">systemd Services</text>
+    <!-- Neural Network -->
+    <rect x="680" y="235" width="220" height="70" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+    <text class="space-subtitle" x="790" y="260" text-anchor="middle">Neural Network</text>
+    <text class="space-sublabel" x="790" y="280" text-anchor="middle">TensorFlow/Keras</text>
+    <text class="space-sublabel" x="790" y="295" text-anchor="middle">Deep learning architecture</text>
 
-    <rect x="410" y="480" width="250" height="32" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
-    <text class="tech-label" x="535" y="500" text-anchor="middle">facebook-scraper.service</text>
+    <!-- Model Comparison -->
+    <rect x="440" y="320" width="460" height="50" rx="8" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+    <text class="space-label" x="670" y="340" text-anchor="middle">Model Management</text>
+    <text class="space-sublabel" x="670" y="360" text-anchor="middle">Save • Load • Compare • Select Best Model</text>
 
-    <rect x="410" y="520" width="250" height="32" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
-    <text class="tech-label" x="535" y="540" text-anchor="middle">facebook-web-monitor.service</text>
-
-    <rect x="410" y="560" width="250" height="32" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1"/>
-    <text class="tech-label" x="535" y="580" text-anchor="middle">facebook-backup.service + timer</text>
+    <!-- Training Metrics -->
+    <rect x="440" y="380" width="460" height="90" rx="8" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+    <text class="space-label" x="670" y="400" text-anchor="middle">Training Metrics (LightGBM)</text>
+    <text class="space-sublabel" x="670" y="420" text-anchor="middle">89.6% Accuracy • 96.5% ROC AUC • 89.4% Precision • 89.9% Recall</text>
+    <text class="space-sublabel" x="670" y="435" text-anchor="middle">89.6% F1-Score • Confusion Matrix • ROC Curves</text>
+    <text class="space-sublabel" x="670" y="450" text-anchor="middle">&lt;1s Prediction Time • Cross-Validation</text>
+    <text class="space-sublabel" x="670" y="465" text-anchor="middle">9,500+ Training Samples</text>
   </g>
 
-  <!-- Layer 4: Analytics & ML -->
-  <g id="analytics">
-    <text class="flow-label" x="800" y="410">Analytics &amp; ML Pipeline</text>
-    <rect x="750" y="430" width="380" height="220" rx="12" fill="url(#analyticsGradient)" stroke="#F59E0B" stroke-width="2" filter="url(#cardShadow)"/>
+  <!-- Layer 4: Analysis Layer -->
+  <g id="analysis">
+    <text class="layer-title" x="1150" y="110">Advanced Analysis</text>
 
-    <!-- Enhanced Analyzer -->
-    <rect x="770" y="450" width="340" height="75" rx="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
-    <text class="card-title" x="940" y="470" text-anchor="middle">Enhanced Analyzer</text>
-    <text class="sublabel" x="940" y="490" text-anchor="middle">Sentiment Analysis (TextBlob) • Feature Engineering (TF-IDF, SVD)</text>
-    <text class="sublabel" x="940" y="505" text-anchor="middle">Anomaly Detection (Isolation Forest) • Predictive Forecasting</text>
+    <rect x="990" y="130" width="550" height="350" rx="12" fill="url(#nasaGold)" stroke="#FCD34D" stroke-width="2" filter="url(#spaceShadow)"/>
 
-    <!-- Visualization -->
-    <rect x="770" y="540" width="340" height="100" rx="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
-    <text class="card-title" x="940" y="560" text-anchor="middle">Visualization Suite</text>
-    <text class="sublabel" x="940" y="580" text-anchor="middle">Static Analysis (GraphVis.py)</text>
-    <text class="sublabel" x="940" y="595" text-anchor="middle">• Engagement trends • Content analysis • Farm comparisons</text>
-    <text class="sublabel" x="940" y="610" text-anchor="middle">Dynamic Analysis (DynamicGraphVis.py)</text>
-    <text class="sublabel" x="940" y="625" text-anchor="middle">• Growth curves • Rolling performance • Comment trajectories</text>
+    <!-- Uncertainty Quantification -->
+    <rect x="1010" y="150" width="510" height="60" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+    <text class="space-subtitle" x="1265" y="175" text-anchor="middle">Uncertainty Quantification</text>
+    <text class="space-sublabel" x="1265" y="195" text-anchor="middle">Confidence intervals • Prediction reliability metrics</text>
+
+    <!-- Adversarial Testing -->
+    <rect x="1010" y="220" width="510" height="60" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+    <text class="space-subtitle" x="1265" y="245" text-anchor="middle">Adversarial Testing</text>
+    <text class="space-sublabel" x="1265" y="265" text-anchor="middle">Robustness evaluation against synthetic false positives</text>
+
+    <!-- Habitability Scoring -->
+    <rect x="1010" y="290" width="510" height="60" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+    <text class="space-subtitle" x="1265" y="315" text-anchor="middle">Habitability Scoring</text>
+    <text class="space-sublabel" x="1265" y="335" text-anchor="middle">Planetary size • Orbital zone • Star temperature analysis</text>
+
+    <!-- Feature Importance -->
+    <rect x="1010" y="360" width="510" height="60" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+    <text class="space-subtitle" x="1265" y="385" text-anchor="middle">Feature Importance Analysis</text>
+    <text class="space-sublabel" x="1265" y="405" text-anchor="middle">Transit duration • Orbital period • Planetary radius impact</text>
+
+    <!-- Visualizations -->
+    <rect x="1010" y="430" width="510" height="40" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+    <text class="space-label" x="1265" y="455" text-anchor="middle">Transit Light Curves • Phase-Folded Curves • Solar System Comparisons</text>
   </g>
 
-  <!-- Layer 5: Monitoring & Backup -->
-  <g id="monitoring">
-    <text class="flow-label" x="1280" y="410">Monitoring &amp; Backup</text>
-    <rect x="1180" y="430" width="340" height="140" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" filter="url(#cardShadow)"/>
+  <!-- Layer 5: Web Interface -->
+  <g id="interface">
+    <text class="layer-title" x="550" y="530">Interactive Web Dashboard</text>
 
-    <rect x="1200" y="450" width="300" height="50" rx="8" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
-    <text class="card-title" x="1350" y="470" text-anchor="middle">Flask Web Dashboard</text>
-    <text class="sublabel" x="1350" y="488" text-anchor="middle">Real-time monitoring • Port 5000 • 30s auto-refresh</text>
+    <rect x="420" y="550" width="500" height="180" rx="12" fill="url(#nasaBlue)" stroke="#93C5FD" stroke-width="2" filter="url(#spaceShadow)"/>
 
-    <rect x="1200" y="510" width="145" height="50" rx="8" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5"/>
-    <text class="tech-label" x="1272" y="530" text-anchor="middle">Google Drive</text>
-    <text class="sublabel" x="1272" y="545" text-anchor="middle">rclone daily sync</text>
+    <rect x="440" y="570" width="460" height="70" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+    <text class="space-subtitle" x="670" y="595" text-anchor="middle">Flask Web Dashboard (Port 5000)</text>
+    <text class="space-sublabel" x="670" y="615" text-anchor="middle">Model Training • Batch/Manual Prediction • CSV Upload</text>
+    <text class="space-sublabel" x="670" y="630" text-anchor="middle">Performance Visualization • Real-time TESS Data Fetch</text>
 
-    <rect x="1355" y="510" width="165" height="50" rx="8" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5"/>
-    <text class="tech-label" x="1437" y="530" text-anchor="middle">Healthchecks.io</text>
-    <text class="sublabel" x="1437" y="545" text-anchor="middle">Uptime monitoring</text>
+    <rect x="440" y="650" width="220" height="70" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+    <text class="space-label" x="550" y="675" text-anchor="middle">User Interface</text>
+    <text class="space-sublabel" x="550" y="695" text-anchor="middle">Researchers &amp; Novices</text>
+    <text class="space-sublabel" x="550" y="710" text-anchor="middle">Interactive Controls</text>
+
+    <rect x="680" y="650" width="220" height="70" rx="8" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+    <text class="space-label" x="790" y="675" text-anchor="middle">Plotly Visualizations</text>
+    <text class="space-sublabel" x="790" y="695" text-anchor="middle">Scientific Charts</text>
+    <text class="space-sublabel" x="790" y="710" text-anchor="middle">Interactive Plots</text>
+  </g>
+
+  <!-- Layer 6: Deployment -->
+  <g id="deployment">
+    <text class="layer-title" x="550" y="770">Production Deployment</text>
+
+    <rect x="420" y="790" width="500" height="120" rx="12" fill="url(#nasaRed)" stroke="#FCA5A5" stroke-width="2" filter="url(#spaceShadow)"/>
+
+    <rect x="440" y="810" width="220" height="90" rx="8" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+    <text class="space-subtitle" x="550" y="835" text-anchor="middle">Docker Container</text>
+    <text class="space-sublabel" x="550" y="855" text-anchor="middle">Python 3.11 runtime</text>
+    <text class="space-sublabel" x="550" y="870" text-anchor="middle">ML dependencies</text>
+    <text class="space-sublabel" x="550" y="885" text-anchor="middle">Optimized image</text>
+
+    <rect x="680" y="810" width="220" height="90" rx="8" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+    <text class="space-subtitle" x="790" y="835" text-anchor="middle">Google Cloud Run</text>
+    <text class="space-sublabel" x="790" y="855" text-anchor="middle">Serverless deployment</text>
+    <text class="space-sublabel" x="790" y="870" text-anchor="middle">Auto-scaling</text>
+    <text class="space-sublabel" x="790" y="885" text-anchor="middle">Global CDN</text>
   </g>
 
   <!-- Data Flow Arrows -->
-  <!-- Sources to Collection -->
-  <path d="M 320 200 L 380 240" stroke="#1877F2" stroke-width="2.5" fill="none" marker-end="url(#dataArrow)"/>
+  <path d="M 200 250 L 200 320" stroke="#3B82F6" stroke-width="3" fill="none" marker-end="url(#spaceArrow)"/>
+  <path d="M 200 480 Q 310 505 420 340" stroke="#3B82F6" stroke-width="3" fill="none" marker-end="url(#spaceArrow)"/>
+  <path d="M 920 290 L 990 290" stroke="#3B82F6" stroke-width="3" fill="none" marker-end="url(#spaceArrow)"/>
+  <path d="M 670 480 L 370 480 L 370 640 L 420 640" stroke="#3B82F6" stroke-width="3" fill="none" marker-end="url(#spaceArrow)"/>
+  <path d="M 670 730 L 370 730 L 370 850 L 420 850" stroke="#3B82F6" stroke-width="3" fill="none" marker-end="url(#spaceArrow)"/>
 
-  <!-- Collection to Infrastructure -->
-  <path d="M 520 350 L 520 390" stroke="#0EA5E9" stroke-width="2.5" fill="none" marker-end="url(#dataArrow)"/>
-  <text class="sublabel" x="540" y="375" fill="#0EA5E9">Every 15 minutes</text>
-
-  <!-- Infrastructure to Storage -->
-  <path d="M 360 520 L 380 520" stroke="#10B981" stroke-width="2" fill="none" marker-end="url(#backupArrow)"/>
-
-  <!-- Storage to Analytics -->
-  <path d="M 700 520 L 750 520" stroke="#10B981" stroke-width="2.5" fill="none" marker-end="url(#dataArrow)"/>
-
-  <!-- Storage to Flask Dashboard (curved path going up and over analytics) -->
-  <path d="M 700 490 Q 940 380 1180 470" stroke="#10B981" stroke-width="2.5" fill="none" marker-end="url(#dataArrow)" stroke-dasharray="5,5"/>
-  <text class="sublabel" x="940" y="365" text-anchor="middle" fill="#10B981">Data Feed to Dashboard</text>
-
-  <!-- Backup path -->
-  <path d="M 360 590 Q 800 800 1200 535" stroke="#10B981" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#backupArrow)"/>
-  <text class="sublabel" x="800" y="820" text-anchor="middle" fill="#10B981">Automated Daily Backup</text>
-
-  <!-- Key Metrics Box -->
-  <rect x="1180" y="590" width="340" height="60" rx="12" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="2" filter="url(#cardShadow)"/>
-  <text class="card-title" x="1350" y="615" text-anchor="middle">Platform Metrics</text>
-  <text class="sublabel" x="1350" y="630" text-anchor="middle">168 farms static • 32 farms dynamic • 54-point tracking</text>
-  <text class="sublabel" x="1350" y="643" text-anchor="middle">15min polling • 35 post capacity</text>
+  <!-- Performance Metrics Box -->
+  <rect x="50" y="550" width="300" height="180" rx="12" fill="#DBEAFE" stroke="#93C5FD" stroke-width="2" filter="url(#spaceShadow)"/>
+  <text class="space-subtitle" x="200" y="575" text-anchor="middle">🏆 Performance Metrics</text>
+  <text class="space-label" x="200" y="600" text-anchor="middle">89.6% Accuracy • 96.5% ROC AUC</text>
+  <text class="space-label" x="200" y="620" text-anchor="middle">9,500+ Training Samples</text>
+  <text class="space-label" x="200" y="640" text-anchor="middle">&lt;1s Prediction Time</text>
+  <text class="space-label" x="200" y="660" text-anchor="middle">50+ Feature Parameters</text>
+  <text class="space-label" x="200" y="680" text-anchor="middle">Real-time TESS Integration</text>
+  <text class="space-label" x="200" y="700" text-anchor="middle">48-Hour Hackathon Build</text>
+  <text class="space-label" x="200" y="720" text-anchor="middle">2-Person Team</text>
 
   <!-- Technology Stack -->
-  <g id="tech-stack">
-    <text class="flow-label" x="100" y="710">Technology Stack</text>
-    <rect x="80" y="730" width="1440" height="80" rx="12" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2" filter="url(#cardShadow)"/>
+  <rect x="50" y="790" width="300" height="120" rx="12" fill="#FEF3C7" stroke="#FCD34D" stroke-width="2" filter="url(#spaceShadow)"/>
+  <text class="space-subtitle" x="200" y="815" text-anchor="middle">Technology Stack</text>
+  <text class="space-sublabel" x="200" y="840" text-anchor="middle">Python • Flask • scikit-learn</text>
+  <text class="space-sublabel" x="200" y="860" text-anchor="middle">XGBoost • LightGBM • TensorFlow</text>
+  <text class="space-sublabel" x="200" y="880" text-anchor="middle">Plotly • pandas • numpy</text>
+  <text class="space-sublabel" x="200" y="900" text-anchor="middle">Docker • Google Cloud Run</text>
 
-    <text class="tech-label" x="120" y="755">Data Collection:</text>
-    <text class="sublabel" x="120" y="775">Python 3.12+ • Facebook Graph API v23.0 • asyncio • requests</text>
-
-    <text class="tech-label" x="520" y="755">Processing:</text>
-    <text class="sublabel" x="520" y="775">Pandas • NumPy • JSON/CSV • Photo Manager</text>
-
-    <text class="tech-label" x="820" y="755">ML &amp; Analytics:</text>
-    <text class="sublabel" x="820" y="775">scikit-learn • TextBlob • Plotly • TF-IDF • Isolation Forest</text>
-
-    <text class="tech-label" x="1200" y="755">Infrastructure:</text>
-    <text class="sublabel" x="1200" y="775">Raspberry Pi 5 • Ubuntu • systemd • Flask • rclone</text>
-  </g>
-
-  <!-- Architecture Notes -->
-  <text class="sublabel" x="800" y="850" text-anchor="middle">Dual-pipeline: Static scraper (168 farms historical) + Dynamic scraper (32 farms with 54-point lifecycle tracking)</text>
-  <text class="sublabel" x="800" y="870" text-anchor="middle">Polling: Every 15min (avg 7min delay) | Tracking: 15m → hourly → 6h → weekly | Max 35 posts concurrent</text>
+  <!-- NASA Branding -->
+  <text class="space-sublabel" x="800" y="980" text-anchor="middle">NASA Space Apps Challenge 2024 • Exoplanet Detection with AI/ML • Planet Hunter Bros</text>
 </svg>`
   }
 };
@@ -1188,8 +1194,9 @@ const ProjectDetail = () => {
   const IconComponent = project.icon;
   const statusColors = {
     green: "bg-green-400",
-    orange: "bg-orange-400", 
-    purple: "bg-purple-400"
+    orange: "bg-orange-400",
+    purple: "bg-purple-400",
+    blue: "bg-blue-500"
   };
 
   return (

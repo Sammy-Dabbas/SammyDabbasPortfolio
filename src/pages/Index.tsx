@@ -401,57 +401,6 @@ const Index = () => {
             </div>
           </Card>
 
-          {/* Project 4 */}
-          <Card className="bg-white border-gray-100 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-            <div className="grid lg:grid-cols-5 gap-0">
-              <CardContent className="lg:col-span-3 p-8 lg:p-12 order-2 lg:order-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-emerald-600">Research Project</span>
-                </div>
-                <h3 className="text-3xl font-bold mb-4 text-gray-900">Facebook Farm Analytics Platform</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Built a production-grade social media analytics system with dual-pipeline architecture. Static scraper collected historical data from 168 farms,
-                  while dynamic scraper provides real-time 54-point lifecycle tracking for 32 active farms on Raspberry Pi 5.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {["Python", "Flask", "Facebook API", "ML Analytics", "Raspberry Pi", "systemd"].map((tech) => (
-                    <Badge key={tech} variant="outline" className="border-emerald-200 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 transition-colors">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <Button
-                    variant="outline"
-                    className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 group"
-                    onClick={() => navigate('/project/facebook-farm-analytics')}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
-                    View Details
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
-                    onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
-                  >
-                    <Github className="w-4 h-4" />
-                  </Button>
-                </div>
-              </CardContent>
-              <div className="lg:col-span-2 relative bg-gradient-to-br from-emerald-50 to-green-50 p-8 flex items-center justify-center order-1 lg:order-2">
-                <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                      <Database className="w-10 h-10 text-white" />
-                    </div>
-                    <p className="text-sm text-gray-600 font-medium">Analytics Dashboard</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
         </div>
       </div>
     </div>
