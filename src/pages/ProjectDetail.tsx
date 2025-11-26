@@ -1284,17 +1284,6 @@ const ProjectDetail = () => {
             </div>
           )}
 
-          {/* Show screenshot for Facebook Farm Analytics */}
-          {project.id === "facebook-farm-analytics" && (
-            <div className="flex justify-center mb-10">
-              <img
-                src={`${import.meta.env.BASE_URL}images/FacebookDashboardUI.png`}
-                alt="Facebook Farm Analytics Dashboard UI"
-                className="rounded-2xl border border-gray-200 shadow-lg max-w-full h-auto object-contain"
-                style={{ maxHeight: 600 }}
-              />
-            </div>
-          )}
 
           {/* Project Meta */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

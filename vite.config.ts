@@ -5,8 +5,9 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Configure base path for GitHub Pages
-  base: mode === 'production' ? '/SammyDabbasPortfolio/' : '/',
+  // Configure base path - '/' for custom domain (sammydabbas.com)
+  // Old github.io URL will auto-redirect to custom domain
+  base: '/',
   server: {
     host: "::",
     port: 5175,
