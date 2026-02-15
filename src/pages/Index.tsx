@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, Play, MapPin, GraduationCap, Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Server, Cloud, MapPin, GraduationCap, Calendar, ArrowRight, Sparkles, Cpu } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "sonner";
@@ -159,16 +159,16 @@ const Index = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Languages */}
           <Card className="bg-white border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Code2 className="w-8 h-8 text-white" />
+            <CardContent className="p-6 text-center">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Code2 className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-800">Languages</h3>
+              <h3 className="text-lg font-bold mb-3 text-gray-800">Languages</h3>
               <div className="flex flex-wrap gap-2 justify-center">
-                {["Python", "C#", "JavaScript", "SQL", "HTML", "CSS"].map((lang) => (
+                {["Python", "C++", "C#", "JavaScript", "SQL", "HTML/CSS"].map((lang) => (
                   <Badge key={lang} variant="secondary" className="bg-blue-50 text-blue-700 hover:bg-blue-100 border-blue-200 transition-colors">
                     {lang}
                   </Badge>
@@ -179,13 +179,13 @@ const Index = () => {
 
           {/* Frameworks */}
           <Card className="bg-white border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Server className="w-8 h-8 text-white" />
+            <CardContent className="p-6 text-center">
+              <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Server className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-800">Frameworks</h3>
+              <h3 className="text-lg font-bold mb-3 text-gray-800">Frameworks</h3>
               <div className="flex flex-wrap gap-2 justify-center">
-                {[".NET Core", "FastAPI", "React.js", "Django", "Node.js"].map((framework) => (
+                {[".NET Core", "FastAPI", "React.js", "Django", "Node.js", "Flask"].map((framework) => (
                   <Badge key={framework} variant="secondary" className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border-indigo-200 transition-colors">
                     {framework}
                   </Badge>
@@ -196,11 +196,11 @@ const Index = () => {
 
           {/* Databases */}
           <Card className="bg-white border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Database className="w-8 h-8 text-white" />
+            <CardContent className="p-6 text-center">
+              <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Database className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-800">Databases</h3>
+              <h3 className="text-lg font-bold mb-3 text-gray-800">Databases</h3>
               <div className="flex flex-wrap gap-2 justify-center">
                 {["MS SQL Server", "Firebase", "DynamoDB", "Firestore"].map((db) => (
                   <Badge key={db} variant="secondary" className="bg-purple-50 text-purple-700 hover:bg-purple-100 border-purple-200 transition-colors">
@@ -211,17 +211,51 @@ const Index = () => {
             </CardContent>
           </Card>
 
+          {/* ML & Data Science */}
+          <Card className="bg-white border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+            <CardContent className="p-6 text-center">
+              <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Sparkles className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-lg font-bold mb-3 text-gray-800">ML & Data Science</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {["PyTorch", "scikit-learn", "XGBoost", "LightGBM", "TensorFlow", "FAISS"].map((ml) => (
+                  <Badge key={ml} variant="secondary" className="bg-amber-50 text-amber-700 hover:bg-amber-100 border-amber-200 transition-colors">
+                    {ml}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Cloud & Tools */}
           <Card className="bg-white border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-            <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Cloud className="w-8 h-8 text-white" />
+            <CardContent className="p-6 text-center">
+              <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Cloud className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-800">Cloud & Tools</h3>
+              <h3 className="text-lg font-bold mb-3 text-gray-800">Cloud & DevOps</h3>
               <div className="flex flex-wrap gap-2 justify-center">
-                {["AWS", "Docker", "Kubernetes", "Git", "GitHub"].map((tool) => (
+                {["AWS", "GCP", "Docker", "Kubernetes", "Git", "GitHub"].map((tool) => (
                   <Badge key={tool} variant="secondary" className="bg-green-50 text-green-700 hover:bg-green-100 border-green-200 transition-colors">
                     {tool}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Embedded & Robotics */}
+          <Card className="bg-white border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+            <CardContent className="p-6 text-center">
+              <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-rose-500 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Cpu className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-lg font-bold mb-3 text-gray-800">Embedded & Robotics</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {["Arduino", "ROS2", "Gazebo", "I2C", "LIDAR", "3D Printing"].map((hw) => (
+                  <Badge key={hw} variant="secondary" className="bg-red-50 text-red-700 hover:bg-red-100 border-red-200 transition-colors">
+                    {hw}
                   </Badge>
                 ))}
               </div>
@@ -232,175 +266,153 @@ const Index = () => {
     </div>
   );
 
+  const projectCards = [
+    {
+      id: "ad-event-processing",
+      title: "Real-Time Ad Event Processing",
+      shortDescription: "FastAPI async event pipeline with Redis deduplication, Docker orchestration, and real-time analytics dashboard.",
+      status: "Completed",
+      statusColor: "bg-green-400",
+      tags: ["Python", "FastAPI", "Redis", "Docker"],
+      githubUrl: "https://github.com/Sammy-Dabbas/ad-processing-pipeline"
+    },
+    {
+      id: "exoplanet-detector",
+      title: "Exoplanet Detection System",
+      shortDescription: "AI/ML system with 89.6% accuracy detecting exoplanets from NASA mission data. Global Nominee at NASA Space Apps 2024.",
+      status: "NASA Global Nominee",
+      statusColor: "bg-purple-400",
+      tags: ["Python", "XGBoost", "Flask", "GCP"],
+      githubUrl: "https://github.com/Sammy-Dabbas/PlanetHunterBros"
+    },
+    {
+      id: "ucf-lab-inventory",
+      title: "UCF Lab Inventory System",
+      shortDescription: "Production React SPA managing 200+ lab items with Microsoft OAuth, QR camera scanning, and Firebase serverless backend.",
+      status: "Production",
+      statusColor: "bg-orange-400",
+      tags: ["React", "Firebase", "OAuth", "QR Code"],
+      githubUrl: "https://github.com/Sammy-Dabbas/ucf-lab-inventory"
+    },
+    {
+      id: "recommendation-system",
+      title: "Two-Tower Recommendation System",
+      shortDescription: "PyTorch two-tower neural network with FAISS sub-1ms retrieval. BPR training on MovieLens, config-driven pipeline.",
+      status: "Completed",
+      statusColor: "bg-green-400",
+      tags: ["PyTorch", "FAISS", "Python", "RecSys"],
+      githubUrl: "https://github.com/Sammy-Dabbas"
+    },
+    {
+      id: "agricultural-analytics",
+      title: "Agricultural Social Media Analytics",
+      shortDescription: "ML platform analyzing 18,095 posts from 160 farms with multimodal CLIP+BERT features. 29.44% R-squared, 92% NDCG@10.",
+      status: "Active Research",
+      statusColor: "bg-emerald-400",
+      tags: ["Python", "LightGBM", "CLIP", "BERT"],
+      githubUrl: "https://github.com/Sammy-Dabbas"
+    },
+    {
+      id: "space-radiation-research",
+      title: "Space Radiation Research",
+      shortDescription: "Hybrid physics-ML framework for predicting radiation dose during spaceflight. 84% error reduction on lunar data.",
+      status: "In Progress",
+      statusColor: "bg-blue-500",
+      tags: ["Python", "Random Forest", "NASA APIs"],
+      githubUrl: "https://github.com/Sammy-Dabbas"
+    },
+    {
+      id: "qbxr-senior-design",
+      title: "QBXR Senior Design",
+      shortDescription: "ML system treating QB evaluation as a decision-representation problem with VR-based adaptive coaching feedback.",
+      status: "In Progress",
+      statusColor: "bg-purple-400",
+      tags: ["Python", "ML", "VR Data"],
+      githubUrl: "https://github.com/Sammy-Dabbas"
+    },
+    {
+      id: "flight-computer",
+      title: "Model Rocket Flight Computer",
+      shortDescription: "Custom avionics with SAMD21, 9-DOF IMU, and barometric sensor. 7-state flight FSM logging 15 telemetry channels. 3D printed rocket.",
+      status: "Completed",
+      statusColor: "bg-green-400",
+      tags: ["C++", "SAMD21", "IMU", "3D Printing"],
+      githubUrl: "https://github.com/Sammy-Dabbas"
+    },
+    {
+      id: "rover-challenge",
+      title: "Rover Challenge - Project Storm",
+      shortDescription: "LIDAR-based terrain simulation for rover navigation using ROS2 and Gazebo with real USGS elevation data.",
+      status: "Early Development",
+      statusColor: "bg-orange-400",
+      tags: ["ROS2", "Gazebo", "LIDAR", "Python"],
+      githubUrl: "https://github.com/Sammy-Dabbas"
+    }
+  ];
+
   const renderProjectsSection = () => (
-    <div className="flex-1 flex items-center justify-center pt-4 sm:pt-8 pb-8 sm:pb-16">
+    <div className="flex-1 pt-4 sm:pt-8 pb-8 sm:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-16">
+        <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Projects</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-            Real-world applications solving complex problems with elegant solutions
+            From production systems to research and hardware
           </p>
         </div>
-        
-        <div className="space-y-6 sm:space-y-12">
-          {/* Project 1 */}
-          <Card className="bg-white border-gray-100 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-            <div className="grid lg:grid-cols-5 gap-0">
-              <div className="lg:col-span-2 relative bg-gradient-to-br from-blue-50 to-indigo-50 p-4 sm:p-8 flex items-center justify-center">
-                <div className="relative w-full h-48 sm:h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                      <Play className="w-10 h-10 text-white" />
-                    </div>
-                    <p className="text-sm text-gray-600 font-medium">Live Demo</p>
-                  </div>
-                </div>
-              </div>
-              <CardContent className="lg:col-span-3 p-4 sm:p-8 lg:p-12">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-green-600">Production Ready</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900">Real-Time Ad Event Processing</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-base sm:text-lg">
-                  Engineered enterprise-grade system achieving 375K-418K events/second with sub-2ms latency and 99.99% reliability.
-                  Built with AWS (Kinesis, DynamoDB, CloudWatch), Redis, FastAPI, and Docker for production-scale data ingestion.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {["Python", "FastAPI", "AWS Kinesis", "DynamoDB", "CloudWatch", "Redis", "Docker"].map((tech) => (
-                    <Badge key={tech} variant="outline" className="border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <Button 
-                    variant="outline" 
-                    className="border-blue-200 text-blue-700 hover:bg-blue-50 group"
-                    onClick={() => navigate('/project/ad-event-processing')}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
-                    View Details
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="icon"
-                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
-                    onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
-                  >
-                    <Github className="w-4 h-4" />
-                  </Button>
-                </div>
-              </CardContent>
-            </div>
-          </Card>
 
-          {/* Project 2 */}
-          <Card className="bg-white border-gray-100 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-            <div className="grid lg:grid-cols-5 gap-0">
-              <CardContent className="lg:col-span-3 p-8 lg:p-12 order-2 lg:order-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-3 h-3 bg-indigo-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-indigo-600">Team Project</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projectCards.map((project) => (
+            <Card
+              key={project.id}
+              className="bg-white border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group flex flex-col"
+              onClick={() => navigate(`/project/${project.id}`)}
+            >
+              <CardContent className="p-6 flex flex-col flex-1">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className={`w-2.5 h-2.5 ${project.statusColor} rounded-full`}></div>
+                  <span className="text-xs font-medium text-gray-500">{project.status}</span>
                 </div>
-                <h3 className="text-3xl font-bold mb-4 text-gray-900">SimpleTrain GPU Training Platform</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Production-grade Kubernetes platform for GPU-accelerated ML training. Reduced engineer setup time by 75%
-                  through automated pod provisioning, real-time WebSocket log streaming, and multi-tenant JWT security.
+
+                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  {project.title}
+                </h3>
+
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed flex-1">
+                  {project.shortDescription}
                 </p>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {["Kubernetes", "Node.js", "Django", "Docker", "WebSocket", "PostgreSQL"].map((tech) => (
-                    <Badge key={tech} variant="outline" className="border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-colors">
-                      {tech}
+
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {project.tags.map((tag) => (
+                    <Badge key={tag} variant="secondary" className="bg-gray-100 text-gray-600 text-xs px-2 py-0.5">
+                      {tag}
                     </Badge>
                   ))}
                 </div>
-                <div className="flex gap-3">
+
+                <div className="flex gap-2 mt-auto">
                   <Button
                     variant="outline"
-                    className="border-indigo-200 text-indigo-700 hover:bg-indigo-50 group"
-                    onClick={() => navigate('/project/gpu-training-platform')}
+                    size="sm"
+                    className="border-blue-200 text-blue-700 hover:bg-blue-50 flex-1 text-xs"
+                    onClick={(e) => { e.stopPropagation(); navigate(`/project/${project.id}`); }}
                   >
-                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
+                    <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
                     View Details
                   </Button>
                   <Button
                     variant="outline"
                     size="icon"
-                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
-                    onClick={() => window.open('https://github.com/Sammy-Dabbas', '_blank')}
+                    className="border-gray-200 text-gray-700 hover:bg-gray-50 h-8 w-8"
+                    onClick={(e) => { e.stopPropagation(); window.open(project.githubUrl, '_blank'); }}
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-3.5 h-3.5" />
                   </Button>
                 </div>
               </CardContent>
-              <div className="lg:col-span-2 relative bg-gradient-to-br from-indigo-50 to-blue-50 p-8 flex items-center justify-center order-1 lg:order-2">
-                <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                      <Server className="w-10 h-10 text-white" />
-                    </div>
-                    <p className="text-sm text-gray-600 font-medium">Kubernetes ML Platform</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          {/* Project 3 */}
-          <Card className="bg-white border-gray-100 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-            <div className="grid lg:grid-cols-5 gap-0">
-              <div className="lg:col-span-2 relative bg-gradient-to-br from-green-50 to-teal-50 p-8 flex items-center justify-center">
-                <div className="relative w-full h-64 bg-white rounded-2xl border border-gray-100 shadow-inner flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-                  <img
-                    src={`${import.meta.env.BASE_URL}images/ucf-lab-inventory.png`}
-                    alt="UCF Lab Inventory System Screenshot"
-                    className="object-contain w-full h-full rounded-2xl"
-                    style={{ maxHeight: '15rem' }}
-                  />
-                </div>
-              </div>
-              <CardContent className="lg:col-span-3 p-8 lg:p-12">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-orange-600">University Project</span>
-                </div>
-                <h3 className="text-3xl font-bold mb-4 text-gray-900">UCF Lab Inventory System</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  Production React SPA managing 200+ lab items with Microsoft OAuth (@ucf.edu), QR camera scanning,
-                  and Firebase BaaS. Reduced check-in/out by ~10 seconds through serverless architecture and real-time updates.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {["React.js", "Firebase", "Microsoft OAuth", "HTML5-QRCode", "Firestore", "Tailwind CSS"].map((tech) => (
-                    <Badge key={tech} variant="outline" className="border-green-200 text-green-700 bg-green-50 hover:bg-green-100 transition-colors">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <Button
-                    variant="outline"
-                    className="border-green-200 text-green-700 hover:bg-green-50 group"
-                    onClick={() => navigate('/project/ucf-lab-inventory')}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-45 transition-transform" />
-                    View Details
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
-                    onClick={() => window.open('https://github.com/Sammy-Dabbas/ucf-lab-inventory', '_blank')}
-                  >
-                    <Github className="w-4 h-4" />
-                  </Button>
-                </div>
-              </CardContent>
-            </div>
-          </Card>
-
+            </Card>
+          ))}
         </div>
       </div>
     </div>
@@ -530,7 +542,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 border-t border-gray-100 bg-white">
-        <p className="font-medium">&copy; 2024 Sammy Dabbas. Built with React & Tailwind CSS.</p>
+        <p className="font-medium">&copy; 2025 Sammy Dabbas. Built with React & Tailwind CSS.</p>
       </footer>
     </div>
   );

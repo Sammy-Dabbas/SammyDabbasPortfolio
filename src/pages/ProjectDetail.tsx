@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, ArrowLeft, Calendar, Users, Zap, Play, Code2, Database, Server, Sparkles } from "lucide-react";
+import { Github, ExternalLink, ArrowLeft, Calendar, Users, Zap, Play, Code2, Database, Server, Sparkles, Rocket, Compass, Cpu } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ArchitectureDiagram from "@/components/ui/ArchitectureDiagram";
@@ -53,40 +53,23 @@ const projectsData: { [key: string]: ProjectData } = {
       "QR camera scanning for instant item identification"
     ],
     features: [
-      "Microsoft OAuth with @ucf.edu restriction and popup sign-in",
-      "QR code generation and HTML5-QRCode camera scanning",
+      "Microsoft OAuth with @ucf.edu domain restriction and popup sign-in",
+      "QR code generation and HTML5-QRCode camera scanning for instant item lookup",
       "Reservation system with conflict detection and batch creation",
-      "Live Status Grid showing checked-out items in real-time",
-      "Queue & Schedule views for upcoming reservations",
-      "Admin Panel for student and inventory management",
-      "Consumables tracking with usage history",
-      "Guide editor with versioning",
-      "Search and filter with Firestore composite indexes",
-      "Role-based routing with ProtectedRoute and AdminRoute",
-      "Firestore security rules for access control",
-      "Firebase Hosting CDN with SPA rewrites"
+      "Live Status Grid and Queue/Schedule views with real-time updates",
+      "Admin Panel with role-based access, student management, and consumables tracking"
     ],
     challenges: [
-      "Configuring Azure AD OAuth with Firebase and @ucf.edu restrictions",
+      "Configuring Azure AD OAuth with Firebase and @ucf.edu domain restrictions",
       "HTML5-QRCode cross-browser compatibility and camera permissions",
-      "Designing and deploying Firestore composite indexes",
-      "Real-time conflict detection for concurrent reservations",
-      "Role-based security with custom claims and security rules",
-      "React Router v6 migration and protected route patterns",
-      "Firebase Storage rules and path-based access control",
-      "QR scanning UX in varied lighting and code conditions"
+      "Firestore composite indexes and real-time conflict detection for concurrent reservations",
+      "Role-based security with custom claims and Firestore security rules"
     ],
     learnings: [
-      "Firebase ecosystem: Auth, Firestore, Storage, Hosting",
-      "Microsoft OAuth with Azure AD integration",
-      "HTML5-QRCode library and camera stream handling",
-      "Firestore data modeling and composite indexes",
-      "React Context API for global state management",
-      "Firestore security rules DSL and role-based access",
-      "Tailwind CSS + DaisyUI with CRACO build pipeline",
-      "React Router v6 protected route patterns",
-      "SPA deployment with Firebase Hosting",
-      "Real-time UX with optimistic updates"
+      "Firebase ecosystem: Auth, Firestore, Storage, Hosting with security rules",
+      "Microsoft OAuth with Azure AD integration and domain restrictions",
+      "HTML5-QRCode camera scanning and QR workflow design",
+      "Firestore data modeling, composite indexes, and real-time listeners"
     ],
     architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950">
   <defs>
@@ -304,57 +287,41 @@ const projectsData: { [key: string]: ProjectData } = {
   "ad-event-processing": {
     id: "ad-event-processing",
     title: "Real-Time Ad Event Processing",
-    subtitle: "Production Ready",
-    description: "Enterprise-grade ad event processing system achieving 375,000-418,000 events/second with 1-2ms latency and 99.99% reliability. Built with AWS, FastAPI, Redis, and Docker orchestration with CloudWatch monitoring.",
-    detailedDescription: "A high-performance real-time ad event ingestion and analytics platform designed for enterprise scale. The system processes advertising events with industry-leading performance metrics, validated through AWS CloudWatch with live monitoring. Demonstrates sustained throughput of 375K-418K events/second with sub-2ms latency, featuring Redis deduplication (zero duplicates), comprehensive CloudWatch integration, microservices architecture with 7 containerized services, and proven 99.99% system reliability. Includes scalability roadmap to 1M+ events/second with Kubernetes deployment.",
-    status: "Production Ready",
+    subtitle: "Completed - Data Engineering",
+    description: "Ad event processing pipeline with FastAPI, Redis deduplication, and Docker orchestration. Processes synthetic ad events with 40+ field data model, async workers, and real-time analytics dashboard.",
+    detailedDescription: "Real-time ad event ingestion and analytics platform built with FastAPI and Python asyncio. Features a comprehensive 40+ field AdEvent data model with proper enums for event types, device types, and ad formats. Redis provides sub-millisecond deduplication with pipeline batching. Multiple consumer instances process events in parallel via Docker Compose orchestration with health checks and resource limits. Includes a FastAPI analytics API with Chart.js dashboard for real-time metrics visualization. DynamoDB client and AWS Kinesis integration are scaffolded for production deployment.",
+    status: "Completed",
     statusColor: "green",
-    technologies: ["Python", "FastAPI", "Redis", "AWS Kinesis", "DynamoDB", "CloudWatch", "Docker", "Docker Compose", "asyncio"],
+    technologies: ["Python", "FastAPI", "Redis", "Docker", "Docker Compose", "asyncio", "DynamoDB"],
     githubUrl: "https://github.com/Sammy-Dabbas/ad-processing-pipeline",
     icon: Zap,
     iconGradient: "from-blue-500 to-indigo-500",
     timeline: "4 months",
     teamSize: "Solo Project",
     highlights: [
-      "Achieved 375K-418K events/second sustained throughput validated via AWS CloudWatch",
-      "Sub-2ms processing latency with 99.99% system reliability over 45-minute test",
-      "Zero-duplicate guarantee through Redis SET operations with pipeline batching (50x speedup)",
-      "7-service microservices architecture: 25 concurrent workers with auto-scaling capability",
-      "Production-grade AWS monitoring with 6 CloudWatch alerts and real-time dashboard"
+      "FastAPI async event processing with multiple parallel consumer instances",
+      "Redis deduplication with pipeline batching for high-throughput processing",
+      "Comprehensive 40+ field AdEvent data model with typed enums and dataclasses",
+      "Docker Compose orchestration with health checks, resource limits, and shared volumes"
     ],
     features: [
-      "AWS Kinesis Data Streams: Real-time event ingestion with scalable shard architecture",
-      "Redis caching layer: Sub-millisecond deduplication with pipeline batching, LRU eviction, AOF persistence",
-      "DynamoDB persistence: Partition key + sort key schema with 2 GSIs for flexible querying",
-      "7 containerized services: API, 4 consumers, generator, Redis with Docker Compose orchestration",
-      "AWS CloudWatch integration: Custom metrics, 6 production alerts, real-time performance dashboard",
-      "FastAPI REST API: Real-time analytics endpoints with interactive Chart.js dashboard",
-      "Performance optimization: 25 concurrent workers, connection pooling, batch processing (1000 events/batch)",
-      "Monitoring metrics: Events/sec, latency (P50/P95/P99), reliability, error rate, resource utilization",
-      "Scalability roadmap: 1M+ events/sec with EKS cluster, 200 instances, 30-node Redis cluster",
-      "Security: IAM least-privilege, input validation, rate limiting, DynamoDB encryption at rest"
+      "FastAPI services with async/await for non-blocking event processing",
+      "Redis caching layer with pipeline batching for deduplication",
+      "40+ field AdEvent dataclass with enums for event types, device types, ad formats",
+      "Docker Compose with multiple consumer instances and health checks",
+      "Analytics API with Chart.js dashboard for real-time metrics visualization"
     ],
     challenges: [
-      "Achieving sub-2ms latency at 375K-418K events/second sustained throughput",
-      "Implementing zero-duplicate guarantee with Redis SET operations and atomic transactions",
-      "Optimizing Redis performance: Pipeline batching achieved 50x throughput improvement",
-      "Designing fault-tolerant microservices with graceful shutdown, health checks, and auto-restart",
-      "AWS CloudWatch integration: Custom metrics namespace with dimensional data and alert configuration",
-      "Resource optimization: Container memory limits and CPU constraints for predictable performance",
-      "Scaling architecture: Planning path from current 375K to 1M+ events/second with Kubernetes",
-      "Testing at scale: Performance validation through rigorous 45-minute sustained load testing"
+      "Designing a comprehensive ad event data model covering impressions, clicks, and conversions",
+      "Implementing efficient Redis pipeline batching for deduplication at scale",
+      "Orchestrating multiple async consumer services with Docker Compose",
+      "Building a real-time analytics dashboard with meaningful ad metrics"
     ],
     learnings: [
-      "Batching is critical: Single operations vs batch processing = 50x performance difference",
-      "AWS CloudWatch integration: Monitoring from day 1 enabled rapid debugging and validation",
-      "Async/await pattern: Non-blocking I/O throughout the stack for maximum throughput",
-      "Resource limits matter: Container memory/CPU limits prevent cascade failures",
-      "Testing at scale: Only real load testing (375K+ eps) reveals bottlenecks",
-      "Redis optimization: Pipeline batching, connection pooling, LRU eviction for sub-ms latency",
-      "Microservices architecture: Service isolation with Docker Compose for independent scaling",
-      "AWS infrastructure decisions: Kinesis vs Kafka, DynamoDB vs RDS, managed services trade-offs",
-      "Production operational practices: Health checks, graceful shutdown, auto-restart mechanisms",
-      "Scalability planning: Clear migration path from Docker Compose to Kubernetes for 1M+ eps"
+      "Batching is critical: pipeline batching dramatically improves Redis throughput",
+      "Async/await patterns in Python for high-concurrency event processing",
+      "Docker Compose service orchestration with health checks and resource management",
+      "Data modeling for ad tech: event taxonomies, attribution, and analytics"
     ],
     architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="850" viewBox="0 0 1600 850"> 
   <defs>
@@ -398,7 +365,7 @@ const projectsData: { [key: string]: ProjectData } = {
 
   <!-- Title -->
   <text class="section-title" x="800" y="40" text-anchor="middle">Real-Time Ad Event Processing Architecture</text>
-  <text class="card-label" x="800" y="60" text-anchor="middle">375K-418K events/sec • Sub-2ms latency • 99.99% reliability • AWS CloudWatch validated</text>
+  <text class="card-label" x="800" y="60" text-anchor="middle">FastAPI • Redis Deduplication • Docker Compose • Async Processing</text>
 
   <!-- Layer 1: Event Sources -->
   <g id="sources">
@@ -425,7 +392,7 @@ const projectsData: { [key: string]: ProjectData } = {
     <rect x="600" y="120" width="200" height="140" rx="12" fill="url(#greenGrad)" stroke="#10B981" stroke-width="2" filter="url(#cardShadow)"/>
     <text class="card-title" x="700" y="150" text-anchor="middle">Event Processors</text>
     <text class="card-label" x="700" y="175" text-anchor="middle">Docker Containers</text>
-    <text class="card-label" x="700" y="195" text-anchor="middle">25 concurrent workers</text>
+    <text class="card-label" x="700" y="195" text-anchor="middle">Multiple consumers</text>
     <text class="card-label" x="700" y="210" text-anchor="middle">FastAPI services</text>
     <text class="card-label" x="700" y="225" text-anchor="middle">Async/await</text>
   </g>
@@ -492,29 +459,29 @@ const projectsData: { [key: string]: ProjectData } = {
   <path d="M960,260 L960,320" stroke="#F59E0B" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
   <path d="M1220,260 L1220,320" stroke="#F59E0B" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
 
-  <!-- Performance Metrics -->
+  <!-- System Details -->
   <rect x="80" y="480" width="1480" height="140" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2" filter="url(#cardShadow)"/>
-  <text class="section-title" x="820" y="515" text-anchor="middle">System Performance</text>
+  <text class="section-title" x="820" y="515" text-anchor="middle">System Details</text>
 
-  <text class="card-title" x="250" y="550" text-anchor="middle">Throughput</text>
-  <text class="card-label" x="250" y="570" text-anchor="middle">375K-418K</text>
-  <text class="card-label" x="250" y="585" text-anchor="middle">events/sec</text>
+  <text class="card-title" x="250" y="550" text-anchor="middle">Processing</text>
+  <text class="card-label" x="250" y="570" text-anchor="middle">Async workers</text>
+  <text class="card-label" x="250" y="585" text-anchor="middle">parallel consumers</text>
 
-  <text class="card-title" x="520" y="550" text-anchor="middle">Latency</text>
-  <text class="card-label" x="520" y="570" text-anchor="middle">Sub-2ms</text>
-  <text class="card-label" x="520" y="585" text-anchor="middle">processing</text>
+  <text class="card-title" x="520" y="550" text-anchor="middle">Deduplication</text>
+  <text class="card-label" x="520" y="570" text-anchor="middle">Redis pipeline</text>
+  <text class="card-label" x="520" y="585" text-anchor="middle">batching</text>
 
-  <text class="card-title" x="820" y="550" text-anchor="middle">Reliability</text>
-  <text class="card-label" x="820" y="570" text-anchor="middle">99.99%</text>
-  <text class="card-label" x="820" y="585" text-anchor="middle">uptime</text>
+  <text class="card-title" x="820" y="550" text-anchor="middle">Data Model</text>
+  <text class="card-label" x="820" y="570" text-anchor="middle">40+ fields</text>
+  <text class="card-label" x="820" y="585" text-anchor="middle">typed enums</text>
 
   <text class="card-title" x="1120" y="550" text-anchor="middle">Architecture</text>
-  <text class="card-label" x="1120" y="570" text-anchor="middle">7 services</text>
-  <text class="card-label" x="1120" y="585" text-anchor="middle">25 workers</text>
+  <text class="card-label" x="1120" y="570" text-anchor="middle">Containerized</text>
+  <text class="card-label" x="1120" y="585" text-anchor="middle">microservices</text>
 
-  <text class="card-title" x="1390" y="550" text-anchor="middle">Deduplication</text>
-  <text class="card-label" x="1390" y="570" text-anchor="middle">Zero</text>
-  <text class="card-label" x="1390" y="585" text-anchor="middle">duplicates</text>
+  <text class="card-title" x="1390" y="550" text-anchor="middle">Dashboard</text>
+  <text class="card-label" x="1390" y="570" text-anchor="middle">Chart.js</text>
+  <text class="card-label" x="1390" y="585" text-anchor="middle">real-time</text>
 
   <!-- Technology Stack -->
   <rect x="80" y="660" width="1480" height="140" rx="12" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="2" filter="url(#cardShadow)"/>
@@ -536,348 +503,6 @@ const projectsData: { [key: string]: ProjectData } = {
   <text class="card-label" x="1400" y="750">AWS CloudWatch</text>
 </svg>`
   },
-  "gpu-training-platform": {
-    id: "gpu-training-platform",
-    title: "SimpleTrain GPU Training Platform",
-    subtitle: "Cloud Infrastructure & ML Operations",
-    description: "Production-grade CLI and API platform for GPU-accelerated ML training on Kubernetes. Reduced ML engineer setup time by 75% through automated infrastructure provisioning, unified job management, and real-time monitoring across distributed GPU clusters.",
-    detailedDescription: "SimpleTrain is a comprehensive cloud infrastructure platform that democratizes access to GPU-accelerated machine learning training. Built on Kubernetes with a multi-layered architecture (CLI → REST API → K8s Control Plane → GPU Pods), it abstracts away infrastructure complexity while maintaining fine-grained control. The system features JWT-authenticated Express API gateway, Django-based user management, PostgreSQL metadata persistence, and integrated monitoring with ELK/Prometheus. Engineers submit training jobs via intuitive CLI commands (`simpletrain start`, `simpletrain logs`, `simpletrain list`), which automatically provision GPU pods with custom Docker images, manage resource allocation (CPU/GPU/memory quotas), stream real-time logs, and handle lifecycle orchestration (auto-scaling, cleanup, failure recovery). The platform supports PyTorch, TensorFlow, and custom ML frameworks with configurable presets for common training scenarios.",
-    status: "In Active Development",
-    statusColor: "blue",
-    technologies: ["Node.js", "Express.js", "Kubernetes", "Docker", "PostgreSQL", "JWT", "Django", "@kubernetes/client-node", "WebSocket", "ELK Stack", "Prometheus", "Grafana"],
-    githubUrl: "https://github.com/Sammy-Dabbas/simple-train",
-    icon: Server,
-    iconGradient: "from-blue-500 to-indigo-600",
-    timeline: "4 months (Ongoing)",
-    teamSize: "4-person Team",
-    highlights: [
-      "Reduced ML engineer job setup time from 30+ minutes to under 5 minutes (75% reduction)",
-      "Built 6-layer cloud architecture: CLI → Express API → JWT Auth → K8s Client → Control Plane → GPU Pods",
-      "Implemented real-time log streaming with WebSocket connections from distributed training pods",
-      "Automated Kubernetes job lifecycle management: provisioning, monitoring, auto-scaling, and cleanup",
-      "Designed secure multi-tenant system with JWT authentication and resource isolation per user"
-    ],
-    features: [
-      "Intuitive CLI with commands: start, stop, list, logs, status, delete - zero Kubernetes knowledge required",
-      "Automatic GPU pod provisioning with custom Docker image support (PyTorch, TensorFlow, custom frameworks)",
-      "Real-time log streaming from training pods using WebSocket connections and Kubernetes log API",
-      "RESTful API with 4 core endpoints: POST /api/jobs, GET /api/jobs, GET /api/jobs/:name/logs, DELETE /api/jobs/:name",
-      "JWT-based authentication and authorization with Django user management backend",
-      "PostgreSQL metadata store tracking job history, user quotas, resource usage, and training presets",
-      "Configurable resource allocation: CPU cores, GPU count, memory limits, storage volumes per job",
-      "Auto-scaling GPU pod deployment based on queue depth and resource availability",
-      "Integrated monitoring with ELK Stack (log aggregation) and Prometheus/Grafana (metrics dashboards)",
-      "Automated cleanup and resource deallocation on job completion or failure"
-    ],
-    challenges: [
-      "Kubernetes API complexity: Mastering programmatic job creation, pod lifecycle management, and resource quota enforcement using @kubernetes/client-node library",
-      "Real-time log streaming: Implementing efficient WebSocket-based log tailing from distributed pods without overwhelming the API gateway or losing log lines during network interruptions",
-      "Multi-tenant security: Designing resource isolation to prevent users from accessing each other's jobs, logs, or GPU resources while maintaining shared cluster efficiency",
-      "Asynchronous state management: Handling eventual consistency between Kubernetes cluster state, PostgreSQL metadata, and user-facing CLI responses during long-running training jobs",
-      "Error handling and recovery: Building robust failure scenarios for pod crashes, GPU OOM errors, network timeouts, and Kubernetes control plane unavailability",
-      "Docker image management: Supporting custom ML framework images while enforcing security scanning, size limits, and preventing malicious container execution",
-      "Resource contention: Implementing fair scheduling and queue management when GPU demand exceeds cluster capacity",
-      "Authentication flow: Integrating Django session-based auth with stateless JWT tokens for CLI-to-API communication"
-    ],
-    learnings: [
-      "Deep expertise in Kubernetes architecture: API server internals, pod scheduling, resource quotas, deployments, services, persistent volumes, and RBAC policies",
-      "Kubernetes client library (@kubernetes/client-node): Programmatic job creation, watch streams for pod events, exec API for log streaming, and batch operations",
-      "JWT authentication design patterns: Token generation, refresh strategies, expiration policies, and secure storage in CLI tools",
-      "Building production-grade CLI tools: Argument parsing, config file management, colorized output, progress indicators, and error reporting",
-      "WebSocket protocols for real-time data streaming: Connection management, reconnection logic, backpressure handling, and graceful degradation",
-      "Distributed systems concepts: Eventual consistency, state reconciliation, idempotency, retry mechanisms, and failure detection",
-      "Docker and containerization: Multi-stage builds, layer optimization, security best practices, and GPU-enabled base images (CUDA, cuDNN)",
-      "System observability: Structured logging (JSON logs), metrics instrumentation (Prometheus client), distributed tracing, and alerting pipelines",
-      "API gateway patterns: Request routing, rate limiting, authentication middleware, error handling, and response serialization",
-      "PostgreSQL schema design for metadata: Indexing strategies for job queries, JSONB for flexible metadata storage, and connection pooling for high throughput"
-    ],
-    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
-  <defs>
-    <linearGradient id="gpuBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
-    </linearGradient>
-
-    <linearGradient id="gpuIndigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#4338CA;stop-opacity:1" />
-    </linearGradient>
-
-    <linearGradient id="gpuGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
-    </linearGradient>
-
-    <linearGradient id="gpuYellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
-    </linearGradient>
-
-    <filter id="gpuShadow">
-      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
-    </filter>
-
-    <marker id="gpuArrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-      <path d="M0,0 L0,8 L10,4 z" fill="#3B82F6" />
-    </marker>
-
-    <marker id="gpuArrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-      <path d="M0,0 L0,8 L10,4 z" fill="#10B981" />
-    </marker>
-
-    <marker id="gpuArrowYellow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-      <path d="M0,0 L0,8 L10,4 z" fill="#F59E0B" />
-    </marker>
-  </defs>
-
-  <style>
-    .gpu-title { font: 700 24px 'Segoe UI', sans-serif; fill: #1F2937; }
-    .gpu-section-title { font: 600 16px 'Segoe UI', sans-serif; fill: #374151; }
-    .gpu-layer-title { font: 600 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
-    .gpu-label { font: 500 13px 'Segoe UI', sans-serif; fill: #1F2937; }
-    .gpu-sublabel { font: 400 11px 'Segoe UI', sans-serif; fill: #6B7280; }
-    .gpu-metric-label { font: 600 12px 'Segoe UI', sans-serif; fill: #FFFFFF; }
-    .gpu-metric-value { font: 700 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
-  </style>
-
-  <!-- Background -->
-  <rect width="1600" height="1000" fill="#F9FAFB"/>
-
-  <!-- Title -->
-  <text x="800" y="40" text-anchor="middle" class="gpu-title">SimpleTrain GPU Training Platform Architecture</text>
-
-  <!-- Layer 1: CLI & Client -->
-  <rect x="80" y="90" width="220" height="180" rx="12" fill="url(#gpuBlueGrad)" filter="url(#gpuShadow)"/>
-  <text x="190" y="115" text-anchor="middle" class="gpu-layer-title">CLI Layer</text>
-
-  <rect x="105" y="135" width="170" height="110" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="190" y="160" text-anchor="middle" class="gpu-label">SimpleTrain CLI</text>
-  <text x="190" y="178" text-anchor="middle" class="gpu-sublabel">simpletrain start</text>
-  <text x="190" y="193" text-anchor="middle" class="gpu-sublabel">simpletrain logs</text>
-  <text x="190" y="208" text-anchor="middle" class="gpu-sublabel">simpletrain list</text>
-  <text x="190" y="223" text-anchor="middle" class="gpu-sublabel">simpletrain delete</text>
-
-  <!-- Layer 2: API Gateway -->
-  <rect x="360" y="90" width="220" height="180" rx="12" fill="url(#gpuIndigoGrad)" filter="url(#gpuShadow)"/>
-  <text x="470" y="115" text-anchor="middle" class="gpu-layer-title">API Gateway</text>
-
-  <rect x="385" y="135" width="170" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="470" y="155" text-anchor="middle" class="gpu-label">Express.js API</text>
-  <text x="470" y="173" text-anchor="middle" class="gpu-sublabel">Node.js Runtime</text>
-
-  <rect x="385" y="195" width="170" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="470" y="215" text-anchor="middle" class="gpu-label">JWT Auth</text>
-  <text x="470" y="233" text-anchor="middle" class="gpu-sublabel">Token Verification</text>
-
-  <!-- Layer 3: Authentication Service -->
-  <rect x="640" y="90" width="220" height="180" rx="12" fill="url(#gpuGreenGrad)" filter="url(#gpuShadow)"/>
-  <text x="750" y="115" text-anchor="middle" class="gpu-layer-title">Auth Service</text>
-
-  <rect x="665" y="135" width="170" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="750" y="155" text-anchor="middle" class="gpu-label">Django Backend</text>
-  <text x="750" y="173" text-anchor="middle" class="gpu-sublabel">User Management</text>
-
-  <rect x="665" y="195" width="170" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="750" y="215" text-anchor="middle" class="gpu-label">PostgreSQL</text>
-  <text x="750" y="233" text-anchor="middle" class="gpu-sublabel">User DB</text>
-
-  <!-- Layer 4: Kubernetes Client -->
-  <rect x="920" y="90" width="220" height="180" rx="12" fill="url(#gpuBlueGrad)" filter="url(#gpuShadow)"/>
-  <text x="1030" y="115" text-anchor="middle" class="gpu-layer-title">K8s Interface</text>
-
-  <rect x="945" y="135" width="170" height="110" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="1030" y="160" text-anchor="middle" class="gpu-label">@kubernetes/client-node</text>
-  <text x="1030" y="178" text-anchor="middle" class="gpu-sublabel">Job Creation</text>
-  <text x="1030" y="193" text-anchor="middle" class="gpu-sublabel">Pod Management</text>
-  <text x="1030" y="208" text-anchor="middle" class="gpu-sublabel">Log Streaming</text>
-  <text x="1030" y="223" text-anchor="middle" class="gpu-sublabel">Resource Allocation</text>
-
-  <!-- Layer 5: Kubernetes Control Plane -->
-  <rect x="1200" y="90" width="320" height="180" rx="12" fill="url(#gpuIndigoGrad)" filter="url(#gpuShadow)"/>
-  <text x="1360" y="115" text-anchor="middle" class="gpu-layer-title">Kubernetes Control Plane</text>
-
-  <rect x="1225" y="135" width="135" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="1292" y="155" text-anchor="middle" class="gpu-label">API Server</text>
-  <text x="1292" y="173" text-anchor="middle" class="gpu-sublabel">Resource API</text>
-
-  <rect x="1380" y="135" width="115" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="1437" y="155" text-anchor="middle" class="gpu-label">Scheduler</text>
-  <text x="1437" y="173" text-anchor="middle" class="gpu-sublabel">Pod Placement</text>
-
-  <rect x="1225" y="195" width="135" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="1292" y="215" text-anchor="middle" class="gpu-label">Controller</text>
-  <text x="1292" y="233" text-anchor="middle" class="gpu-sublabel">Job Orchestration</text>
-
-  <rect x="1380" y="195" width="115" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="1437" y="215" text-anchor="middle" class="gpu-label">etcd</text>
-  <text x="1437" y="233" text-anchor="middle" class="gpu-sublabel">State Store</text>
-
-  <!-- Arrows Layer 1-5 -->
-  <line x1="300" y1="180" x2="360" y2="180" stroke="#3B82F6" stroke-width="3" marker-end="url(#gpuArrowBlue)"/>
-  <line x1="580" y1="180" x2="640" y2="180" stroke="#6366F1" stroke-width="3" marker-end="url(#gpuArrowBlue)"/>
-  <line x1="860" y1="180" x2="920" y2="180" stroke="#10B981" stroke-width="3" marker-end="url(#gpuArrowGreen)"/>
-  <line x1="1140" y1="180" x2="1200" y2="180" stroke="#3B82F6" stroke-width="3" marker-end="url(#gpuArrowBlue)"/>
-
-  <!-- GPU Training Pods Section -->
-  <rect x="80" y="320" width="1440" height="280" rx="12" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2"/>
-  <text x="800" y="350" text-anchor="middle" class="gpu-section-title">GPU Training Pods (Kubernetes Cluster)</text>
-
-  <!-- Pod 1 -->
-  <rect x="120" y="380" width="200" height="180" rx="10" fill="url(#gpuGreenGrad)" filter="url(#gpuShadow)"/>
-  <text x="220" y="405" text-anchor="middle" class="gpu-layer-title">Training Pod 1</text>
-  <rect x="140" y="420" width="160" height="45" rx="6" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="220" y="438" text-anchor="middle" class="gpu-label">PyTorch Container</text>
-  <text x="220" y="453" text-anchor="middle" class="gpu-sublabel">python:3.10-cuda12.1</text>
-  <rect x="140" y="475" width="160" height="70" rx="6" fill="#FEF3C7"/>
-  <text x="220" y="495" text-anchor="middle" class="gpu-label">GPU Resources</text>
-  <text x="220" y="510" text-anchor="middle" class="gpu-sublabel">NVIDIA A100 40GB</text>
-  <text x="220" y="525" text-anchor="middle" class="gpu-sublabel">4 CPU cores</text>
-  <text x="220" y="540" text-anchor="middle" class="gpu-sublabel">32GB RAM</text>
-
-  <!-- Pod 2 -->
-  <rect x="360" y="380" width="200" height="180" rx="10" fill="url(#gpuGreenGrad)" filter="url(#gpuShadow)"/>
-  <text x="460" y="405" text-anchor="middle" class="gpu-layer-title">Training Pod 2</text>
-  <rect x="380" y="420" width="160" height="45" rx="6" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="460" y="438" text-anchor="middle" class="gpu-label">TensorFlow Container</text>
-  <text x="460" y="453" text-anchor="middle" class="gpu-sublabel">tensorflow:2.14-gpu</text>
-  <rect x="380" y="475" width="160" height="70" rx="6" fill="#FEF3C7"/>
-  <text x="460" y="495" text-anchor="middle" class="gpu-label">GPU Resources</text>
-  <text x="460" y="510" text-anchor="middle" class="gpu-sublabel">NVIDIA V100 32GB</text>
-  <text x="460" y="525" text-anchor="middle" class="gpu-sublabel">4 CPU cores</text>
-  <text x="460" y="540" text-anchor="middle" class="gpu-sublabel">32GB RAM</text>
-
-  <!-- Pod 3 -->
-  <rect x="600" y="380" width="200" height="180" rx="10" fill="url(#gpuGreenGrad)" filter="url(#gpuShadow)"/>
-  <text x="700" y="405" text-anchor="middle" class="gpu-layer-title">Training Pod 3</text>
-  <rect x="620" y="420" width="160" height="45" rx="6" fill="#FFFFFF" fill-opacity="0.95"/>
-  <text x="700" y="438" text-anchor="middle" class="gpu-label">Custom Container</text>
-  <text x="700" y="453" text-anchor="middle" class="gpu-sublabel">user/custom-ml:latest</text>
-  <rect x="620" y="475" width="160" height="70" rx="6" fill="#FEF3C7"/>
-  <text x="700" y="495" text-anchor="middle" class="gpu-label">GPU Resources</text>
-  <text x="700" y="510" text-anchor="middle" class="gpu-sublabel">NVIDIA A100 80GB</text>
-  <text x="700" y="525" text-anchor="middle" class="gpu-sublabel">8 CPU cores</text>
-  <text x="700" y="540" text-anchor="middle" class="gpu-sublabel">64GB RAM</text>
-
-  <!-- Pod N (Auto-scaled) -->
-  <rect x="840" y="380" width="200" height="180" rx="10" fill="url(#gpuGreenGrad)" fill-opacity="0.5" stroke="#10B981" stroke-width="3" stroke-dasharray="10,5"/>
-  <text x="940" y="405" text-anchor="middle" class="gpu-layer-title" fill-opacity="0.7">Training Pod N</text>
-  <text x="940" y="470" text-anchor="middle" class="gpu-label" fill-opacity="0.7">(Auto-scaled)</text>
-  <text x="940" y="490" text-anchor="middle" class="gpu-sublabel" fill-opacity="0.7">Dynamically provisioned</text>
-  <text x="940" y="505" text-anchor="middle" class="gpu-sublabel" fill-opacity="0.7">based on demand</text>
-
-  <!-- Monitoring Stack -->
-  <rect x="1080" y="380" width="200" height="85" rx="8" fill="url(#gpuYellowGrad)" filter="url(#gpuShadow)"/>
-  <text x="1180" y="403" text-anchor="middle" class="gpu-layer-title">ELK Stack</text>
-  <text x="1180" y="425" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Log Aggregation</text>
-  <text x="1180" y="440" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Elasticsearch</text>
-  <text x="1180" y="455" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Kibana Dashboards</text>
-
-  <rect x="1320" y="380" width="200" height="85" rx="8" fill="url(#gpuYellowGrad)" filter="url(#gpuShadow)"/>
-  <text x="1420" y="403" text-anchor="middle" class="gpu-layer-title">Prometheus</text>
-  <text x="1420" y="425" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Metrics Collection</text>
-  <text x="1420" y="440" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Grafana Visualization</text>
-  <text x="1420" y="455" text-anchor="middle" class="gpu-sublabel" fill="#FFFFFF">Alert Manager</text>
-
-  <!-- WebSocket Connections -->
-  <rect x="1080" y="485" width="440" height="70" rx="8" fill="#FFFFFF" stroke="#6366F1" stroke-width="2"/>
-  <text x="1300" y="510" text-anchor="middle" class="gpu-label">WebSocket Connections</text>
-  <text x="1300" y="528" text-anchor="middle" class="gpu-sublabel">Real-time log streaming from pods</text>
-  <text x="1300" y="543" text-anchor="middle" class="gpu-sublabel">Bidirectional communication channel</text>
-
-  <!-- Arrows from K8s to Pods -->
-  <line x1="1360" y1="270" x2="220" y2="380" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#gpuArrowBlue)" opacity="0.7"/>
-  <line x1="1360" y1="270" x2="460" y2="380" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#gpuArrowBlue)" opacity="0.7"/>
-  <line x1="1360" y1="270" x2="700" y2="380" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#gpuArrowBlue)" opacity="0.7"/>
-  <line x1="1360" y1="270" x2="940" y2="380" stroke="#3B82F6" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#gpuArrowBlue)" opacity="0.5"/>
-
-  <!-- Arrows from Pods to Monitoring -->
-  <line x1="320" y1="470" x2="1080" y2="420" stroke="#F59E0B" stroke-width="2" marker-end="url(#gpuArrowYellow)" opacity="0.6"/>
-  <line x1="560" y1="470" x2="1080" y2="430" stroke="#F59E0B" stroke-width="2" marker-end="url(#gpuArrowYellow)" opacity="0.6"/>
-  <line x1="800" y1="470" x2="1320" y2="430" stroke="#F59E0B" stroke-width="2" marker-end="url(#gpuArrowYellow)" opacity="0.6"/>
-
-  <!-- Performance Metrics Section -->
-  <rect x="80" y="650" width="1440" height="130" rx="12" fill="#1F2937" filter="url(#gpuShadow)"/>
-  <text x="800" y="680" text-anchor="middle" class="gpu-section-title" fill="#FFFFFF">Platform Performance Metrics</text>
-
-  <rect x="120" y="700" width="260" height="60" rx="8" fill="#3B82F6"/>
-  <text x="250" y="720" text-anchor="middle" class="gpu-metric-label">Setup Time Reduction</text>
-  <text x="250" y="745" text-anchor="middle" class="gpu-metric-value">75% faster (30min → 5min)</text>
-
-  <rect x="410" y="700" width="260" height="60" rx="8" fill="#10B981"/>
-  <text x="540" y="720" text-anchor="middle" class="gpu-metric-label">CLI Commands</text>
-  <text x="540" y="745" text-anchor="middle" class="gpu-metric-value">6 core operations</text>
-
-  <rect x="700" y="700" width="260" height="60" rx="8" fill="#6366F1"/>
-  <text x="830" y="720" text-anchor="middle" class="gpu-metric-label">Real-time Streaming</text>
-  <text x="830" y="745" text-anchor="middle" class="gpu-metric-value">WebSocket + K8s Log API</text>
-
-  <rect x="990" y="700" width="260" height="60" rx="8" fill="#F59E0B"/>
-  <text x="1120" y="720" text-anchor="middle" class="gpu-metric-label">Security Model</text>
-  <text x="1120" y="745" text-anchor="middle" class="gpu-metric-value">JWT + Multi-tenant Isolation</text>
-
-  <rect x="1280" y="700" width="240" height="60" rx="8" fill="#8B5CF6"/>
-  <text x="1400" y="720" text-anchor="middle" class="gpu-metric-label">Supported Frameworks</text>
-  <text x="1400" y="745" text-anchor="middle" class="gpu-metric-value">PyTorch • TensorFlow • Custom</text>
-
-  <!-- Technology Stack Section -->
-  <rect x="80" y="820" width="1440" height="130" rx="12" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
-  <text x="800" y="850" text-anchor="middle" class="gpu-section-title">Technology Stack</text>
-
-  <text x="180" y="880" class="gpu-label">Backend:</text>
-  <text x="180" y="900" class="gpu-sublabel">Node.js • Express.js • Django • PostgreSQL</text>
-  <text x="180" y="920" class="gpu-sublabel">JWT • WebSocket • @kubernetes/client-node</text>
-
-  <text x="700" y="880" class="gpu-label">Infrastructure:</text>
-  <text x="700" y="900" class="gpu-sublabel">Kubernetes • Docker • NVIDIA GPU (A100/V100)</text>
-  <text x="700" y="920" class="gpu-sublabel">CUDA 12.1 • cuDNN • Multi-stage Builds</text>
-
-  <text x="1200" y="880" class="gpu-label">Monitoring:</text>
-  <text x="1200" y="900" class="gpu-sublabel">ELK Stack (Elasticsearch/Kibana)</text>
-  <text x="1200" y="920" class="gpu-sublabel">Prometheus • Grafana • AlertManager</text>
-</svg>`
-  },
-  "portfolio-website": {
-    id: "portfolio-website",
-    title: "Portfolio Website",
-    subtitle: "Personal Project",
-    description: "Developed a responsive portfolio website using React.js and styled with Tailwind CSS. The website showcases my skills, projects, and contact information.",
-    detailedDescription: "A personal portfolio website designed to highlight my skills, projects, and contact information. The website is built using React.js for dynamic content and styled with Tailwind CSS for responsive design.",
-    status: "Personal Project",
-    statusColor: "teal",
-    technologies: ["React.js", "Tailwind CSS", "Netlify"],
-    githubUrl: "https://github.com/Sammy-Dabbas/portfolio-website",
-    // liveUrl: "https://sammy-dabbas.netlify.app",
-    icon: ExternalLink,
-    iconGradient: "from-teal-500 to-blue-500",
-    timeline: "1 month",
-    teamSize: "Solo Project",
-    highlights: [
-      "Responsive design for mobile and desktop",
-      "Dynamic content with React.js",
-      "Styled with Tailwind CSS",
-      "Deployed on Netlify"
-    ],
-    features: [
-      "Home page with project highlights",
-      "About section with personal background",
-      "Projects page with detailed descriptions",
-      "Contact form for inquiries"
-    ],
-    challenges: [
-      "Ensuring responsiveness across different devices",
-      "Creating a visually appealing design",
-      "Implementing smooth transitions between pages",
-      "Ensuring accessibility"
-    ],
-    learnings: [
-      "Advanced React.js state management techniques",
-      "Tailwind CSS utility classes for rapid development",
-      "Implementing smooth transitions with Framer Motion",
-      "Building a responsive website with Tailwind CSS"
-    ],
-    architectureSvg: undefined
-  },
-
   "exoplanet-detector": {
     id: "exoplanet-detector",
     title: "Exoplanet Detection System",
@@ -901,40 +526,30 @@ const projectsData: { [key: string]: ProjectData } = {
       "Production deployment on Google Cloud Run completed within 48-hour hackathon"
     ],
     features: [
-      "Interactive web dashboard for model training, prediction, and analysis",
-      "Real-time TESS Objects of Interest (TOI) fetching and prediction",
-      "Batch and manual prediction modes with CSV upload support",
-      "Model management: save, load, and compare trained models",
-      "Uncertainty quantification with confidence intervals and reliability metrics",
-      "Adversarial robustness testing against synthetic false positives",
-      "Habitability scoring system for detected exoplanets",
-      "Feature importance visualization for model interpretability",
-      "Performance metrics: confusion matrices, ROC curves, accuracy plots",
-      "Transit light curve and phase-folded light curve generation on-demand",
-      "Solar system comparison charts for planetary size/orbit visualization",
-      "SMOTE-based class balancing for imbalanced datasets"
+      "Interactive web dashboard for model training, prediction, and visualization",
+      "Real-time TESS Objects of Interest (TOI) fetching and cross-mission prediction",
+      "Multiple ML models: Random Forest, XGBoost, LightGBM, Neural Networks",
+      "Uncertainty quantification, adversarial testing, and habitability scoring",
+      "Transit light curves, phase-folded plots, and solar system comparison charts"
     ],
     challenges: [
       "Processing and normalizing 50+ orbital/stellar parameters from NASA datasets",
-      "Handling severe class imbalance (confirmed exoplanets vs false positives)",
-      "Real-time TESS API integration with rate limiting and error handling",
-      "Implementing multiple ML pipelines (Random Forest, XGBoost, LightGBM, Neural Networks) in unified framework",
-      "Building interactive scientific visualizations with Plotly under time pressure",
-      "Deploying ML models to Google Cloud Run with Docker containerization",
-      "Optimizing model training time for 48-hour hackathon constraints",
-      "Creating user-friendly web interface for both researchers and novices"
+      "Handling severe class imbalance with SMOTE oversampling",
+      "Building and deploying the full system within 48-hour hackathon constraints",
+      "Cross-mission validation: training on Kepler data, predicting on TESS"
     ],
     learnings: [
-      "Machine learning for astronomical data: Random Forest, XGBoost, LightGBM, TensorFlow",
+      "ML for astronomical data: ensemble methods and neural networks on scientific datasets",
       "NASA Exoplanet Archive API integration and TESS mission data formats",
-      "SMOTE and class balancing techniques for imbalanced datasets",
-      "Flask web framework for production ML model deployment",
-      "Feature engineering for exoplanet detection (transit duration, orbital period, planetary radius)",
-      "Uncertainty quantification and prediction confidence intervals",
-      "Docker containerization for ML applications",
-      "Google Cloud Run serverless deployment",
-      "Scientific data visualization with Plotly, matplotlib, seaborn",
-      "Cross-mission validation (train on Kepler, predict on TESS)"
+      "Docker containerization and Google Cloud Run serverless deployment",
+      "Scientific visualization with Plotly for interactive data exploration"
+    ],
+    images: [
+      "images/nasa-training-results.png",
+      "images/nasa-solar-comparison.png",
+      "images/nasa-transit-lightcurve.png",
+      "images/nasa-phase-folded.png",
+      "images/nasa-feature-importance.png"
     ],
     architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
   <defs>
@@ -1163,6 +778,714 @@ const projectsData: { [key: string]: ProjectData } = {
   <!-- NASA Branding -->
   <text class="space-sublabel" x="800" y="980" text-anchor="middle">NASA Space Apps Challenge 2024 • Exoplanet Detection with AI/ML • Planet Hunter Bros</text>
 </svg>`
+  },
+
+  "agricultural-analytics": {
+    id: "agricultural-analytics",
+    title: "Agricultural Social Media Analytics",
+    subtitle: "Faculty-Led Research",
+    description: "ML-powered analytics platform analyzing 18,095 Facebook posts from 160 farms using multimodal CLIP image and BERT text embeddings. LightGBM achieves 29.44% R-squared with 76.47% Spearman ranking accuracy and 92.07% NDCG@10.",
+    detailedDescription: "Faculty-led research project developing a multimodal ML platform for agricultural social media engagement prediction. Collected 18,095 Facebook posts from 160 Florida farms over 12 months via dual-pipeline infrastructure on Raspberry Pi 5. Engineered multimodal features combining CLIP image embeddings (512-dim), BERT text embeddings (64-dim via PCA), and 29 tabular metadata features. Detected and removed data leakage from preliminary model (42% R-squared to 9.8% baseline), then tuned LightGBM to achieve 29.44% R-squared, 76.47% Spearman ranking accuracy, and 92.07% NDCG@10. BERT dimension interpretation analysis revealed that seasonal produce posts with personal stories generate significantly higher engagement than formal or off-topic content.",
+    status: "Active Research",
+    statusColor: "purple",
+    technologies: ["Python", "LightGBM", "XGBoost", "CLIP", "BERT", "Sentence-Transformers", "Facebook Graph API", "Raspberry Pi 5", "scikit-learn", "pandas", "numpy"],
+    githubUrl: "https://github.com/Sammy-Dabbas",
+    icon: Database,
+    iconGradient: "from-green-500 to-emerald-500",
+    timeline: "Ongoing (May 2025 - Present)",
+    teamSize: "Faculty-Led Research Team",
+    highlights: [
+      "18,095 Facebook posts from 160 Florida farms collected over 12 months",
+      "Multimodal features: CLIP image embeddings + BERT text embeddings + tabular metadata",
+      "LightGBM: 29.44% R-squared, 76.47% Spearman ranking, 92.07% NDCG@10",
+      "Detected and removed data leakage: 42% R-squared corrected to 9.8% baseline",
+      "BERT dimension analysis revealed actionable content strategy insights for farmers"
+    ],
+    features: [
+      "Multimodal feature pipeline: CLIP (512-dim) + BERT (64-dim) + 29 tabular features",
+      "Dual-pipeline data collection on Raspberry Pi 5 with systemd orchestration",
+      "Ensemble ML models: LightGBM, Random Forest, XGBoost with hyperparameter tuning",
+      "Cold-start evaluation for predicting engagement on new/unseen farms",
+      "BERT dimension interpretation for actionable content recommendations"
+    ],
+    challenges: [
+      "Detecting subtle data leakage that inflated initial model performance (42% to 9.8%)",
+      "Designing fault-tolerant 24/7 data collection on Raspberry Pi hardware",
+      "Extracting meaningful engagement signals from noisy multimodal social media data",
+      "Cold-start prediction for farms with no historical data"
+    ],
+    learnings: [
+      "Data leakage detection is critical: always validate baseline before optimization",
+      "Multimodal features (CLIP + BERT) provide richer signal than tabular data alone",
+      "Ensemble methods and proper cross-validation prevent overfitting on farm-specific patterns",
+      "Interpretable ML: BERT dimension analysis yields actionable business insights"
+    ],
+    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="agriGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="agriBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="agriPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6D28D9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="agriOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="agriShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+    <marker id="agriArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#10B981" />
+    </marker>
+  </defs>
+
+  <style>
+    .agri-title { font: 700 20px 'Segoe UI', sans-serif; fill: #1F2937; }
+    .agri-layer-title { font: 600 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+    .agri-label { font: 500 13px 'Segoe UI', sans-serif; fill: #1F2937; }
+    .agri-sublabel { font: 400 11px 'Segoe UI', sans-serif; fill: #6B7280; }
+    .agri-metric { font: 700 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+  </style>
+
+  <rect width="1600" height="900" fill="#F9FAFB"/>
+  <text x="800" y="40" text-anchor="middle" class="agri-title">Agricultural Social Media Analytics - ML Pipeline Architecture</text>
+
+  <!-- Data Sources Layer -->
+  <rect x="80" y="80" width="400" height="200" rx="12" fill="url(#agriBlue)" filter="url(#agriShadow)"/>
+  <text x="280" y="105" text-anchor="middle" class="agri-layer-title">Data Sources</text>
+
+  <rect x="100" y="125" width="170" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="185" y="150" text-anchor="middle" class="agri-label">Facebook Graph API</text>
+  <text x="185" y="170" text-anchor="middle" class="agri-sublabel">Page insights</text>
+  <text x="185" y="185" text-anchor="middle" class="agri-sublabel">Post engagement</text>
+  <text x="185" y="200" text-anchor="middle" class="agri-sublabel">Audience demographics</text>
+  <text x="185" y="215" text-anchor="middle" class="agri-sublabel">160 farm pages</text>
+  <text x="185" y="230" text-anchor="middle" class="agri-sublabel">Rate limit handling</text>
+  <text x="185" y="245" text-anchor="middle" class="agri-sublabel">Token management</text>
+
+  <rect x="290" y="125" width="170" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="375" y="150" text-anchor="middle" class="agri-label">Farm Dataset</text>
+  <text x="375" y="170" text-anchor="middle" class="agri-sublabel">168 farms historical</text>
+  <text x="375" y="185" text-anchor="middle" class="agri-sublabel">32 farms real-time</text>
+  <text x="375" y="200" text-anchor="middle" class="agri-sublabel">18K+ posts collected</text>
+  <text x="375" y="215" text-anchor="middle" class="agri-sublabel">Post metadata</text>
+  <text x="375" y="230" text-anchor="middle" class="agri-sublabel">Engagement metrics</text>
+  <text x="375" y="245" text-anchor="middle" class="agri-sublabel">Content analysis</text>
+
+  <!-- Edge Computing Layer -->
+  <rect x="540" y="80" width="400" height="200" rx="12" fill="url(#agriGreen)" filter="url(#agriShadow)"/>
+  <text x="740" y="105" text-anchor="middle" class="agri-layer-title">Edge Computing (Raspberry Pi 5)</text>
+
+  <rect x="560" y="125" width="170" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="645" y="150" text-anchor="middle" class="agri-label">Historical Pipeline</text>
+  <text x="645" y="170" text-anchor="middle" class="agri-sublabel">Batch processing</text>
+  <text x="645" y="185" text-anchor="middle" class="agri-sublabel">168 farm pages</text>
+  <text x="645" y="200" text-anchor="middle" class="agri-sublabel">Scheduled collection</text>
+  <text x="645" y="215" text-anchor="middle" class="agri-sublabel">Data normalization</text>
+  <text x="645" y="230" text-anchor="middle" class="agri-sublabel">CSV export</text>
+  <text x="645" y="245" text-anchor="middle" class="agri-sublabel">Error recovery</text>
+
+  <rect x="750" y="125" width="170" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="835" y="150" text-anchor="middle" class="agri-label">Real-Time Pipeline</text>
+  <text x="835" y="170" text-anchor="middle" class="agri-sublabel">32 active farms</text>
+  <text x="835" y="185" text-anchor="middle" class="agri-sublabel">systemd services</text>
+  <text x="835" y="200" text-anchor="middle" class="agri-sublabel">Auto-restart</text>
+  <text x="835" y="215" text-anchor="middle" class="agri-sublabel">Automated backups</text>
+  <text x="835" y="230" text-anchor="middle" class="agri-sublabel">24/7 collection</text>
+  <text x="835" y="245" text-anchor="middle" class="agri-sublabel">Deduplication</text>
+
+  <!-- ML Pipeline Layer -->
+  <rect x="1000" y="80" width="520" height="200" rx="12" fill="url(#agriPurple)" filter="url(#agriShadow)"/>
+  <text x="1260" y="105" text-anchor="middle" class="agri-layer-title">ML Model Pipeline</text>
+
+  <rect x="1020" y="125" width="150" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1095" y="150" text-anchor="middle" class="agri-label">Random Forest</text>
+  <text x="1095" y="170" text-anchor="middle" class="agri-sublabel">Ensemble trees</text>
+  <text x="1095" y="185" text-anchor="middle" class="agri-sublabel">Feature importance</text>
+  <text x="1095" y="200" text-anchor="middle" class="agri-sublabel">Baseline model</text>
+  <text x="1095" y="215" text-anchor="middle" class="agri-sublabel">Interpretable</text>
+  <text x="1095" y="230" text-anchor="middle" class="agri-sublabel">Fast training</text>
+
+  <rect x="1185" y="125" width="150" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1260" y="150" text-anchor="middle" class="agri-label">LightGBM</text>
+  <text x="1260" y="170" text-anchor="middle" class="agri-sublabel">Gradient boosting</text>
+  <text x="1260" y="185" text-anchor="middle" class="agri-sublabel">Histogram-based</text>
+  <text x="1260" y="200" text-anchor="middle" class="agri-sublabel">Memory efficient</text>
+  <text x="1260" y="215" text-anchor="middle" class="agri-sublabel">Fast inference</text>
+  <text x="1260" y="230" text-anchor="middle" class="agri-sublabel">Best performer</text>
+
+  <rect x="1350" y="125" width="150" height="140" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1425" y="150" text-anchor="middle" class="agri-label">XGBoost</text>
+  <text x="1425" y="170" text-anchor="middle" class="agri-sublabel">eXtreme Gradient</text>
+  <text x="1425" y="185" text-anchor="middle" class="agri-sublabel">Regularization</text>
+  <text x="1425" y="200" text-anchor="middle" class="agri-sublabel">Cross-validation</text>
+  <text x="1425" y="215" text-anchor="middle" class="agri-sublabel">Grid search</text>
+  <text x="1425" y="230" text-anchor="middle" class="agri-sublabel">Hyperparameter tuning</text>
+
+  <!-- Feature Engineering Layer -->
+  <rect x="80" y="330" width="680" height="180" rx="12" fill="url(#agriOrange)" filter="url(#agriShadow)"/>
+  <text x="420" y="355" text-anchor="middle" class="agri-layer-title">Feature Engineering (20 Actionable Features)</text>
+
+  <rect x="100" y="375" width="200" height="120" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="200" y="400" text-anchor="middle" class="agri-label">Content Features</text>
+  <text x="200" y="420" text-anchor="middle" class="agri-sublabel">Post type (image/video/link)</text>
+  <text x="200" y="435" text-anchor="middle" class="agri-sublabel">Content category</text>
+  <text x="200" y="450" text-anchor="middle" class="agri-sublabel">Educational vs promotional</text>
+  <text x="200" y="465" text-anchor="middle" class="agri-sublabel">Text length &amp; sentiment</text>
+  <text x="200" y="480" text-anchor="middle" class="agri-sublabel">Hashtag analysis</text>
+
+  <rect x="320" y="375" width="200" height="120" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="420" y="400" text-anchor="middle" class="agri-label">Temporal Features</text>
+  <text x="420" y="420" text-anchor="middle" class="agri-sublabel">Posting time (hour/day)</text>
+  <text x="420" y="435" text-anchor="middle" class="agri-sublabel">Day of week</text>
+  <text x="420" y="450" text-anchor="middle" class="agri-sublabel">Seasonality</text>
+  <text x="420" y="465" text-anchor="middle" class="agri-sublabel">Post frequency</text>
+  <text x="420" y="480" text-anchor="middle" class="agri-sublabel">Afternoon = 3x engagement</text>
+
+  <rect x="540" y="375" width="200" height="120" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="640" y="400" text-anchor="middle" class="agri-label">Engagement Features</text>
+  <text x="640" y="420" text-anchor="middle" class="agri-sublabel">Historical engagement rate</text>
+  <text x="640" y="435" text-anchor="middle" class="agri-sublabel">Follower count</text>
+  <text x="640" y="450" text-anchor="middle" class="agri-sublabel">Page activity level</text>
+  <text x="640" y="465" text-anchor="middle" class="agri-sublabel">Audience reach</text>
+  <text x="640" y="480" text-anchor="middle" class="agri-sublabel">Interaction ratios</text>
+
+  <!-- Model Validation Layer -->
+  <rect x="820" y="330" width="700" height="180" rx="12" fill="#1F2937" filter="url(#agriShadow)"/>
+  <text x="1170" y="355" text-anchor="middle" class="agri-layer-title">Model Validation &amp; Data Leakage Detection</text>
+
+  <rect x="840" y="375" width="210" height="120" rx="8" fill="#374151"/>
+  <text x="945" y="400" text-anchor="middle" class="agri-label" fill="#FFFFFF">Leakage Detection</text>
+  <text x="945" y="420" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Initial R-squared: 42%</text>
+  <text x="945" y="435" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">After correction: 9.8%</text>
+  <text x="945" y="450" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Proper train/test split</text>
+  <text x="945" y="465" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Temporal validation</text>
+  <text x="945" y="480" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">No future data leakage</text>
+
+  <rect x="1070" y="375" width="210" height="120" rx="8" fill="#374151"/>
+  <text x="1175" y="400" text-anchor="middle" class="agri-label" fill="#FFFFFF">Hyperparameter Tuning</text>
+  <text x="1175" y="420" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">650 iterations</text>
+  <text x="1175" y="435" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Grid search CV</text>
+  <text x="1175" y="450" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Learning rate tuning</text>
+  <text x="1175" y="465" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Tree depth optimization</text>
+  <text x="1175" y="480" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Regularization params</text>
+
+  <rect x="1300" y="375" width="200" height="120" rx="8" fill="#374151"/>
+  <text x="1400" y="400" text-anchor="middle" class="agri-label" fill="#FFFFFF">Final Results</text>
+  <text x="1400" y="420" text-anchor="middle" class="agri-sublabel" fill="#10B981">29.44% R-squared achieved</text>
+  <text x="1400" y="435" text-anchor="middle" class="agri-sublabel" fill="#10B981">76.47% Spearman ranking</text>
+  <text x="1400" y="450" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Cross-validated</text>
+  <text x="1400" y="465" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Production ready</text>
+  <text x="1400" y="480" text-anchor="middle" class="agri-sublabel" fill="#9CA3AF">Interpretable insights</text>
+
+  <!-- Key Insights Section -->
+  <rect x="80" y="560" width="1440" height="130" rx="12" fill="#ECFDF5" stroke="#10B981" stroke-width="2" filter="url(#agriShadow)"/>
+  <text x="800" y="590" text-anchor="middle" class="agri-label" fill="#065F46">Key Research Insights</text>
+
+  <rect x="120" y="610" width="340" height="60" rx="8" fill="#10B981"/>
+  <text x="290" y="635" text-anchor="middle" class="agri-metric">Afternoon Posts = 3x Engagement</text>
+  <text x="290" y="655" text-anchor="middle" class="agri-sublabel" fill="#D1FAE5">Optimal posting time identified</text>
+
+  <rect x="490" y="610" width="340" height="60" rx="8" fill="#8B5CF6"/>
+  <text x="660" y="635" text-anchor="middle" class="agri-metric">Educational Content Wins</text>
+  <text x="660" y="655" text-anchor="middle" class="agri-sublabel" fill="#EDE9FE">Higher engagement than promotional</text>
+
+  <rect x="860" y="610" width="340" height="60" rx="8" fill="#3B82F6"/>
+  <text x="1030" y="635" text-anchor="middle" class="agri-metric">18K+ Posts Analyzed</text>
+  <text x="1030" y="655" text-anchor="middle" class="agri-sublabel" fill="#DBEAFE">160 farms analyzed</text>
+
+  <rect x="1230" y="610" width="270" height="60" rx="8" fill="#F59E0B"/>
+  <text x="1365" y="635" text-anchor="middle" class="agri-metric">29.44% R-squared</text>
+  <text x="1365" y="655" text-anchor="middle" class="agri-sublabel" fill="#FEF3C7">92.07% NDCG@10</text>
+
+  <!-- Technology Stack -->
+  <rect x="80" y="740" width="1440" height="110" rx="12" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+  <text x="800" y="770" text-anchor="middle" class="agri-label">Technology Stack</text>
+
+  <text x="200" y="800" text-anchor="middle" class="agri-sublabel">Python / Flask</text>
+  <text x="400" y="800" text-anchor="middle" class="agri-sublabel">Facebook Graph API</text>
+  <text x="600" y="800" text-anchor="middle" class="agri-sublabel">Raspberry Pi 5</text>
+  <text x="800" y="800" text-anchor="middle" class="agri-sublabel">systemd</text>
+  <text x="1000" y="800" text-anchor="middle" class="agri-sublabel">scikit-learn</text>
+  <text x="1200" y="800" text-anchor="middle" class="agri-sublabel">XGBoost / LightGBM</text>
+  <text x="1400" y="800" text-anchor="middle" class="agri-sublabel">pandas / numpy</text>
+
+  <!-- Flow Arrows -->
+  <line x1="480" y1="180" x2="540" y2="180" stroke="#10B981" stroke-width="3" marker-end="url(#agriArrow)"/>
+  <line x1="940" y1="180" x2="1000" y2="180" stroke="#10B981" stroke-width="3" marker-end="url(#agriArrow)"/>
+  <line x1="740" y1="280" x2="740" y2="330" stroke="#10B981" stroke-width="3" marker-end="url(#agriArrow)"/>
+  <line x1="420" y1="510" x2="420" y2="560" stroke="#10B981" stroke-width="3" marker-end="url(#agriArrow)"/>
+</svg>`
+  },
+
+  "flight-computer": {
+    id: "flight-computer",
+    title: "Model Rocket Flight Computer",
+    subtitle: "Completed - Hardware + Software",
+    description: "Custom flight computer built on proto board with SAMD21 microcontroller, 9-DOF IMU, barometric sensor, microSD logging, and buzzer. Features a 7-state flight state machine logging 15 telemetry channels at 100ms intervals.",
+    detailedDescription: "A complete model rocket avionics system designed and built from scratch. The flight computer runs on a SAMD21 microcontroller with an ICM-20948 9-DOF IMU (accelerometer, gyroscope, magnetometer) and BME280 environmental sensor for temperature, pressure, and altitude. A 7-state flight state machine (IDLE, ARMED, LAUNCH, COAST, APOGEE, DESCENT, LANDED) detects launch via sustained acceleration >1.8g for 3 consecutive readings and identifies apogee through altitude delta detection. All telemetry is logged to microSD at 100ms intervals in CSV format with 15 data fields. Includes safety failsafes for sensor malfunction and a buzzer that plays a recovery melody on landing. A companion real-time IMU visualizer built in Processing renders the rocket's 3D orientation from serial data. The rocket body was fully CAD-designed and 3D printed.",
+    status: "Completed",
+    statusColor: "green",
+    technologies: ["Arduino/SAMD21", "C++", "I2C", "ICM-20948 IMU", "BME280", "MicroSD", "Processing", "3D Printing"],
+    githubUrl: "https://github.com/Sammy-Dabbas",
+    icon: Rocket,
+    iconGradient: "from-red-500 to-orange-500",
+    timeline: "2 months",
+    teamSize: "Solo Project",
+    highlights: [
+      "7-state flight FSM with launch detection (>1.8g sustained) and apogee identification",
+      "15 telemetry channels logged at 100ms intervals: acceleration, gyro, magnetometer, altitude, temperature",
+      "Real-time 3D IMU visualizer built in Processing for orientation tracking",
+      "Fully CAD-designed and 3D printed rocket body with custom avionics bay"
+    ],
+    features: [
+      "SAMD21 microcontroller with ICM-20948 9-DOF IMU and BME280 barometric sensor",
+      "Flight state machine: IDLE -> ARMED -> LAUNCH -> COAST -> APOGEE -> DESCENT -> LANDED",
+      "MicroSD CSV logging with auto-generated filenames and 15 data fields per row",
+      "Safety failsafes: timeout after 105s armed without launch, 2-min max flight duration",
+      "Recovery buzzer with melody playback for locating landed rocket"
+    ],
+    challenges: [
+      "I2C communication with ICM-20948 magnetometer via bank switching and auxiliary registers",
+      "Reliable launch detection requiring sustained acceleration to prevent false triggers",
+      "Proto board soldering and wiring of multiple I2C devices with power management"
+    ],
+    learnings: [
+      "Embedded systems: I2C protocol, sensor fusion, and real-time data logging",
+      "Flight state machine design with robust transition logic and failsafes",
+      "3D printing and CAD design for functional aerospace applications",
+      "Processing framework for real-time serial data visualization"
+    ],
+    architectureSvg: undefined
+  },
+
+  "space-radiation-research": {
+    id: "space-radiation-research",
+    title: "Space Radiation Research",
+    subtitle: "Active Research - Hybrid Physics-ML",
+    description: "Hybrid physics-ML framework for predicting cumulative radiation dose and cancer risk during long-duration spaceflight. Combines Badhwar-O'Neill GCR physics model with Random Forest ML, achieving 84% error reduction on lunar environment data.",
+    detailedDescription: "Research project developing a comprehensive framework for predicting cumulative radiation dose and cancer risk exposure for long-duration spaceflight missions (ISS, Lunar Gateway, Mars transit). The hybrid approach combines the Badhwar-O'Neill 2020 GCR physics model as a baseline with Random Forest residual learning that corrects the physics predictions using 38 engineered features including solar indices, proton flux, rolling averages, and mission geometry. Trained on multi-source data: ISS RadLab (3,447 daily records), LRO CRaTER lunar dosimetry (212 records), MSL RAD deep space measurements (254 records), and OMNI2 solar indices (208,886 hourly records). Achieved 84% error reduction on lunar environment (CRaTER MAE: 16.07 to 2.58 cGy/day). Risk modeling uses ICRP 103/116 conversion factors and NASA NSCR framework for Excess Risk of Cancer estimation.",
+    status: "In Progress",
+    statusColor: "blue",
+    technologies: ["Python", "XGBoost", "Random Forest", "Badhwar-O'Neill Model", "NASA APIs", "Streamlit", "pandas", "numpy"],
+    githubUrl: "https://github.com/Sammy-Dabbas",
+    icon: Sparkles,
+    iconGradient: "from-red-500 to-orange-500",
+    timeline: "Ongoing",
+    teamSize: "2-person Team",
+    highlights: [
+      "84% error reduction on lunar environment data (CRaTER MAE: 16.07 to 2.58 cGy/day)",
+      "Hybrid physics-ML: Badhwar-O'Neill 2020 GCR model + Random Forest residual learning",
+      "Multi-source data: ISS RadLab, LRO CRaTER, MSL RAD, OMNI2 solar indices",
+      "38 engineered features: solar indices, proton flux, rolling averages, mission geometry",
+      "Cancer risk modeling with ICRP 103/116 factors and NASA NSCR framework"
+    ],
+    features: [
+      "Badhwar-O'Neill 2020 GCR physics baseline with solar modulation",
+      "Random Forest residual learning that corrects physics model predictions",
+      "Multi-environment support: LEO (ISS), Lunar, and Deep Space (Mars transit)",
+      "Dose-to-risk conversion using ICRP tissue weighting and NASA NSCR cancer risk model",
+      "Interactive Streamlit dashboard for mission simulation and dose visualization"
+    ],
+    challenges: [
+      "LEO trapped radiation: physics model underpredicts ISS dose without Van Allen belt modeling",
+      "Limited training data: only 218 samples with ground truth dose measurements across all environments",
+      "Multi-environment generalization: models trained on solar cycle 24 data may not generalize"
+    ],
+    learnings: [
+      "Physics-informed ML: residual learning outperforms pure data-driven approaches on small datasets",
+      "Space radiation physics: GCR flux, solar modulation, shielding attenuation, and SPE events",
+      "Multi-source data integration: aligning heterogeneous space mission datasets",
+      "Cancer risk modeling frameworks used by NASA for astronaut health assessment"
+    ],
+    architectureSvg: undefined
+  },
+
+  "qbxr-senior-design": {
+    id: "qbxr-senior-design",
+    title: "QBXR Senior Design",
+    subtitle: "In Progress - Senior Design Capstone",
+    description: "ML system treating quarterback evaluation as a decision-representation problem. Transforms VR-based QB decisions into consistent, interpretable grades with adaptive coaching feedback.",
+    detailedDescription: "Senior design capstone project developing a machine learning system that bridges subjective coaching evaluations with objective, data-driven grading for quarterback performance. The core innovation treats QB evaluation as a decision-representation problem, transforming VR-based quarterback decisions into consistent, interpretable grades and adaptive feedback for coaching staff. The system uses a config-driven architecture with configurable weights for explicit subjectivity modeling, batch re-scoring capability, and session-level QB Report Cards. Currently in Phase II-A: ingesting first real VR exports and reconciling planned data schema with actual data.",
+    status: "In Progress",
+    statusColor: "purple",
+    technologies: ["Python", "Machine Learning", "VR Data Analysis", "YAML/JSON Config"],
+    githubUrl: "https://github.com/Sammy-Dabbas",
+    icon: Zap,
+    iconGradient: "from-purple-500 to-indigo-500",
+    timeline: "2 semesters (Ongoing)",
+    teamSize: "Senior Design Team",
+    highlights: [
+      "Decision-representation framework for objective QB evaluation from subjective VR data",
+      "Config-driven grading engine with adjustable weights and batch re-scoring",
+      "Phase II-A: ingesting first real VR data exports and validating schema",
+      "Emphasis on coherence over accuracy: grades stable under small perturbations"
+    ],
+    features: [
+      "Feature engineering with categorical, temporal, and normalized encodings",
+      "Config-driven architecture (YAML/JSON) for weight adjustment and subjectivity modeling",
+      "Data ingestion and validation system with error reporting",
+      "Session-level summaries and QB Report Card output"
+    ],
+    challenges: [
+      "Reconciling planned data schema with actual VR export formats and noise",
+      "Modeling subjective coaching evaluations in an objective, repeatable way",
+      "Ensuring grade stability and ranking coherence with limited initial data"
+    ],
+    learnings: [
+      "Decision-representation as a framework for subjective-to-objective ML problems",
+      "Config-driven ML systems for rapid iteration on grading weights",
+      "Data validation and schema evolution when working with real-world VR exports"
+    ],
+    architectureSvg: undefined
+  },
+
+  "rover-challenge": {
+    id: "rover-challenge",
+    title: "University Rover Challenge - Project Storm",
+    subtitle: "Early Development - UCF Robotics",
+    description: "LIDAR-based terrain simulation for rover navigation using ROS2 and Gazebo. Processed real USGS LIDAR data from Southern Utah into heightmaps for realistic simulation environments.",
+    detailedDescription: "Software contribution to UCF's University Rover Challenge team (Project Storm). Built a LIDAR-based heightmap simulation environment for rover navigation and terrain analysis. Processed USGS LIDAR point cloud data (6 tiles, ~198MB compressed) from Southern Utah into GeoTIFF rasters and PNG heightmaps, then integrated them into Gazebo simulation via ROS2. The ROS2 workspace includes a complete package with launch scripts, SDF world definitions, and heightmap terrain models with collision geometry for accurate rover navigation testing.",
+    status: "Early Development",
+    statusColor: "orange",
+    technologies: ["ROS2", "Gazebo", "LIDAR", "Python", "SDF", "USGS Data"],
+    githubUrl: "https://github.com/Sammy-Dabbas",
+    icon: Compass,
+    iconGradient: "from-amber-500 to-orange-500",
+    timeline: "Ongoing",
+    teamSize: "Team Project",
+    highlights: [
+      "Processed real USGS LIDAR data (6 tiles, ~198MB) into Gazebo-compatible heightmaps",
+      "ROS2 workspace with launch scripts, SDF world definitions, and terrain models",
+      "Heightmap terrain with collision geometry for realistic rover navigation testing"
+    ],
+    features: [
+      "USGS LIDAR point cloud to GeoTIFF to PNG heightmap processing pipeline",
+      "Gazebo simulation environment with heightmap-based terrain and collision detection",
+      "ROS2 launch system with configurable world file arguments",
+      "1025x1025 pixel heightmap with 73 units of elevation variation"
+    ],
+    challenges: [
+      "Processing and converting large LIDAR point clouds into simulation-ready heightmaps",
+      "Configuring ROS2 and Gazebo integration with correct model paths and dependencies",
+      "Ensuring heightmap resolution and scale accurately represent real terrain"
+    ],
+    learnings: [
+      "ROS2 package structure, ament_cmake build system, and launch files",
+      "Gazebo simulation with SDF model definitions and heightmap geometry",
+      "Geospatial data processing: LIDAR point clouds, GeoTIFF, and coordinate systems"
+    ],
+    architectureSvg: undefined
+  },
+
+  "recommendation-system": {
+    id: "recommendation-system",
+    title: "Two-Tower Recommendation System",
+    subtitle: "Completed - Deep Learning",
+    description: "Two-tower neural collaborative filtering system built from scratch in PyTorch with FAISS indexing for sub-1ms inference. Trained on MovieLens with BPR loss, achieving 7.13% Recall@10.",
+    detailedDescription: "Production-oriented recommendation engine using a two-tower neural architecture. The user tower encodes user ID + demographics (age, gender, occupation) and the item tower encodes item ID + genre features (18-19 flags), both producing 128-dim embeddings scored via dot product. Trained with Bayesian Personalized Ranking loss on MovieLens 100K (943 users, 1,682 movies). Features config-driven hyperparameters (YAML), factory pattern dataset loading supporting both MovieLens 100K and 1M, and FAISS IndexFlatIP for sub-1ms top-K retrieval at inference. Evolved over 20 commits from matrix factorization baseline to full two-tower with feature engineering.",
+    status: "Completed",
+    statusColor: "green",
+    technologies: ["PyTorch", "FAISS", "Python", "NumPy", "pandas", "scikit-learn"],
+    githubUrl: "https://github.com/Sammy-Dabbas",
+    icon: Database,
+    iconGradient: "from-cyan-500 to-blue-500",
+    timeline: "1 month",
+    teamSize: "Solo Project",
+    highlights: [
+      "Two-tower neural architecture with user demographics + item genre features",
+      "Sub-1ms inference via FAISS inner product indexing over all item embeddings",
+      "BPR pairwise ranking loss with temporal train-test split for realistic evaluation",
+      "Config-driven (YAML) with factory pattern loaders for MovieLens 100K and 1M"
+    ],
+    features: [
+      "User tower: embedding + age/gender/occupation features -> 128-dim output via 2-layer MLP",
+      "Item tower: embedding + 18-19 genre multi-hot features -> 128-dim output via 2-layer MLP",
+      "BPR training with negative sampling and Adam optimizer (lr=0.001, weight decay=0.0005)",
+      "FAISS IndexFlatIP: pre-computed item embeddings for instant top-K retrieval",
+      "Modular pipeline: train -> build_index -> serve with persistent .pth and .faiss artifacts"
+    ],
+    challenges: [
+      "Designing effective feature engineering for sparse user demographics and multi-hot genre vectors",
+      "Balancing embedding capacity vs overfitting on 100K interaction dataset",
+      "Temporal split evaluation to prevent data leakage from future interactions"
+    ],
+    learnings: [
+      "Two-tower architectures: independent encoding enables pre-computation and fast retrieval",
+      "FAISS indexing for production-scale approximate nearest neighbor search",
+      "BPR loss vs pointwise loss for implicit feedback recommendation",
+      "Config-driven ML pipelines with factory patterns for dataset extensibility"
+    ],
+    architectureSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950">
+  <defs>
+    <linearGradient id="ttCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891B2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ttBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ttPurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ttGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ttAmberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="ttShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+    <marker id="ttArrowCyan" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#06B6D4" />
+    </marker>
+    <marker id="ttArrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#3B82F6" />
+    </marker>
+    <marker id="ttArrowPurple" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#8B5CF6" />
+    </marker>
+    <marker id="ttArrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#10B981" />
+    </marker>
+  </defs>
+
+  <style>
+    .tt-title { font: 700 24px 'Segoe UI', sans-serif; fill: #1F2937; }
+    .tt-subtitle { font: 400 14px 'Segoe UI', sans-serif; fill: #6B7280; }
+    .tt-section { font: 600 16px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+    .tt-label { font: 600 13px 'Segoe UI', sans-serif; fill: #1F2937; }
+    .tt-sublabel { font: 400 11px 'Segoe UI', sans-serif; fill: #6B7280; }
+    .tt-dim { font: 700 11px 'Segoe UI', sans-serif; fill: #06B6D4; }
+    .tt-metric-label { font: 600 12px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+    .tt-metric-value { font: 700 14px 'Segoe UI', sans-serif; fill: #FFFFFF; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1600" height="950" fill="#F9FAFB"/>
+
+  <!-- Title -->
+  <text x="800" y="40" text-anchor="middle" class="tt-title">Two-Tower Recommendation System Architecture</text>
+  <text x="800" y="62" text-anchor="middle" class="tt-subtitle">PyTorch + FAISS | BPR Training | MovieLens 100K/1M | Config-Driven Pipeline</text>
+
+  <!-- ==================== DATA LAYER ==================== -->
+  <rect x="80" y="90" width="1440" height="120" rx="12" fill="url(#ttAmberGrad)" filter="url(#ttShadow)"/>
+  <text x="800" y="115" text-anchor="middle" class="tt-section">Data Layer (MovieLens)</text>
+
+  <rect x="110" y="130" width="200" height="65" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="210" y="152" text-anchor="middle" class="tt-label">User Data</text>
+  <text x="210" y="168" text-anchor="middle" class="tt-sublabel">user_id, age, gender, occupation</text>
+  <text x="210" y="183" text-anchor="middle" class="tt-sublabel">943 users (100K) / 6,040 (1M)</text>
+
+  <rect x="340" y="130" width="200" height="65" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="440" y="152" text-anchor="middle" class="tt-label">Item Data</text>
+  <text x="440" y="168" text-anchor="middle" class="tt-sublabel">item_id, 18 genre flags</text>
+  <text x="440" y="183" text-anchor="middle" class="tt-sublabel">1,682 movies (100K) / 3,952 (1M)</text>
+
+  <rect x="570" y="130" width="200" height="65" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="670" y="152" text-anchor="middle" class="tt-label">Interactions</text>
+  <text x="670" y="168" text-anchor="middle" class="tt-sublabel">Ratings filtered >= 4 (positive)</text>
+  <text x="670" y="183" text-anchor="middle" class="tt-sublabel">Temporal 80/20 train/test split</text>
+
+  <rect x="800" y="130" width="200" height="65" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="900" y="152" text-anchor="middle" class="tt-label">BPR Sampling</text>
+  <text x="900" y="168" text-anchor="middle" class="tt-sublabel">(user, pos_item, neg_item)</text>
+  <text x="900" y="183" text-anchor="middle" class="tt-sublabel">Random negative sampling</text>
+
+  <rect x="1030" y="130" width="220" height="65" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1140" y="152" text-anchor="middle" class="tt-label">Config (YAML)</text>
+  <text x="1140" y="168" text-anchor="middle" class="tt-sublabel">embed=50, hidden=128, lr=0.001</text>
+  <text x="1140" y="183" text-anchor="middle" class="tt-sublabel">batch=1024, epochs=10, seed=42</text>
+
+  <rect x="1280" y="130" width="220" height="65" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1390" y="152" text-anchor="middle" class="tt-label">Factory Loader</text>
+  <text x="1390" y="168" text-anchor="middle" class="tt-sublabel">Supports MovieLens 100K &amp; 1M</text>
+  <text x="1390" y="183" text-anchor="middle" class="tt-sublabel">Config-driven dataset selection</text>
+
+  <!-- ==================== USER TOWER (LEFT) ==================== -->
+  <rect x="80" y="250" width="620" height="360" rx="12" fill="url(#ttCyanGrad)" filter="url(#ttShadow)"/>
+  <text x="390" y="278" text-anchor="middle" class="tt-section">User Tower</text>
+
+  <!-- Input features -->
+  <rect x="110" y="295" width="130" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="175" y="315" text-anchor="middle" class="tt-label">user_id</text>
+  <text x="175" y="332" text-anchor="middle" class="tt-sublabel">Embedding</text>
+  <text x="175" y="348" text-anchor="middle" class="tt-dim">dim: 50</text>
+  <text x="175" y="365" text-anchor="middle" class="tt-sublabel">943 users</text>
+
+  <rect x="260" y="295" width="100" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="310" y="315" text-anchor="middle" class="tt-label">age</text>
+  <text x="310" y="332" text-anchor="middle" class="tt-sublabel">Normalized</text>
+  <text x="310" y="348" text-anchor="middle" class="tt-dim">dim: 1</text>
+  <text x="310" y="365" text-anchor="middle" class="tt-sublabel">[0, 1]</text>
+
+  <rect x="380" y="295" width="100" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="430" y="315" text-anchor="middle" class="tt-label">gender</text>
+  <text x="430" y="332" text-anchor="middle" class="tt-sublabel">Embedding</text>
+  <text x="430" y="348" text-anchor="middle" class="tt-dim">dim: 4</text>
+  <text x="430" y="365" text-anchor="middle" class="tt-sublabel">vocab: 2</text>
+
+  <rect x="500" y="295" width="130" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="565" y="315" text-anchor="middle" class="tt-label">occupation</text>
+  <text x="565" y="332" text-anchor="middle" class="tt-sublabel">Embedding</text>
+  <text x="565" y="348" text-anchor="middle" class="tt-dim">dim: 12</text>
+  <text x="565" y="365" text-anchor="middle" class="tt-sublabel">vocab: 21</text>
+
+  <!-- Concat -->
+  <rect x="160" y="400" width="420" height="35" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="370" y="422" text-anchor="middle" class="tt-label">Concatenate: 50 + 1 + 4 + 12 = 67</text>
+
+  <!-- FC layers -->
+  <rect x="160" y="455" width="200" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="260" y="475" text-anchor="middle" class="tt-label">FC1 + ReLU</text>
+  <text x="260" y="493" text-anchor="middle" class="tt-dim">67 -> 128</text>
+
+  <rect x="380" y="455" width="200" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="480" y="475" text-anchor="middle" class="tt-label">FC2 (Output)</text>
+  <text x="480" y="493" text-anchor="middle" class="tt-dim">128 -> 128</text>
+
+  <!-- Output -->
+  <rect x="250" y="530" width="220" height="45" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="360" y="550" text-anchor="middle" class="tt-label">User Embedding</text>
+  <text x="360" y="566" text-anchor="middle" class="tt-dim">128-dimensional vector</text>
+
+  <!-- User tower internal arrows -->
+  <line x1="175" y1="375" x2="175" y2="400" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+  <line x1="310" y1="375" x2="310" y2="400" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+  <line x1="430" y1="375" x2="430" y2="400" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+  <line x1="565" y1="375" x2="565" y2="400" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+  <line x1="370" y1="435" x2="370" y2="455" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+  <line x1="360" y1="505" x2="360" y2="530" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+
+  <!-- ==================== ITEM TOWER (RIGHT) ==================== -->
+  <rect x="900" y="250" width="620" height="360" rx="12" fill="url(#ttBlueGrad)" filter="url(#ttShadow)"/>
+  <text x="1210" y="278" text-anchor="middle" class="tt-section">Item Tower</text>
+
+  <!-- Input features -->
+  <rect x="960" y="295" width="220" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1070" y="315" text-anchor="middle" class="tt-label">item_id</text>
+  <text x="1070" y="332" text-anchor="middle" class="tt-sublabel">Embedding</text>
+  <text x="1070" y="348" text-anchor="middle" class="tt-dim">dim: 50</text>
+  <text x="1070" y="365" text-anchor="middle" class="tt-sublabel">1,682 movies</text>
+
+  <rect x="1210" y="295" width="260" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1340" y="315" text-anchor="middle" class="tt-label">genres (multi-hot)</text>
+  <text x="1340" y="332" text-anchor="middle" class="tt-sublabel">Action, Comedy, Drama, ...</text>
+  <text x="1340" y="348" text-anchor="middle" class="tt-dim">dim: 18</text>
+  <text x="1340" y="365" text-anchor="middle" class="tt-sublabel">18 genre flags</text>
+
+  <!-- Concat -->
+  <rect x="1000" y="400" width="420" height="35" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1210" y="422" text-anchor="middle" class="tt-label">Concatenate: 50 + 18 = 68</text>
+
+  <!-- FC layers -->
+  <rect x="1000" y="455" width="200" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1100" y="475" text-anchor="middle" class="tt-label">FC1 + ReLU</text>
+  <text x="1100" y="493" text-anchor="middle" class="tt-dim">68 -> 128</text>
+
+  <rect x="1220" y="455" width="200" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1320" y="475" text-anchor="middle" class="tt-label">FC2 (Output)</text>
+  <text x="1320" y="493" text-anchor="middle" class="tt-dim">128 -> 128</text>
+
+  <!-- Output -->
+  <rect x="1100" y="530" width="220" height="45" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1210" y="550" text-anchor="middle" class="tt-label">Item Embedding</text>
+  <text x="1210" y="566" text-anchor="middle" class="tt-dim">128-dimensional vector</text>
+
+  <!-- Item tower internal arrows -->
+  <line x1="1070" y1="375" x2="1070" y2="400" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+  <line x1="1340" y1="375" x2="1340" y2="400" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+  <line x1="1210" y1="435" x2="1210" y2="455" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+  <line x1="1210" y1="505" x2="1210" y2="530" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7"/>
+
+  <!-- ==================== SCORING / DOT PRODUCT ==================== -->
+  <rect x="580" y="640" width="440" height="80" rx="12" fill="url(#ttPurpleGrad)" filter="url(#ttShadow)"/>
+  <text x="800" y="668" text-anchor="middle" class="tt-section">Dot Product Scoring</text>
+  <rect x="620" y="683" width="360" height="28" rx="6" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="800" y="702" text-anchor="middle" class="tt-label">score = sum(user_emb * item_emb) -> scalar</text>
+
+  <!-- Arrows from towers to dot product -->
+  <path d="M360,575 L360,625 L580,665" stroke="#06B6D4" stroke-width="3" fill="none" marker-end="url(#ttArrowCyan)"/>
+  <text x="380" y="620" class="tt-sublabel" fill="#06B6D4">128-d</text>
+
+  <path d="M1210,575 L1210,625 L1020,665" stroke="#3B82F6" stroke-width="3" fill="none" marker-end="url(#ttArrowBlue)"/>
+  <text x="1180" y="620" class="tt-sublabel" fill="#3B82F6">128-d</text>
+
+  <!-- ==================== TRAINING FLOW (LEFT) ==================== -->
+  <rect x="80" y="760" width="440" height="140" rx="12" fill="url(#ttGreenGrad)" filter="url(#ttShadow)"/>
+  <text x="300" y="788" text-anchor="middle" class="tt-section">Training Pipeline</text>
+
+  <rect x="110" y="800" width="180" height="85" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="200" y="822" text-anchor="middle" class="tt-label">BPR Loss</text>
+  <text x="200" y="840" text-anchor="middle" class="tt-sublabel">-log sigmoid(pos - neg)</text>
+  <text x="200" y="856" text-anchor="middle" class="tt-sublabel">Pairwise ranking objective</text>
+  <text x="200" y="872" text-anchor="middle" class="tt-sublabel">Negative sampling per batch</text>
+
+  <rect x="310" y="800" width="190" height="85" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="405" y="822" text-anchor="middle" class="tt-label">Adam Optimizer</text>
+  <text x="405" y="840" text-anchor="middle" class="tt-sublabel">lr=0.001, decay=0.0005</text>
+  <text x="405" y="856" text-anchor="middle" class="tt-sublabel">batch_size=1024</text>
+  <text x="405" y="872" text-anchor="middle" class="tt-sublabel">10 epochs, seed=42</text>
+
+  <!-- Arrow from dot product to training -->
+  <path d="M690,720 L690,740 L520,770" stroke="#10B981" stroke-width="3" fill="none" marker-end="url(#ttArrowGreen)"/>
+  <text x="580" y="748" class="tt-sublabel" fill="#10B981">pos/neg scores</text>
+
+  <!-- ==================== INFERENCE FLOW (RIGHT) ==================== -->
+  <rect x="1080" y="760" width="440" height="140" rx="12" fill="url(#ttPurpleGrad)" filter="url(#ttShadow)"/>
+  <text x="1300" y="788" text-anchor="middle" class="tt-section">Inference (FAISS)</text>
+
+  <rect x="1110" y="800" width="190" height="85" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1205" y="822" text-anchor="middle" class="tt-label">FAISS IndexFlatIP</text>
+  <text x="1205" y="840" text-anchor="middle" class="tt-sublabel">All item embeddings indexed</text>
+  <text x="1205" y="856" text-anchor="middle" class="tt-sublabel">Inner product similarity</text>
+  <text x="1205" y="872" text-anchor="middle" class="tt-sublabel">Exact nearest neighbor</text>
+
+  <rect x="1320" y="800" width="180" height="85" rx="8" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="1410" y="822" text-anchor="middle" class="tt-label">Top-K Retrieval</text>
+  <text x="1410" y="840" text-anchor="middle" class="tt-sublabel">Sub-1ms query time</text>
+  <text x="1410" y="856" text-anchor="middle" class="tt-sublabel">index.search(user, k=10)</text>
+  <text x="1410" y="872" text-anchor="middle" class="tt-sublabel">Returns item_ids + scores</text>
+
+  <!-- Arrow from dot product to inference -->
+  <path d="M910,720 L910,740 L1080,770" stroke="#8B5CF6" stroke-width="3" fill="none" marker-end="url(#ttArrowPurple)"/>
+  <text x="950" y="748" class="tt-sublabel" fill="#8B5CF6">item embeddings</text>
+
+  <!-- ==================== DATA FLOW ARROWS ==================== -->
+  <!-- Data to User Tower -->
+  <line x1="210" y1="210" x2="210" y2="250" stroke="#F59E0B" stroke-width="3" marker-end="url(#ttArrowCyan)"/>
+  <!-- Data to Item Tower -->
+  <line x1="1140" y1="210" x2="1210" y2="250" stroke="#F59E0B" stroke-width="3" marker-end="url(#ttArrowBlue)"/>
+
+  <!-- ==================== ARTIFACTS ==================== -->
+  <rect x="580" y="760" width="440" height="60" rx="10" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+  <text x="800" y="785" text-anchor="middle" class="tt-label">Saved Artifacts</text>
+  <text x="800" y="805" text-anchor="middle" class="tt-sublabel">two_tower_model.pth  |  item_index.faiss  |  config.yaml</text>
+
+  <!-- Arrow from scoring to artifacts -->
+  <line x1="800" y1="720" x2="800" y2="760" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="5,5"/>
+
+  <!-- ==================== METRICS FOOTER ==================== -->
+  <rect x="580" y="840" width="440" height="60" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+  <text x="660" y="865" text-anchor="middle" class="tt-label">Recall@10</text>
+  <text x="660" y="885" text-anchor="middle" class="tt-dim">7.13%</text>
+  <text x="800" y="865" text-anchor="middle" class="tt-label">FAISS Query</text>
+  <text x="800" y="885" text-anchor="middle" class="tt-dim">Sub-1ms</text>
+  <text x="940" y="865" text-anchor="middle" class="tt-label">Embedding Dim</text>
+  <text x="940" y="885" text-anchor="middle" class="tt-dim">128-d</text>
+</svg>`
   }
 };
 
@@ -1196,7 +1519,8 @@ const ProjectDetail = () => {
     green: "bg-green-400",
     orange: "bg-orange-400",
     purple: "bg-purple-400",
-    blue: "bg-blue-500"
+    blue: "bg-blue-500",
+    teal: "bg-teal-400"
   };
 
   return (
@@ -1284,6 +1608,26 @@ const ProjectDetail = () => {
             </div>
           )}
 
+          {/* Image Gallery for projects with images array */}
+          {project.images && project.images.length > 0 && (
+            <div className="mb-10">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Project Screenshots</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {project.images.map((image, index) => (
+                  <div key={index} className="relative group">
+                    <img
+                      src={`${import.meta.env.BASE_URL}${image}`}
+                      alt={`${project.title} Screenshot ${index + 1}`}
+                      className="rounded-xl border border-gray-200 shadow-md w-full h-auto object-contain cursor-pointer hover:shadow-xl transition-shadow"
+                      onClick={() => window.open(`${import.meta.env.BASE_URL}${image}`, '_blank')}
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 rounded-xl transition-all duration-300 pointer-events-none" />
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm text-gray-500 mt-2">Click any image to view full size</p>
+            </div>
+          )}
 
           {/* Project Meta */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
