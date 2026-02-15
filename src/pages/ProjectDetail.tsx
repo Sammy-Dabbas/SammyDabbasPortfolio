@@ -1069,41 +1069,38 @@ const projectsData: { [key: string]: ProjectData } = {
   "space-radiation-research": {
     id: "space-radiation-research",
     title: "Space Radiation Research",
-    subtitle: "Active Research - Hybrid Physics-ML",
-    description: "Hybrid physics-ML framework for predicting cumulative radiation dose and cancer risk during long-duration spaceflight. Combines Badhwar-O'Neill GCR physics model with Random Forest ML, achieving 84% error reduction on lunar environment data.",
-    detailedDescription: "Research project developing a comprehensive framework for predicting cumulative radiation dose and cancer risk exposure for long-duration spaceflight missions (ISS, Lunar Gateway, Mars transit). The hybrid approach combines the Badhwar-O'Neill 2020 GCR physics model as a baseline with Random Forest residual learning that corrects the physics predictions using 38 engineered features including solar indices, proton flux, rolling averages, and mission geometry. Trained on multi-source data: ISS RadLab (3,447 daily records), LRO CRaTER lunar dosimetry (212 records), MSL RAD deep space measurements (254 records), and OMNI2 solar indices (208,886 hourly records). Achieved 84% error reduction on lunar environment (CRaTER MAE: 16.07 to 2.58 cGy/day). Risk modeling uses ICRP 103/116 conversion factors and NASA NSCR framework for Excess Risk of Cancer estimation.",
+    subtitle: "Early Stage - Data Validation Phase",
+    description: "Research framework for predicting cumulative radiation dose during long-duration spaceflight. Currently validating multi-source NASA mission data against the Badhwar-O'Neill 2020 GCR physics model.",
+    detailedDescription: "Early-stage research project building a framework for predicting cumulative radiation dose exposure for long-duration spaceflight missions (ISS, Lunar Gateway, Mars transit). The planned approach combines the Badhwar-O'Neill 2020 GCR physics model as a baseline with ML residual learning to correct physics predictions. Currently in the data validation phase: collecting and cross-referencing dosimetry data from multiple NASA missions (ISS RadLab, LRO CRaTER, MSL RAD) with OMNI2 solar indices, and validating these measurements against Badhwar-O'Neill model predictions. The next phase will involve feature engineering and training ML models to learn the residual between physics predictions and observed dose rates.",
     status: "In Progress",
     statusColor: "blue",
-    technologies: ["Python", "XGBoost", "Random Forest", "Badhwar-O'Neill Model", "NASA APIs", "Streamlit", "pandas", "numpy"],
+    technologies: ["Python", "Badhwar-O'Neill Model", "NASA APIs", "pandas", "numpy"],
     githubUrl: "https://github.com/Sammy-Dabbas",
     icon: Sparkles,
     iconGradient: "from-red-500 to-orange-500",
     timeline: "Ongoing",
     teamSize: "2-person Team",
     highlights: [
-      "84% error reduction on lunar environment data (CRaTER MAE: 16.07 to 2.58 cGy/day)",
-      "Hybrid physics-ML: Badhwar-O'Neill 2020 GCR model + Random Forest residual learning",
-      "Multi-source data: ISS RadLab, LRO CRaTER, MSL RAD, OMNI2 solar indices",
-      "38 engineered features: solar indices, proton flux, rolling averages, mission geometry",
-      "Cancer risk modeling with ICRP 103/116 factors and NASA NSCR framework"
+      "Research goal: hybrid physics-ML framework for spaceflight radiation dose prediction",
+      "Collecting multi-source NASA data: ISS RadLab, LRO CRaTER, MSL RAD, OMNI2 solar indices",
+      "Current phase: validating downloaded data against Badhwar-O'Neill 2020 GCR model",
+      "Planned approach: ML residual learning to correct physics model predictions"
     ],
     features: [
-      "Badhwar-O'Neill 2020 GCR physics baseline with solar modulation",
-      "Random Forest residual learning that corrects physics model predictions",
-      "Multi-environment support: LEO (ISS), Lunar, and Deep Space (Mars transit)",
-      "Dose-to-risk conversion using ICRP tissue weighting and NASA NSCR cancer risk model",
-      "Interactive Streamlit dashboard for mission simulation and dose visualization"
+      "Badhwar-O'Neill 2020 GCR physics model implementation and validation",
+      "Multi-source NASA data collection and cross-referencing pipeline",
+      "Multi-environment scope: LEO (ISS), Lunar, and Deep Space (Mars transit)",
+      "Planned: ML residual learning, feature engineering, and dose-to-risk conversion"
     ],
     challenges: [
-      "LEO trapped radiation: physics model underpredicts ISS dose without Van Allen belt modeling",
-      "Limited training data: only 218 samples with ground truth dose measurements across all environments",
-      "Multi-environment generalization: models trained on solar cycle 24 data may not generalize"
+      "Aligning heterogeneous data formats across different NASA mission instruments",
+      "Validating physics model predictions against sparse ground truth measurements",
+      "Limited dosimetry records available for some environments (lunar, deep space)"
     ],
     learnings: [
-      "Physics-informed ML: residual learning outperforms pure data-driven approaches on small datasets",
-      "Space radiation physics: GCR flux, solar modulation, shielding attenuation, and SPE events",
-      "Multi-source data integration: aligning heterogeneous space mission datasets",
-      "Cancer risk modeling frameworks used by NASA for astronaut health assessment"
+      "Space radiation physics: GCR flux, solar modulation, and shielding attenuation",
+      "Multi-source data integration: working with NASA mission data from different instruments",
+      "Badhwar-O'Neill GCR model: understanding physics-based dose prediction"
     ],
     architectureSvg: undefined
   },

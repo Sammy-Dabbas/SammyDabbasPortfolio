@@ -315,7 +315,7 @@ const Index = () => {
     {
       id: "space-radiation-research",
       title: "Space Radiation Research",
-      shortDescription: "Hybrid physics-ML framework for predicting radiation dose during spaceflight. 84% error reduction on lunar data.",
+      shortDescription: "Research framework for predicting spaceflight radiation dose. Validating NASA mission data against Badhwar-O'Neill 2020 GCR physics model.",
       status: "In Progress",
       statusColor: "bg-blue-500",
       tags: ["Python", "Random Forest", "NASA APIs"],
